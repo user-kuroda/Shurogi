@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  itemname: MyString
+  itemcall: false
+  situ: false
+  ani: MyString
+  day: 2016-10-17
+  category: MyString
+  fav: false
+  user_id: MyString
+
+two:
+  itemname: MyString
+  itemcall: false
+  situ: false
+  ani: MyString
+  day: 2016-10-17
+  category: MyString
+  fav: false
+  user_id: MyString

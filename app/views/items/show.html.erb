@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Itemname:</strong>
+  <%= @item.itemname %>
+</p>
+
+<p>
+  <strong>Itemcall:</strong>
+  <%= @item.itemcall %>
+</p>
+
+<p>
+  <strong>Situ:</strong>
+  <%= @item.situ %>
+</p>
+
+<p>
+  <strong>Ani:</strong>
+  <%= @item.ani %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @item.day %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @item.category %>
+</p>
+
+<p>
+  <strong>Fav:</strong>
+  <%= @item.fav %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @item.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

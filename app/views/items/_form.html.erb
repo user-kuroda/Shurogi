@@ -1,0 +1,49 @@
+<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :itemname %><br>
+    <%= f.text_field :itemname %>
+  </div>
+  <div class="field">
+    <%= f.label :itemcall %><br>
+    <%= f.check_box :itemcall %>
+  </div>
+  <div class="field">
+    <%= f.label :situ %><br>
+    <%= f.check_box :situ %>
+  </div>
+  <div class="field">
+    <%= f.label :ani %><br>
+    <%= f.text_field :ani %>
+  </div>
+  <div class="field">
+    <%= f.label :day %><br>
+    <%= f.date_select :day %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :fav %><br>
+    <%= f.check_box :fav %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
