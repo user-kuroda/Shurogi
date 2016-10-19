@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+﻿<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Itemname:</strong>
@@ -13,6 +13,13 @@
 <p>
   <strong>Situ:</strong>
   <%= @item.situ %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <% @item.tag_list.each do |tag| %>
+    <%= tag %>
+  <% end %>
 </p>
 
 <p>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tags/index'
+
   resources :categories
   resources :items
   resources :users

@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+﻿class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
@@ -69,6 +69,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id)
+      params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id,:tag_list)
     end
 end
