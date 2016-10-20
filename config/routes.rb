@@ -1,4 +1,6 @@
 ﻿Rails.application.routes.draw do
+  get 'set/index'
+
   get 'top/index'
 
   get 'tags/index'
