@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :pass
       t.string :mail
+      t.string :mailback
       t.string :color
       t.integer :call
 

@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20161017023424) do
 
   create_table "items", force: :cascade do |t|
     t.string   "itemname"
+    t.binary   "image"
     t.boolean  "itemcall"
     t.boolean  "situ"
     t.string   "ani"
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20161017023424) do
     t.string   "name"
     t.string   "pass"
     t.string   "mail"
+    t.string   "mailback"
     t.string   "color"
     t.integer  "call"
     t.datetime "created_at", null: false
