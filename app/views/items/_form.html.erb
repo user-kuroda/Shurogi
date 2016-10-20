@@ -1,4 +1,4 @@
-<%= form_for(@item) do |f| %>
+﻿<%= form_for(@item) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -26,6 +26,10 @@
   <div class="field">
     <%= f.label :situ %><br>
     <%= f.check_box :situ %>
+  </div>
+  <div class="field">
+    <%= f.label :tag_list %><br>
+    <%= text_field_tag 'item[tag_list]',@item.tag_list.join(',') %>
   </div>
   <div class="field">
     <%= f.label :ani %><br>

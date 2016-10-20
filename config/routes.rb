@@ -1,4 +1,8 @@
-Rails.application.routes.draw do
+﻿Rails.application.routes.draw do
+  get 'top/index'
+
+  get 'tags/index'
+
   resources :categories
   resources :items
   resources :users do
