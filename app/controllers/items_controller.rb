@@ -69,10 +69,6 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-<<<<<<< HEAD
-      params.require(:item).permit(:itemname, :image, :itemcall, :situ, :ani, :day, :category, :fav, :user_id)
-=======
       params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id,:tag_list)
->>>>>>> 3904cdb00a4b54275121d5adeb90ca4a54cfb113
     end
 end

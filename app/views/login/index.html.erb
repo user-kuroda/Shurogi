@@ -1,0 +1,18 @@
+﻿
+<%= image_tag 'login.png', {  :alt => 'top',:size => '600x397'} %></br>
+
+<p><style="color : red"><%= @error %></p>
+<%= form_tag action: :auth do %>
+  <div class="field">
+    <%= label_tag :userid, 'ID' %>:<br />
+    <%= text_field_tag :userid, '' %>
+  </div>
+  <div class="field">
+    <%= label_tag :pass, 'Pass' %>:<br />
+    <%= text_field_tag :pass, '' %>
+  </div>
+
+  <%= hidden_field_tag :referer, flash[:referer] %>
+  <%= submit_tag 'Sign In' %>
+<% end %>
+

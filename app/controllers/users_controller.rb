@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :color]
+  skip_before_action :check_logined
 
   # GET /users
   # GET /users.json
