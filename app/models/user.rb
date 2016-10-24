@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
  has_many :categories
+ has_many :items
 
  validates_confirmation_of :pass  
  attr_accessor             :pass_confirmation  
