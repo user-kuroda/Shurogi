@@ -1,18 +1,18 @@
 ﻿<p id="notice"><%= notice %></p>
 
-<h1>Listing Items</h1>
+<h1>Item</h1>
 
 <table>
   <thead>
     <tr>
       <th>Itemname</th>
+      <th>Image</th>
       <th>Itemcall</th>
       <th>Situ</th>
       <th>Ani</th>
       <th>Day</th>
       <th>Category</th>
       <th>Fav</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,13 +21,13 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.itemname %></td>
+        <td><%= item.image %></td>
         <td><%= item.itemcall %></td>
         <td><%= item.situ %></td>
         <td><%= item.ani %></td>
         <td><%= item.day %></td>
         <td><%= item.category %></td>
         <td><%= item.fav %></td>
-        <td><%= item.user_id %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,4 +1,5 @@
-﻿<%= image_tag 'top.png', {  :alt => 'top',:size => '600x397'} %></br>
- <%= link_to image_tag('sign in.png', { :border => '0', :alt => 'sign in',:hspace => '110'}), new_item_path %> </br>
+﻿
+<%= image_tag 'top.png', {  :alt => 'top',:size => '600x397'} %></br>
+ <%= link_to image_tag('sign in.png', { :border => '0', :alt => 'sign in',:hspace => '110'}), controller: :login,action: :index %> </br>
 
 <%= link_to image_tag('sign up.png', { :border => '0', :alt => 'sign out',:hspace => '110'}), new_user_path %>

@@ -2,6 +2,7 @@
   def change
     create_table :items do |t|
       t.string :itemname
+      t.binary :image
       t.boolean :itemcall
       t.boolean :situ
       t.string :ani
