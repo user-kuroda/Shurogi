@@ -1,4 +1,6 @@
 ﻿Rails.application.routes.draw do
+  get 'set/index'
+
   get 'login/index'
 
   post 'login/auth'

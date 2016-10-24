@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20161017023429) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "categoryname"
-    t.string   "user_id"
+    t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20161017023429) do
     t.date     "day"
     t.string   "category"
     t.boolean  "fav"
-    t.string   "user_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

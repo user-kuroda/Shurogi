@@ -12,24 +12,34 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :itemname %><br>
+    <%= f.label :Fav %><br>
+    <%= f.check_box :fav %>
+  </div>
+  <div class="field">
+    <%= f.label :Name %><br>
     <%= f.text_field :itemname %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field" style="display: inline-block " >
+    通知<br/>on　off<br/>
+    <%= f.radio_button :itemcall,"on" %>
+    <%= f.radio_button :itemcall,"off" %>
+  </div>|
+  <div class="field" style="display: inline-block " >
+    ほしい　かった<br/>
+    <%= f.radio_button :situ,"want" %>
+    <%= f.radio_button :situ,"bought" %>
   </div>
   <div class="field">
     <%= f.label :image %><br>
     <%= f.text_field :image %>
   </div>
   <div class="field">
-    <%= f.label :itemcall %><br>
-    <%= f.check_box :itemcall %>
-  </div>
-  <div class="field">
-    <%= f.label :situ %><br>
-    <%= f.check_box :situ %>
-  </div>
-  <div class="field">
     <%= f.label :tag_list %><br>
-    <%= text_field_tag 'item[tag_list]',@item.tag_list.join(',') %>
+    <%= text_area 'item[tag_list]',@item.tag_list.join(',') %>
   </div>
   <div class="field">
     <%= f.label :ani %><br>
@@ -38,18 +48,6 @@
   <div class="field">
     <%= f.label :day %><br>
     <%= f.date_select :day %>
-  </div>
-  <div class="field">
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :fav %><br>
-    <%= f.check_box :fav %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
   </div>
   <div class="actions">
     <%= f.submit %>
