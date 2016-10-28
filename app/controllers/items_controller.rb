@@ -4,7 +4,7 @@
   # GET /items
   # GET /items.json
   def index
-    @items = Item.where(user: session[:usr])
+    @items = Item.where(user: session[:usr]) 
   end
 
   # GET /items/1
@@ -44,7 +44,6 @@
   def create
     @item = Item.new(item_params)
     @item.user_id = session[:usr]
-
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
@@ -88,6 +87,7 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
+<<<<<<< HEAD
       return_params = params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id,:tag_list,:image,:image2,:image3) 
      if return_params[:image] != nil
         return_params[:image] = return_params[:image].read
@@ -99,5 +99,8 @@
         return_params[:image3] = return_params[:image3].read
      end
      return return_params
+=======
+      params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id, :tag_list)
+>>>>>>> 06130eaac3b49a15fc02154563dd91bc9c99db70
     end
 end

@@ -37,12 +37,12 @@
 
   <div class="field"> 
     <%= f.label :call %><br> 
-    <%= f.number_field :call %>日前
+    <%= f.number_field :call, min: 0  %>日前
   </div> 
 
   
   <div class="actions">
-    <%= f.submit %>
+    <%= image_submit_tag('OK.png') %>
   </div>
 
   <% end %>
