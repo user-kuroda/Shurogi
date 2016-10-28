@@ -12,44 +12,92 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :Fav %><br>
-    <%= f.check_box :fav %>
-  </div>
-  <div class="field">
     <%= f.label :Name %><br>
-    <%= f.text_field :itemname %>
+    <%= f.text_field :itemname, style: "ime-mode: active;" %>
+  <span class="field">
+    <%= f.collection_select :category,Category.all,:id,:categoryname %>
+  </span>
+  <span class="field">
+    <%= f.check_box :fav %>
+  </span>
   </div>
-  <div class="field">
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </div>
-  <div class="field" style="display: inline-block " >
-    通知<br/>on　off<br/>
-    <%= f.radio_button :itemcall,"on" %>
+
+
+  <div><nofav><%= image_tag('nofav.png', { :border => '0', :alt => '画像',:size => '60x60'}) %></nofav></div>
+  <div><fav><%= image_tag('nofav.png', { :border => '0', :alt => '画像',:size => '60x60'}) %></fav></div>
+
+  <script type="text/javascript">
+    $(function(){
+      var img_name = "http://jsrun.it/assets/9/x/S/n/9xSnz.gif";
+   	var img_name_over = "http://jsrun.it/assets/e/W/l/W/eWlWs.gif";
+    $("#btn01").click(function(){
+    	$("#btn01").attr("src", img_name_over);    
+    });
+    
+    $("#btn02").toggle(function(){
+    	$("#btn02").attr("src", img_name_over);    
+    },function(){
+    	$("#btn02").attr("src", img_name);   
+    });
+});
+  </script> 
+
+  通知<br/>
+  <div class="field" style="display: inline-block " Align="center" >
+    on　  off<br/>
+    <%= f.radio_button :itemcall,"on" %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= f.radio_button :itemcall,"off" %>
   </div>|
-  <div class="field" style="display: inline-block " >
+
+  <div class="field" style="display: inline-block " Align="center">
     ほしい　かった<br/>
-    <%= f.radio_button :situ,"want" %>
+    <%= f.radio_button :situ,"want" %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= f.radio_button :situ,"bought" %>
+  </div><br/>
+
+    <div style="display: inline-block ">
+    <camera><%= image_tag('camera.png', { :border => '0', :alt => '画像',:size => '60x60'}) %></camera></div>
+    <span style="margin-right: 90px;"></span>
+
+    <div style="display: inline-block ">
+    <%= image_tag('itag.png', { :border => '0', :alt => 'タグ',:size => '60x60'}) %></div>
+    <span style="margin-right: 90px;"></span>
+
+    <div style="display: inline-block ">
+    <%= image_tag('day.png', { :border => '0', :alt => '何の日',:size => '60x60'}) %></div><br/>
+
+  <div class="field" style="display: inline-block " >
+  <script type="text/javascript">
+    $(function() {
+       $('p').hide();
+       $('camera').click(function(){
+         $('p').toggle();
+       });
+    });
+  </script> 
+
+  <p div class="field">
+    <%= f.file_field :image,accept: "image/jpeg" %>
+    <%= f.file_field :image2,accept: "image/jpeg" %>
+    <%= f.file_field :image3,accept: "image/jpeg" %>
+  </div></p>
   </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
+
+    <span style="margin-right: 190px;"></span>
+  <div class="field" style="display: inline-block " >
+    <%= text_field_tag 'item[tag_list]',@item.tag_list.join(',') %>
   </div>
-  <div class="field">
-    <%= f.label :tag_list %><br>
-    <%= text_area 'item[tag_list]',@item.tag_list.join(',') %>
-  </div>
-  <div class="field">
-    <%= f.label :ani %><br>
+
+  <div class="field" style="display: inline-block " >
+    
     <%= f.text_field :ani %>
   </div>
-  <div class="field">
-    <%= f.label :day %><br>
+
+  <div class="field" style = "margin-left :345px">
     <%= f.date_select :day %>
   </div>
-  <div class="actions">
+</br>
+  <div class="actions" style = "margin-left :420px">
     <%= f.submit %>
   </div>
 <% end %>

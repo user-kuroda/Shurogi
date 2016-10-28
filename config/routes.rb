@@ -10,10 +10,15 @@
   get 'tags/index'
 
   resources :categories
-  resources :items
+  resources :items do
+    get 'show_image', on: :member
+    get 'show_image2', on: :member
+    get 'show_image3', on: :member
+  end
   resources :users do
    get 'color', on: :member
   end
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -12,6 +12,24 @@
   def show
   end
 
+  def show_image
+
+    # send_dataはバイナリファイルをブラウザに表示するため
+    # http://railsdoc.com/references/send_data
+
+    @item = Item.find(params[:id])
+    send_data @item.image, :type => 'image/jpeg', :disposition => 'inline'
+  end
+  def show_image2
+    @item = Item.find(params[:id])
+    send_data @item.image2, :type => 'image/jpeg', :disposition => 'inline'
+  end
+  def show_image3
+    @item = Item.find(params[:id])
+    send_data @item.image3, :type => 'image/jpeg', :disposition => 'inline'
+  end
+
+
   # GET /items/new
   def new
     @item = Item.new
@@ -26,7 +44,7 @@
   def create
     @item = Item.new(item_params)
     @item.user_id = session[:usr]
-  
+
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
@@ -70,6 +88,16 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id,:tag_list)
+      return_params = params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id,:tag_list,:image,:image2,:image3) 
+     if return_params[:image] != nil
+        return_params[:image] = return_params[:image].read
+     end
+     if return_params[:image2] != nil
+        return_params[:image2] = return_params[:image2].read
+     end
+     if return_params[:image3] != nil
+        return_params[:image3] = return_params[:image3].read
+     end
+     return return_params
     end
 end

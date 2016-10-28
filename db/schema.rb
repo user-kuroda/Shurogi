@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20161017023429) do
   create_table "items", force: :cascade do |t|
     t.string   "itemname"
     t.binary   "image"
+    t.binary   "image2"
+    t.binary   "image3"
     t.boolean  "itemcall"
     t.boolean  "situ"
     t.string   "ani"

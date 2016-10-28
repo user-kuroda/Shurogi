@@ -3,6 +3,8 @@
     create_table :items do |t|
       t.string :itemname
       t.binary :image
+      t.binary :image2
+      t.binary :image3
       t.boolean :itemcall
       t.boolean :situ
       t.string :ani

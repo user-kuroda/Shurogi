@@ -21,7 +21,6 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.itemname %></td>
-        <td><%= item.image %></td>
         <td><%= item.itemcall %></td>
         <td><%= item.situ %></td>
         <td><%= item.ani %></td>
@@ -38,8 +37,7 @@
 </table>
 <br>
 
-<%= link_to 'New Item', new_item_path %>
-</br>
+ <%= link_to image_tag('item.png', { :border => '0', :alt => 'アイテム登録',:size => '60x60'}), new_item_path %>
  <%= link_to image_tag('tag.png', { :border => '0', :alt => 'タグ一覧',:size => '60x60'}), tags_index_path %>
  <%= link_to image_tag('category.png', { :border => '0', :alt => 'カテゴリー一覧',:size => '60x60'}), categories_path %>
 
