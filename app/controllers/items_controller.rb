@@ -18,7 +18,7 @@
     # http://railsdoc.com/references/send_data
 
     @item = Item.find(params[:id])
-    send_data @item.image, :type => 'image/jpeg', :disposition => 'inline'
+      send_data @item.image, :type => 'image/jpeg', :disposition => 'inline'
   end
   def show_image2
     @item = Item.find(params[:id])
@@ -87,20 +87,16 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-<<<<<<< HEAD
       return_params = params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id,:tag_list,:image,:image2,:image3) 
-     if return_params[:image] != nil
-        return_params[:image] = return_params[:image].read
-     end
-     if return_params[:image2] != nil
-        return_params[:image2] = return_params[:image2].read
-     end
-     if return_params[:image3] != nil
-        return_params[:image3] = return_params[:image3].read
-     end
+      a = []
+      a << return_params[:image].read if return_params[:image] != nil
+      a << return_params[:image2].read if return_params[:image2] != nil
+      a << return_params[:image3].read if return_params[:image3] != nil
+      logger.debug a.length
+      return_params[:image] = a[0] if a.length >= 1
+      return_params[:image2] = a[1] if a.length >= 2
+      return_params[:image3] = a[2] if a.length >= 3
+
      return return_params
-=======
-      params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id, :tag_list)
->>>>>>> 06130eaac3b49a15fc02154563dd91bc9c99db70
     end
 end
