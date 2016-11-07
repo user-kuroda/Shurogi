@@ -1,57 +1,58 @@
-﻿<p id="notice"><%= notice %></p>
+﻿<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta http-equiv="content-style-type" content="text/css">
+   <style type="text/css">
+         *.float
+         {
+            float: left;
+            margin-right: 1em;
+         }
+         *.floatclear
+         {
+            clear: both;
+         }
+   </style>
+</head>
+
+
+<p id="notice"><%= notice %></p>
+
 
 <p>
-  <strong>Itemname:</strong>
-  <%= @item.itemname %>
+  <h2 style = display:inline;>▽</h2>
+  <h1 style = display:inline;><%= @item.itemname %></h1>
 </p>
-<p>
-  <strong>Image:</strong>
+
+
+<div class="float">
+<p style = display:inline;>
  <%= image_tag show_image_item_path(@item), class: "large-img" %>
- <%= image_tag show_image2_item_path(@item), class: "large-img" %>
- <%= image_tag show_image3_item_path(@item), class: "large-img" %>
 </p>
-
-<p>
-  <strong>Itemcall:</strong>
-  <%= @item.itemcall %>
-</p>
-
-<p>
-  <strong>Situ:</strong>
-  <%= @item.situ %>
-</p>
-
-<p>
-  <strong>Tags:</strong>
+</div>
+<p style="margin-left: 320px;">
   <% @item.tag_list.each do |tag| %>
-    <%= tag %>
+     <%= link_to "##{tag}", search_tag_items_path(tag: tag) %>
   <% end %>
 </p>
+ <br class="floatclear">
 
+
+<div class="float">
 <p>
-  <strong>Ani:</strong>
-  <%= @item.ani %>
+<%= link_to image_tag('pen.png', { :border => '0', :alt => '編集',:size => '200x80'}), edit_item_path %>
 </p>
-
 <p>
-  <strong>Day:</strong>
-  <%= @item.day %>
+<%= link_to image_tag('dustbox.png', { :border => '0', :alt => '削除',:size => '200x80'}), @item, method: :delete, data: { confirm: 'Are you sure?' } %>
 </p>
-
 <p>
-  <strong>Category:</strong>
-  <%= @item.category %>
+<%= link_to image_tag('back.png', { :border => '0', :alt => '戻る',:size => '200x80'}), items_path %>
 </p>
+</div>
 
-<p>
-  <strong>Fav:</strong>
-  <%= @item.fav %>
+<p style="margin-left: 320px;">
+   <font size="3">
+     <%= @item.ani %></br>
+     <%= @item.day %>
+   </font>
 </p>
-
-<p>
-  <strong>User:</strong>
-  <%= @item.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+ <br class="floatclear">

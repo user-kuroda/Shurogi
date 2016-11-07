@@ -46,7 +46,7 @@
     @item.user_id = session[:usr]
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to @item, notice: '登録完了！' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -60,7 +60,7 @@
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to @item, notice: '更新完了！' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -74,9 +74,15 @@
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to items_url}
       format.json { head :no_content }
     end
+  end
+
+  def search_tag
+    logger.debug params["tag"]
+    @items = Item.where(user: session[:usr]).tagged_with(params["tag"])
+    render :index
   end
 
   private
@@ -87,7 +93,6 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-<<<<<<< HEAD
       return_params = params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id,:tag_list,:image,:image2,:image3) 
      if return_params[:image] != nil
         return_params[:image] = return_params[:image].read
@@ -99,8 +104,5 @@
         return_params[:image3] = return_params[:image3].read
      end
      return return_params
-=======
-      params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id, :tag_list)
->>>>>>> 06130eaac3b49a15fc02154563dd91bc9c99db70
     end
 end

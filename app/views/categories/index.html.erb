@@ -13,8 +13,8 @@
   <tbody>
     <% @categories.each do |category| %>
       <tr>
-        <td>▽　<%= category.categoryname %></td>
-        
+          <td>▽　<%= link_to category.categoryname, search_category_items_path(category: category) %></td>
+
         <td>　　<%= link_to '編集', edit_category_path(category) %></td>
         <td><%= link_to '消す', category, method: :delete, data: { confirm: 'マジで?' } %></td>
       </tr>
