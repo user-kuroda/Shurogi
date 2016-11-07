@@ -87,15 +87,10 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      return_params = params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id,:tag_list,:image,:image2,:image3) 
-      a = []
-      a << return_params[:image].read if return_params[:image] != nil
-      a << return_params[:image2].read if return_params[:image2] != nil
-      a << return_params[:image3].read if return_params[:image3] != nil
-      logger.debug a.length
-      return_params[:image] = a[0] if a.length >= 1
-      return_params[:image2] = a[1] if a.length >= 2
-      return_params[:image3] = a[2] if a.length >= 3
+      return_params = params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id,:tag_list,:image,:image2,:image3)
+      return_params[:image] = return_params[:image].read if return_params[:image] != nil
+      return_params[:image2] = return_params[:image2].read  if return_params[:image2] != nil
+      return_params[:image3] = return_params[:image3].read  if return_params[:image3] != nil
 
      return return_params
     end
