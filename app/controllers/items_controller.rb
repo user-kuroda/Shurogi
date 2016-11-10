@@ -18,7 +18,7 @@
     # http://railsdoc.com/references/send_data
 
     @item = Item.find(params[:id])
-    send_data @item.image, :type => 'image/jpeg', :disposition => 'inline'
+      send_data @item.image, :type => 'image/jpeg', :disposition => 'inline'
   end
   def show_image2
     @item = Item.find(params[:id])
@@ -129,16 +129,10 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      return_params = params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id,:tag_list,:image,:image2,:image3) 
-     if return_params[:image] != nil
-        return_params[:image] = return_params[:image].read
-     end
-     if return_params[:image2] != nil
-        return_params[:image2] = return_params[:image2].read
-     end
-     if return_params[:image3] != nil
-        return_params[:image3] = return_params[:image3].read
-     end
+      return_params = params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id,:tag_list,:image,:image2,:image3)
+      return_params[:image] = return_params[:image].read if return_params[:image] != nil
+      return_params[:image2] = return_params[:image2].read  if return_params[:image2] != nil
+      return_params[:image3] = return_params[:image3].read  if return_params[:image3] != nil
      return return_params
     end
 end

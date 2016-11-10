@@ -1,14 +1,69 @@
-﻿<head>
+﻿
+<h1 style = "margin-left :280px">Set</h1>
+<div style = "margin-left :80px">
+<head>
   <script type="text/javascript">
     $(function() {
-       $('button').click(function(){
-          $('p').toggle();
+          $('p1').hide();
+          $('p2').hide();
+          $('p3').hide();
+          $('p4').hide();
+       $('b1').click(function(){
+          $('p1').toggle();
+       });
+       $('b2').click(function(){
+          $('p2').toggle();
+       });
+       $('b3').click(function(){
+          $('p3').toggle();
+       });
+       $('b4').click(function(){
+          $('p4').toggle();
        });
     });
   </script>
 </head>
-<h1>Setting</h1>
-<body>
-  Name<button>▽</button>
-  <p></p>
-</body>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label Name %><b1> ▽</b1></br>
+    <p1><%= text_field :user,:name %></p1>
+  </div>
+
+  <div class="field">
+    <%= f.label Password %><b2> ▽</b2><br>
+    <p2><%= password_field :user,:pass %></p2>
+    <p2><%= password_field :user,:pass_confirmation %></p2>
+  </div>
+
+  <div class="field"> 
+    <%= f.label :color %><b3> ▽</b3><br> 
+    <p3><%= select :user, :user,:color, ["RED", "BLUE", "YELLOW", "PINK", "GREEN", "BLACK", "WHITE"] %> </p3>
+  </div> 
+
+  <div class="field"> 
+    <%= f.label Call %><b4> ▽</b4><br> 
+    <p4><%= number_field :user,:call, min: 0  %>日前</p4>
+  </div> 
+
+  
+  <div class="actions">
+    <%= image_submit_tag('OK.png') %>
+  </div>
+
+  <% end %>
+
+
+
