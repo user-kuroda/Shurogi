@@ -78,12 +78,48 @@
       format.json { head :no_content }
     end
   end
+ 
+  def favcateg
+    @categories = Category.where(user: session[:usr])
+  end
+
+  def favindex
+    @items = Item.where(user: session[:usr]) 
+  end
+
+
+  def wantcateg
+    @categories = Category.where(user: session[:usr])
+  end
+
+  def wanteindex
+    @items = Item.where(user: session[:usr]) 
+  end
 
   def search_tag
     logger.debug params["tag"]
     @items = Item.where(user: session[:usr]).tagged_with(params["tag"])
     render :index
   end
+
+  def search_category
+    logger.debug params["category"]
+    @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
+    render :index
+  end
+
+  def search_favcategory
+    logger.debug params["category"]
+    @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
+    render :favindex
+  end
+
+  def search_wantcategory
+    logger.debug params["category"]
+    @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
+    render :wantindex
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

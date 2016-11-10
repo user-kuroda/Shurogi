@@ -1,0 +1,22 @@
+﻿<p id="notice"><%= notice %></p>
+
+<h1>Favorite</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+          <td>▽　<%= link_to category.categoryname, search_favcategory_items_path(category: category)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

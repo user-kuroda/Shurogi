@@ -18,6 +18,12 @@
     get 'show_image3', on: :member
     get 'search_tag', on: :collection
     get 'search_category', on: :collection
+    get 'search_favcategory', on: :collection
+    get 'search_wantcategory', on: :collection
+    get 'wantcateg', on: :collection
+    get 'favcateg', on: :collection
+    get 'favindex', on: :collection
+    get 'wantindex', on: :collection
   end
   resources :users do
    get 'color', on: :member
