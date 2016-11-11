@@ -1,12 +1,22 @@
-﻿<p id="notice"><%= notice %></p>
+﻿  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.noimg').error(function() {
+        $(this).attr({
+            src: '/noimg.png'
+        });
+      });
+    });
+  </script> 
+
+<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Itemname:</strong>
   <%= @item.itemname %>
 </p>
-<p>
+<p class="noimg">
   <strong>Image:</strong>
- <%= image_tag show_image_item_path(@item), class: "large-img" %>
+ <%= image_tag show_image_item_path(@item), class: ["large-img","noimg"] %>
  <%= image_tag show_image2_item_path(@item), class: "large-img" %>
  <%= image_tag show_image3_item_path(@item), class: "large-img" %>
 </p>

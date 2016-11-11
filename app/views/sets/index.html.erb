@@ -1,0 +1,101 @@
+﻿<%= form_for(@user, url: set_path(@user)) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h1 style = "margin-left :280px">Set</h1>
+
+  <div style = "margin-left :80px ; margin-right :880px">
+
+    <div class="panel-group" id="setting">
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a data-toggle="collapse" data-parent="#setting" href="#setname">
+              Name▽
+            </a>
+          </h3>
+        </div>
+
+        <div id="setname" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <%= f.text_field :name %>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a data-toggle="collapse" data-parent="#setting" href="#setpass">
+              Password▽
+            </a>
+          </h3>
+        </div>
+
+        <div id="setpass" class="panel-collapse collapse">
+          <div class="panel-body">
+            現在のパスワード<br><%= password_field_tag "firstpass" %><br>
+            新しいパスワード<p style = "display: :inline_block">
+            <%= f.password_field :pass %>
+            <%= f.password_field :pass_confirmation %></p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a data-toggle="collapse" data-parent="#setting" href="#setcolor">
+              Color▽
+            </a>
+          </h3>
+        </div>
+
+        <div id="setcolor" class="panel-collapse collapse">
+          <div class="panel-body">
+            <%= select :user, :color, ["RED", "BLUE", "YELLOW", "PINK", "GREEN", "BLACK", "WHITE"] %> 
+          </div>
+        </div>
+
+      </div>
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a data-toggle="collapse" data-parent="#setting" href="#setcall">
+              Call▽
+            </a>
+          </h3>
+        </div>
+
+        <div id="setcall" class="panel-collapse collapse">
+          <div class="panel-body">
+            <%= f.number_field :call, min: 0  %>日前
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+  <div class="actions" style = "margin-left :500px">
+    <%= image_submit_tag('OK.png') %>
+  </div>
+
+<% end %>

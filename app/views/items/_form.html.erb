@@ -15,29 +15,13 @@
     <%= f.label :Name %><br>
     <%= f.text_field :itemname, style: "ime-mode: active;" %>
   <span class="field">
-    <%= f.collection_select :category,Category.all,:id,:categoryname %>
+    <%= f.collection_select :category,Category.where(session[:usr] == :user_id),:id,:categoryname %>
   </span>
   </div>
 
-
-  <%= image_tag('nofav.png', { :border => '0', :alt => 'nofav',:size => '40x40',:id => 'nofav'}) %>
-
-    <%= f.radio_button :fav,"fav" %>&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= f.radio_button :fav,"nofav" , {:checked => true}%>
-
-  <script type="text/javascript">
-    $(function(){
-      var img_name = "nofav.png";
-      var img_name_over = "fav.png";
-      $('#nofav').click(function(){
-        $('#nofav').toggle(function(){
-      	  $('#nofav').attr("src", img_name_over);
-        },function(){
-          $('#nofav').attr("src", img_name); 
-        });
-      });
-    });
-  </script> <br>
+  <div class="field">
+    <%= f.check_box :fav %>
+  </div>
 
   通知<br/>
   <div class="field" style="display: inline-block " Align="center" >
@@ -73,9 +57,9 @@
     });
   </script> 
 
-  <p div class="field">
-    <%= f.file_field :image,accept: "image/jpeg" %>
-    <%= f.file_field :image2,accept: "image/jpeg" %>
+  <p div class="field" style="display: inline-block ">
+    <%= f.file_field :image,accept: "image/jpeg" -%>
+    <%= f.file_field :image2,accept: "image/jpeg" -%>
     <%= f.file_field :image3,accept: "image/jpeg" %>
   </div></p>
   </div>
@@ -90,7 +74,7 @@
     <%= f.text_field :ani, :placeholder => "賞味期限、記念日etc." %>
   </div>
 
-  <div class="field" style = "margin-left :345px">
+  <div class="field" style = "margin-left :375px">
     <%= f.date_select :day %>
   </div>
 </br>
