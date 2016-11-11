@@ -4,7 +4,7 @@
 
  validates :userid,presence: true, format: { with: /\A[a-z0-9]+\z/i }
  validates :name,presence: true
- validates :pass,presence: true, format: { with: /\A[a-z0-9]+\z/i }
+ validates :pass,presence: true, format: { with: /\A[a-z0-9]+\z/i }, length: { minimum: 8 }   
  validates :mail,presence: true, format: { with: /\A[a-z0-9]+\z/i }
  validates :call,presence: true
  validates_uniqueness_of :userid, :message => "は既に使用されています"

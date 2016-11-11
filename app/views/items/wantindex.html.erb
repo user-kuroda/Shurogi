@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Want</h1>
+
+<table>
+  <% @items.each do |item| %>
+      <% next if item.situ == false %>
+      <tbody>
+        <tr>
+          <td align="center">
+            <%= link_to item do %>
+              <%= image_tag show_image_item_path(item), class: "large-img" %>
+            <% end %>
+          <br />
+          <%= item.itemname %>
+          </td>
+        </tr>
+      </tbody>
+  <% end %>
+</table>

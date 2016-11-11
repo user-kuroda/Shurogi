@@ -47,7 +47,7 @@
     @item.user_id = session[:usr]
     respond_to do |format|
       if @item.save
-        format.html { redirect_to items_path }
+        format.html { redirect_to items_path, notice: '登録完了！' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -61,7 +61,7 @@
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item }
+        format.html { redirect_to items_path, notice: '更新完了！' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -79,6 +79,48 @@
       format.json { head :no_content }
     end
   end
+ 
+  def favcateg
+    @categories = Category.where(user: session[:usr])
+  end
+
+  def favindex
+    @items = Item.where(user: session[:usr]) 
+  end
+
+
+  def wantcateg
+    @categories = Category.where(user: session[:usr])
+  end
+
+  def wanteindex
+    @items = Item.where(user: session[:usr]) 
+  end
+
+  def search_tag
+    logger.debug params["tag"]
+    @items = Item.where(user: session[:usr]).tagged_with(params["tag"])
+    render :index
+  end
+
+  def search_category
+    logger.debug params["category"]
+    @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
+    render :index
+  end
+
+  def search_favcategory
+    logger.debug params["category"]
+    @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
+    render :favindex
+  end
+
+  def search_wantcategory
+    logger.debug params["category"]
+    @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
+    render :wantindex
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -92,7 +134,6 @@
       return_params[:image] = return_params[:image].read if return_params[:image] != nil
       return_params[:image2] = return_params[:image2].read  if return_params[:image2] != nil
       return_params[:image3] = return_params[:image3].read  if return_params[:image3] != nil
-
      return return_params
     end
 end

@@ -3,42 +3,26 @@
 <h1>Item</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Itemname</th>
-      <th>Image</th>
-      <th>Itemcall</th>
-      <th>Situ</th>
-      <th>Ani</th>
-      <th>Day</th>
-      <th>Category</th>
-      <th>Fav</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
+  <% @items.each do |item| %>
+    <tbody>
       <tr>
-        <td><%= item.itemname %></td>
-        <td><%= item.itemcall %></td>
-        <td><%= item.situ %></td>
-        <td><%= item.ani %></td>
-        <td><%= item.day %></td>
-        <td><%= item.category %></td>
-        <td><%= item.fav %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td align="center">
+          <%= link_to item do %>
+            <%= image_tag show_image_item_path(item), class: "large-img" %>
+          <% end %>
+          <br />
+          <%= item.itemname %>
+        </td>
       </tr>
-    <% end %>
-
-  </tbody>
+    </tbody>
+    
+  <% end %>
 </table>
-<br>
 
+ <%= link_to image_tag('fav_link.png', { :border => '0', :alt => 'お気に入り',:size => '60x60'}), favcateg_items_path %>
+ <%= link_to image_tag('category.png', { :border => '0', :alt => 'カテゴリー一覧',:size => '60x60'}), categories_path %>
  <%= link_to image_tag('item.png', { :border => '0', :alt => 'アイテム登録',:size => '60x60'}), new_item_path %>
  <%= link_to image_tag('tag.png', { :border => '0', :alt => 'タグ一覧',:size => '60x60'}), tags_index_path %>
- <%= link_to image_tag('category.png', { :border => '0', :alt => 'カテゴリー一覧',:size => '60x60'}), categories_path %>
+ <%= link_to image_tag('want.png', { :border => '0', :alt => '欲しいもの',:size => '60x60'}), wantcateg_items_path %>
 
 
