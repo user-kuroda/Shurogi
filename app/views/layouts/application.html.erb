@@ -1,63 +1,58 @@
 ﻿<!DOCTYPE html>
 <html>
-  <head>
-    <title>Shurogi</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-	 <% if session[:usr] %>
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#top-nav">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-		</div>
+    <head>
+        <title>Shurogi</title>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+	         <% if session[:usr] %>
+		        <div class="navbar-header">
+			        <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#top-nav">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+			        </button>
+		        </div>
 		
-		<div class="collapse navbar-collapse" id="top-nav">
-			<ul class="nav navbar-nav">
-				<li><%= link_to image_tag(set.png,{ :border => '0',:alt=> 'sets'}), sets_path%></li>
-				<li><%= link_to image_tag(title.png,{ :border => '0',:alt=> 'items'}), items_path%></li>
-				<li><%= link_to image_tag(set.png,{ :border => '0',:alt=> 'search'}), items_path%></li>
-			</ul>
-			<p class="navbar-text navbar-right">ようこそ <a href="#" class="navbar-link">ゲスト</a> さん。</p>
-		</div>
-	  </div>
-    </nav>
+			    <div class="collapse navbar-collapse" id="top-nav">
+			        <ul class="nav navbar-nav">
+			          <li><%= link_to image_tag('set.png',{ :border => '0',:alt=> 'sets'}), sets_path%></li>
+			          <li><%= link_to image_tag('title.png',{ :border => '0',:alt=> 'items'}), items_path%></li>
+			          <li><%= link_to image_tag('search.png',{ :border => '0',:alt=> 'search'}), items_path%></li>
+			        </ul>
+		        </div>
+		    <% end %>
+		</nav>
 
-    <div class="container">
-      <%= yield %>
-    </div>
+	    <div class="container">
+	      <%= yield %>
+	    </div>
 
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample9">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-		</div>
-		
-		<div class="collapse navbar-collapse" id="navbarEexample9">
-			<ul class="nav navbar-nav">
-				<li>
-				  <a class="navbar-brand" href="#">
-				      <img alt="Brand" src="brandImage.png" style="height: 20px;">
-			      </a>
-			    </li>
-				<li class="active"><a href="#">メニューＢ</a></li>
-				<li><a href="#">メニューＣ</a></li>
-			</ul>
-			<p class="navbar-text navbar-right">ようこそ <a href="#" class="navbar-link">ゲスト</a> さん。</p>
-		</div>
-	  </div>
-    </nav>
+	    <nav class="navbar navbar-default navbar-fixed-bottom">
+	        <% if session[:usr] %>
+		        <div class="navbar-fotter">
+				    <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#bottom-nav">
+					  <span class="icon-bar"></span>
+					  <span class="icon-bar"></span>
+					  <span class="icon-bar"></span>
+				    </button>
+			    </div>
+			
+			    <div class="collapse navbar-collapse" id="bottom-nav">
+				    <ul class="nav navbar-nav">
+					  <li><%= link_to image_tag('fav_link.png',{ :border => '0',:alt=> 'fav'}), favcateg_items_path%></li>
+					  <li><%= link_to image_tag('category.png',{ :border => '0',:alt=> 'fav'}), categories_path%></li>
+					  <li><%= link_to image_tag('item.png',{ :border => '0',:alt=> 'fav'}), new_item_path%></li>
+					  <li><%= link_to image_tag('tag.png',{ :border => '0',:alt=> 'fav'}), tags_index_path%></li>
+					  <li><%= link_to image_tag('want.png',{ :border => '0',:alt=> 'fav'}), wantcateg_items_path%></li>
+				    </ul>
+			    </div>
+			<% end %>
+	    </nav>
 
-  </body>
+   </body>
 
 </html>
