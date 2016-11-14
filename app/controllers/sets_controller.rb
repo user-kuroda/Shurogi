@@ -22,6 +22,19 @@
       end
   end
 
+  def userdelete
+    Item.where(user: session[:usr]).delete_all
+    Category.where(user: session[:usr]).delete_all
+    User.destroy(session[:usr])
+
+    respond_to do |format| 
+      format.html { redirect_to  users_url, notice: 'アカウントを削除しました' } 
+      format.json { head :no_content } 
+    end 
+  end 
+
+
+
   private
     
     def check

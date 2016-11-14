@@ -1,4 +1,4 @@
 ﻿<h1>タグ一覧</h1>
  <% @tags.each do |tag| %>
-   #<%= tag %>
+     <%= link_to "##{tag}", search_tag_items_path(tag: tag) %>
  <% end %>
