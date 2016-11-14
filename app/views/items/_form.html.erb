@@ -11,11 +11,12 @@
     </div>
   <% end %>
 
+<table><tbody>
   <div class="field">
     <%= f.label :Name %><br>
     <%= f.text_field :itemname, style: "ime-mode: active;" %>
   <span class="field">
-    <%= f.collection_select :category,Category.where(session[:usr] == :user_id),:id,:categoryname %>
+    <%= f.collection_select :category,Category.where(user: session[:usr]),:id,:categoryname %>
   </span>
   </div>
 
@@ -26,14 +27,14 @@
   通知<br/>
   <div class="field" style="display: inline-block " Align="center" >
     on　  off<br/>
-    <%= f.radio_button :itemcall,"on" %>&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= f.radio_button :itemcall,"off" , {:checked => true}%>
+    <%= f.radio_button :itemcall, true %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.radio_button :itemcall, false %>
   </div>|
 
   <div class="field" style="display: inline-block " Align="center">
     ほしい　かった<br/>
-    <%= f.radio_button :situ,"want" %>&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= f.radio_button :situ,"bought" %>
+    <%= f.radio_button :situ,true %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.radio_button :situ,false %>
   </div><br/>
 
     <div style="display: inline-block ">
@@ -81,4 +82,5 @@
   <div class="actions" style = "margin-left :420px">
     <%=  image_submit_tag('OK.png')  %>
   </div>
+  </tbody></table>
 <% end %>
