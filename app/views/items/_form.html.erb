@@ -1,4 +1,26 @@
-﻿<%= form_for(@item) do |f| %>
+﻿<script type="text/javascript">
+  $(document).ready(function(){
+    $(".hante").hide();
+    if($("#item_fav:checked").val()){
+      $(".sw_hante").attr("src", "<%= asset_path 'fav.png' %>");
+    }else{
+      $(".sw_hante").attr("src", "<%= asset_path 'nofav.png' %>");
+    }
+  });
+  $(function(){
+    $(".sw_hante").click(function(){
+      if($("#item_fav:checked").val()){
+        $("#item_fav").prop("checked", false);
+        $(".sw_hante").attr("src", "<%= asset_path 'nofav.png' %>");
+      }else{
+        $("#item_fav").prop("checked", true);
+        $(".sw_hante").attr("src", "<%= asset_path 'fav.png' %>");
+      }
+    })
+  });
+</script>
+
+<%= form_for(@item) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -13,20 +35,19 @@
 
 <table><tbody>
   <div class="field">
-    <%= f.label :Name %><br>
+    <%= f.label :Name %>
+  <span class="field">
+    <%= image_tag "nofav.png", class: "sw_hante", :size => "30x30" %>
+    <%= f.check_box :fav, class: "hante" %>
+  </span><br>
     <%= f.text_field :itemname, style: "ime-mode: active;" %>
   <span class="field">
     <%= f.collection_select :category,Category.where(user: session[:usr]),:id,:categoryname %>
-  </span>
-  </div>
-
-  <div class="field">
-    <%= f.check_box :fav %>
-  </div>
+  </span></div>
 
   通知<br/>
   <div class="field" style="display: inline-block " Align="center" >
-    on　  off<br/>
+    on　  off<br>
     <%= f.radio_button :itemcall, true %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= f.radio_button :itemcall, false %>
   </div>|
