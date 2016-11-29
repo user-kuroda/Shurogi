@@ -47,7 +47,7 @@
 
   通知<br/>
   <div class="field" style="display: inline-block " Align="center" >
-    on　  off<br>
+    on　  off<br/>
     <%= f.radio_button :itemcall, true %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= f.radio_button :itemcall, false %>
   </div>|
@@ -60,47 +60,55 @@
 
     <div style="display: inline-block ">
     <camera><%= image_tag('camera.png', { :border => '0', :alt => '画像',:size => '60x60'}) %></camera></div>
-    <span style="margin-right: 90px;"></span>
+    <span style="margin-right: 170px;"></span>
 
     <div style="display: inline-block ">
-    <%= image_tag('itag.png', { :border => '0', :alt => 'タグ',:size => '60x60'}) %></div>
-    <span style="margin-right: 90px;"></span>
+    <itag><%= image_tag('itag.png', { :border => '0', :alt => 'タグ',:size => '60x60'}) %></itag></div>
+    <span style="margin-right: 150px;"></span>
 
     <div style="display: inline-block ">
-    <%= image_tag('day.png', { :border => '0', :alt => '何の日',:size => '60x60'}) %></div><br/>
+    <day><%= image_tag('day.png', { :border => '0', :alt => '何の日',:size => '60x60'}) %></day></div><br/>
 
   <div class="field" style="display: inline-block " >
-  <script type="text/javascript">
-    $(function() {
-       $('p').hide();
-       $('camera').click(function(){
-         $('p').toggle();
-       });
-    });
-  </script> 
+    <script type="text/javascript">
+      $(function() {
+         $('.fimg').hide();
+         $('.ftag').hide();
+         $('.fani').hide();
+         $('.fday').hide();
+         $('camera').click(function(){
+           $('.fimg').toggle();
+         });
+         $('itag').click(function(){
+           $('.ftag').toggle();
+         });
+         $('day').click(function(){
+           $('.fani').toggle();
+           $('.fday').toggle();
+         });
+      });
+    </script> 
 
-  <p div class="field" style="display: inline-block ">
-    <%= f.file_field :image,accept: "image/jpeg" -%>
-    <%= f.file_field :image2,accept: "image/jpeg" -%>
-    <%= f.file_field :image3,accept: "image/jpeg" %>
-  </div></p>
-  </div>
+    <span class="fimg">
+      <%= f.file_field :image,accept: "image/jpeg" %>
+      <%= f.file_field :image2,accept: "image/jpeg" %>
+      <%= f.file_field :image3,accept: "image/jpeg" %>
+    </span>
 
-    <span style="margin-right: 190px;"></span>
-  <div class="field" style="display: inline-block " >
-    <%= text_field_tag 'item[tag_list]',@item.tag_list.join(','), :placeholder => ",でタグの複数設定可" %>
-  </div>
 
-  <div class="field" style="display: inline-block " >
+    <span class="ftag">
+      <%= text_field_tag 'item[tag_list]',@item.tag_list.join(','), :placeholder => ",でタグの複数設定可" %>
+    </span>
+
+    <span class="fani" >
+      
+      <%= f.text_field :ani, :placeholder => "賞味期限、記念日etc." %>
     
-    <%= f.text_field :ani, :placeholder => "賞味期限、記念日etc." %>
-  </div>
-
-  <div class="field" style = "margin-left :375px">
-    <%= f.date_select :day %>
+      <%= f.date_select :day %>
+    </span>
   </div>
 </br>
-  <div class="actions" style = "margin-left :420px">
+  <div class="actions" style = "margin-left :580px">
     <%=  image_submit_tag('OK.png')  %>
   </div>
   </tbody></table>
