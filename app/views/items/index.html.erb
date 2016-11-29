@@ -1,28 +1,107 @@
-﻿<p id="notice"><%= notice %></p>
+﻿<head>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.noimg').error(function() {
+        $(this).attr({
+            src: '/noimg.png'
+        });
+      });
+    });
+  </script> 
+
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta http-equiv="content-style-type" content="text/css">
+   <style type="text/css">
+         *.float{
+            float: left;
+            margin-right: 1em;
+          }
+         *.floatclear{
+            clear: both;
+          }
+          div.image{
+            position:absolute;
+            top:10%; 
+            width:90%; text-align:center;
+          }
+          div.name{
+            position:absolute;
+            bottom:10%; 
+            width:90%; text-align:center;
+          }
+   </style>
+
+         
+   
+
+</head>
+
+
+<p id="notice"><%= notice %></p>
+
+<%  @items.each do |item| %>
+  <% if item.itemcall == true && item.day - User.find(session[:usr]).call == Date.today %>
+  　 <% @call << "#{item.itemname}の#{item.ani}が近づいています。" %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".call").trigger("click");
+        $(".call").hide();
+      });
+    </script>
+
+    <button type="button" class="call" data-toggle="modal" data-target="#sampleModal">
+    </button>
+
+    <div class="modal fade" id="sampleModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+          </div>
+          <div class="modal-body">
+            <% @call.each do |call| %>
+                <%= call %><br>
+            <% end %>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                <div id="message">
+                  <p><input type="checkbox" id="box"> 了解しました
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
 
 <h1>Item</h1>
 
-<table>
-  <% @items.each do |item| %> 
-      <tbody>
-        <tr>
-         <td align="center">
-           <%= link_to item do %>
-             <%= image_tag show_image_item_path(item), class: "large-img" %>
-           <% end %>
-           <br />
-           <%= item.itemname %>
-          </td>
-        </tr>
-      </tbody>
-    
-  <% end %>
-</table>
+  <div class="row">
+    <% @items.each do |item| %> 
+      <div align="center" class="col-xs-6 col-sm-4" style="height:320px; width:320px;">   
+        <p style="margin-left: 60%;">
+          <% if item.fav == true %>
+            <%= image_tag('fav.png', { :border => '0', :alt => 'お気に入り',:size => '20x20'}) %>
+          <% end %>  
+        </p>
+        <%= link_to item do %>
+          <div class="noimg">
+            <div class="image">
+              <p style="display:inline;">
+                <%= image_tag show_image_item_path(item), class: ["large-img","noimg"] %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+        <br />
+        <div class="name">
+          <%= item.itemname %>
+        </div>
+      </div>
+    <% end %>
+  </div> <!-- /.row -->
 
- <%= link_to image_tag('fav_link.png', { :border => '0', :alt => 'お気に入り',:size => '60x60'}), favcateg_items_path %>
- <%= link_to image_tag('category.png', { :border => '0', :alt => 'カテゴリー一覧',:size => '60x60'}), categories_path %>
- <%= link_to image_tag('item.png', { :border => '0', :alt => 'アイテム登録',:size => '60x60'}), new_item_path %>
- <%= link_to image_tag('tag.png', { :border => '0', :alt => 'タグ一覧',:size => '60x60'}), tags_index_path %>
- <%= link_to image_tag('want.png', { :border => '0', :alt => '欲しいもの',:size => '60x60'}), wantcateg_items_path %>
+  
 
 

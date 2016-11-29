@@ -5,6 +5,7 @@
   # GET /items.json
   def index
     @items = Item.where(user: session[:usr]) 
+    @call = []
   end
 
   # GET /items/1
