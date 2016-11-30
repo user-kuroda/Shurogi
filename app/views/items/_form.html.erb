@@ -1,4 +1,26 @@
-﻿<%= form_for(@item) do |f| %>
+﻿<script type="text/javascript">
+  $(document).ready(function(){
+    $(".hante").hide();
+    if($("#item_fav:checked").val()){
+      $(".sw_hante").attr("src", "<%= asset_path 'fav.png' %>");
+    }else{
+      $(".sw_hante").attr("src", "<%= asset_path 'nofav.png' %>");
+    }
+  });
+  $(function(){
+    $(".sw_hante").click(function(){
+      if($("#item_fav:checked").val()){
+        $("#item_fav").prop("checked", false);
+        $(".sw_hante").attr("src", "<%= asset_path 'nofav.png' %>");
+      }else{
+        $("#item_fav").prop("checked", true);
+        $(".sw_hante").attr("src", "<%= asset_path 'fav.png' %>");
+      }
+    })
+  });
+</script>
+
+<%= form_for(@item) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -13,16 +35,15 @@
 
 <table><tbody>
   <div class="field">
-    <%= f.label :Name %><br>
+    <%= f.label :Name %>
+  <span class="field">
+    <%= image_tag "nofav.png", class: "sw_hante", :size => "30x30" %>
+    <%= f.check_box :fav, class: "hante" %>
+  </span><br>
     <%= f.text_field :itemname, style: "ime-mode: active;" %>
   <span class="field">
     <%= f.collection_select :category,Category.where(user: session[:usr]),:id,:categoryname %>
-  </span>
-  </div>
-
-  <div class="field">
-    <%= f.check_box :fav %>
-  </div>
+  </span></div>
 
   通知<br/>
   <div class="field" style="display: inline-block " Align="center" >
@@ -39,47 +60,55 @@
 
     <div style="display: inline-block ">
     <camera><%= image_tag('camera.png', { :border => '0', :alt => '画像',:size => '60x60'}) %></camera></div>
-    <span style="margin-right: 90px;"></span>
+    <span style="margin-right: 170px;"></span>
 
     <div style="display: inline-block ">
-    <%= image_tag('itag.png', { :border => '0', :alt => 'タグ',:size => '60x60'}) %></div>
-    <span style="margin-right: 90px;"></span>
+    <itag><%= image_tag('itag.png', { :border => '0', :alt => 'タグ',:size => '60x60'}) %></itag></div>
+    <span style="margin-right: 150px;"></span>
 
     <div style="display: inline-block ">
-    <%= image_tag('day.png', { :border => '0', :alt => '何の日',:size => '60x60'}) %></div><br/>
+    <day><%= image_tag('day.png', { :border => '0', :alt => '何の日',:size => '60x60'}) %></day></div><br/>
 
   <div class="field" style="display: inline-block " >
-  <script type="text/javascript">
-    $(function() {
-       $('p').hide();
-       $('camera').click(function(){
-         $('p').toggle();
-       });
-    });
-  </script> 
+    <script type="text/javascript">
+      $(function() {
+         $('.fimg').hide();
+         $('.ftag').hide();
+         $('.fani').hide();
+         $('.fday').hide();
+         $('camera').click(function(){
+           $('.fimg').toggle();
+         });
+         $('itag').click(function(){
+           $('.ftag').toggle();
+         });
+         $('day').click(function(){
+           $('.fani').toggle();
+           $('.fday').toggle();
+         });
+      });
+    </script> 
 
-  <p div class="field" style="display: inline-block ">
-    <%= f.file_field :image,accept: "image/jpeg" -%>
-    <%= f.file_field :image2,accept: "image/jpeg" -%>
-    <%= f.file_field :image3,accept: "image/jpeg" %>
-  </div></p>
-  </div>
+    <span class="fimg">
+      <%= f.file_field :image,accept: "image/jpeg" %>
+      <%= f.file_field :image2,accept: "image/jpeg" %>
+      <%= f.file_field :image3,accept: "image/jpeg" %>
+    </span>
 
-    <span style="margin-right: 190px;"></span>
-  <div class="field" style="display: inline-block " >
-    <%= text_field_tag 'item[tag_list]',@item.tag_list.join(','), :placeholder => ",でタグの複数設定可" %>
-  </div>
 
-  <div class="field" style="display: inline-block " >
+    <span class="ftag">
+      <%= text_field_tag 'item[tag_list]',@item.tag_list.join(','), :placeholder => ",でタグの複数設定可" %>
+    </span>
+
+    <span class="fani" >
+      
+      <%= f.text_field :ani, :placeholder => "賞味期限、記念日etc." %>
     
-    <%= f.text_field :ani, :placeholder => "賞味期限、記念日etc." %>
-  </div>
-
-  <div class="field" style = "margin-left :375px">
-    <%= f.date_select :day %>
+      <%= f.date_select :day %>
+    </span>
   </div>
 </br>
-  <div class="actions" style = "margin-left :420px">
+  <div class="actions" style = "margin-left :580px">
     <%=  image_submit_tag('OK.png')  %>
   </div>
   </tbody></table>

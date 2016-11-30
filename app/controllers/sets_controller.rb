@@ -40,7 +40,6 @@
     def check
      if @user.update(user_params)
        redirect_to controller: :sets,action: :index
-       logger.debug "kitarashii"
      else
        render :index
      end
