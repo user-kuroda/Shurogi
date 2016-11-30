@@ -6,6 +6,7 @@
   # GET /users.json
   def index
     @users = User.all
+    render layout: false 
   end
 
   # GET /users/1
@@ -16,6 +17,7 @@
   # GET /users/new
   def new
     @user = User.new
+    render layout: false 
   end
 
   # GET /users/1/edit
@@ -63,6 +65,7 @@
   end
 
   def color
+    render layout: false 
   end
 
   private

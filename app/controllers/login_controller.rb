@@ -1,6 +1,7 @@
 ﻿class LoginController < ApplicationController 
   skip_before_action :check_logined
   def index
+     render :index, layout: false 
   end
 
   def auth
@@ -9,7 +10,9 @@
       reset_session
       session[:usr] = usr.id
       session[:name] = usr.name
-      redirect_to items_url
+      session[:loger] = usr.userid  
+      redirect_to items_path  
+
     else
       flash.now[:referer] = params[:referer]
       @error = 'ユーザーID/パスワードが間違っています。'

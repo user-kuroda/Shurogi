@@ -13,7 +13,7 @@
 
   <h1 style = "margin-left :280px">Set</h1>
 
-  <div style = "margin-left :80px ; margin-right :880px">
+  <div style = "margin-left :80px ; margin-right :80px">
 
     <div class="panel-group" id="setting">
 
@@ -94,10 +94,13 @@
     </div>
   </div>
   
-  <div class="actions" style = "margin-left :500px">
-    <%= image_submit_tag('OK.png') %>
+  <div style = "margin-left: 80px">
+    <%= link_to 'ユーザー削除', userdelete_sets_path, method: :destroy %> | <%= link_to 'ログアウト', top_index_path%>
   </div>
-
-<%= link_to 'アカウント削除', userdelete_sets_path, method: :destroy %>
+  <span>
+    <div class="actions" style = "margin-left :1000px">
+      <%= image_submit_tag('OK.png') %>
+    </div>
+  </span>
 
 <% end %>
