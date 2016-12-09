@@ -24,6 +24,7 @@
     get 'favcateg', on: :collection
     get 'favindex', on: :collection
     get 'wantindex', on: :collection
+    post 'alert', on: :collection
   end
   resources :users do
    get 'color', on: :member

@@ -8,6 +8,11 @@
     @call = []
   end
 
+  def alert
+    session[:alert] = 0
+    redirect_to items_path
+  end
+
   # GET /items/1
   # GET /items/1.json
   def show
