@@ -99,26 +99,22 @@
   end
 
   def search_tag
-    logger.debug params["tag"]
     @items = Item.where(user: session[:usr]).tagged_with(params["tag"])
     render :index
   end
 
   def search_category
-    logger.debug params["category"]
-    @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
+    @items = Item.where(user: session[:usr]).where(category: params["category_id"].to_i)
     render :index
   end
 
   def search_favcategory
-    logger.debug params["category"]
-    @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
+    @items = Item.where(user: session[:usr]).where(category: params["category_id"].to_i)
     render :favindex
   end
 
   def search_wantcategory
-    logger.debug params["category"]
-    @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
+    @items = Item.where(user: session[:usr]).where(category: params["category_id"].to_i)
     render :wantindex
   end
 
@@ -143,7 +139,7 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      return_params = params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category, :fav, :user_id,:tag_list,:image,:image2,:image3)
+      return_params = params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category_id, :fav, :user_id,:tag_list,:image,:image2,:image3)
       return_params[:image] = return_params[:image].read if return_params[:image] != nil
       return_params[:image2] = return_params[:image2].read  if return_params[:image2] != nil
       return_params[:image3] = return_params[:image3].read  if return_params[:image3] != nil

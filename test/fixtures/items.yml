@@ -6,7 +6,7 @@ one:
   situ: false
   ani: MyString
   day: 2016-10-17
-  category: MyString
+  category_id: MyString
   fav: false
   user_id: MyString
 
@@ -16,6 +16,6 @@ two:
   situ: false
   ani: MyString
   day: 2016-10-17
-  category: MyString
+  category_id: MyString
   fav: false
   user_id: MyString

@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 20161017023429) do
     t.boolean  "situ"
     t.string   "ani"
     t.date     "day"
-    t.string   "category"
+    t.integer  "category_id"
     t.boolean  "fav"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "taggings", force: :cascade do |t|

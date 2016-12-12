@@ -81,7 +81,7 @@
   </span><br>
     <%= f.text_field :itemname, style: "ime-mode: active;" %>
   <span class="field">
-    <%= f.collection_select :category,Category.where(user: session[:usr]),:id,:categoryname %>
+    <%= f.collection_select :category_id,Category.where(user: session[:usr]),:id,:categoryname %>
   </span></div>
 
   通知<br/>

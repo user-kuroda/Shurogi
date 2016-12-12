@@ -9,7 +9,7 @@
       t.boolean :situ
       t.string :ani
       t.date :day
-      t.string :category
+      t.integer :category_id
       t.boolean :fav
       t.integer :user_id
 
