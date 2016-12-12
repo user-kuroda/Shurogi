@@ -18,13 +18,51 @@
       }
     })
   });
+
+   $(function() {
+         $('.fimg').hide();
+         $('.ftag').hide();
+         $('.fani').hide();
+         $('.fday').hide();
+         $('camera').click(function(){
+           $('.fimg').toggle();
+         });
+         $('itag').click(function(){
+           $('.ftag').toggle();
+         });
+         $('day').click(function(){
+           $('.fani').toggle();
+           $('.fday').toggle();
+         });
+      });
+   
+  $(function(){
+    $('#img1_dammy').click(function(){
+        $('#item_image').click();
+      })
+      $('#img2_dammy').click(function(){
+        $('#item_image2').click();
+      })
+      $('#img3_dammy').click(function(){
+        $('#item_image3').click();
+      })
+
+      /* 画像のダミーフィールドにファイル名を埋め込み */
+      $('#item_image').change(function(){
+        $('#img1_dammy').val($(this).val());
+      })
+      $('#item_image2').change(function(){
+        $('#img2_dammy').val($(this).val());
+      })
+      $('#item_image3').change(function(){
+        $('#img3_dammy').val($(this).val());
+      })
+    });
 </script>
 
 <%= form_for(@item) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
       <ul>
       <% @item.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -32,6 +70,7 @@
       </ul>
     </div>
   <% end %>
+
 
 <table><tbody>
   <div class="field">
@@ -57,58 +96,47 @@
     <%= f.radio_button :situ,true %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= f.radio_button :situ,false %>
   </div><br/>
+  <table>
+      <tr>
+        <td style="width: 10em">
+          <camera><%= image_tag('camera.png', { :border => '0', :alt => '画像',:size => '60x60'}) %></camera>
+        </td>
+        <td style="width: 10em">
+          <itag><%= image_tag('itag.png', { :border => '0', :alt => 'タグ',:size => '60x60'}) %></itag>
+        </td>
+        <td style="width: 10em">
+          <day><%= image_tag('day.png', { :border => '0', :alt => '何の日',:size => '60x60'}) %></day>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="fimg">
+            <%= f.file_field :image,accept: "image/jpeg", style: "display: none;" %>
+            <%= text_field_tag 'img1_dammy', 'ファイル1', readonly: true, style: 'width: 5em' %>
+            <br /><br />
+            <%= f.file_field :image2, accept: "image/jpeg", style: "display: none;" %>
+            <%= text_field_tag 'img2_dammy', 'ファイル2', readonly: true, style: 'width: 5em' %>
+            <br /><br />
+            <%= f.file_field :image3, accept: "image/jpeg", style: "display: none;" %>
+            <%= text_field_tag 'img3_dammy', 'ファイル3', readonly: true, style: 'width:5em' %>
+          </span>
+        </td>
+        <td>
+          <span class="ftag">
+            <%= text_area_tag 'item[tag_list]', @item.tag_list.join(','), :placeholder => ",でタグの複数設定可", style: 'width: 6em; height: 8em' %>
+          </span>
+        </td>
+        <td>
+          <span class="fani">
+            <%= f.text_field :ani, :placeholder => "賞味期限、記念日etc.", style: 'width: 10em' %><br />
+            <%= f.date_select :day %>
+          </span>
+        </td>
+      </tr>
+    </table>
 
-    <div style="display: inline-block ">
-    <camera><%= image_tag('camera.png', { :border => '0', :alt => '画像',:size => '60x60'}) %></camera></div>
-    <span style="margin-right: 170px;"></span>
-
-    <div style="display: inline-block ">
-    <itag><%= image_tag('itag.png', { :border => '0', :alt => 'タグ',:size => '60x60'}) %></itag></div>
-    <span style="margin-right: 150px;"></span>
-
-    <div style="display: inline-block ">
-    <day><%= image_tag('day.png', { :border => '0', :alt => '何の日',:size => '60x60'}) %></day></div><br/>
-
-  <div class="field" style="display: inline-block " >
-    <script type="text/javascript">
-      $(function() {
-         $('.fimg').hide();
-         $('.ftag').hide();
-         $('.fani').hide();
-         $('.fday').hide();
-         $('camera').click(function(){
-           $('.fimg').toggle();
-         });
-         $('itag').click(function(){
-           $('.ftag').toggle();
-         });
-         $('day').click(function(){
-           $('.fani').toggle();
-           $('.fday').toggle();
-         });
-      });
-    </script> 
-
-    <span class="fimg">
-      <%= f.file_field :image,accept: "image/jpeg" %>
-      <%= f.file_field :image2,accept: "image/jpeg" %>
-      <%= f.file_field :image3,accept: "image/jpeg" %>
-    </span>
-
-
-    <span class="ftag">
-      <%= text_field_tag 'item[tag_list]',@item.tag_list.join(','), :placeholder => ",でタグの複数設定可" %>
-    </span>
-
-    <span class="fani" >
-      
-      <%= f.text_field :ani, :placeholder => "賞味期限、記念日etc." %>
-    
-      <%= f.date_select :day %>
-    </span>
-  </div>
 </br>
-  <div class="actions" style = "margin-left :580px">
+  <div class="actions" style = "text-align: right">
     <%=  image_submit_tag('OK.png')  %>
   </div>
   </tbody></table>

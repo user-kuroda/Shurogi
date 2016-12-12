@@ -23,13 +23,20 @@
 				          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
 				          	    <%= image_tag('search.png', {size: "60x60"}) %>
 				          	    <span class="caret"></span></a>
-				          	    <ul class="dropdown-menu" role="menu">
+				          	    <ul style="right: 0; left: auto;" class="dropdown-menu" role="menu">
 							      <li>
-							        <div style = "text-align: right"><form class="navbar-form pull-right">
-							          <tr><td><input type="text" class="span" placeholder="検索キーワード"></td>
-								      <td><button type="submit" class="btn">キーワード</button><br>
-								          <button type="submit" class="btn2">タグ</button></td></tr>
-							        </form></div>
+							        <div style = "text-align: right">
+									    <%= form_tag({:action=>"search_key",:controller=>"items"}, class: "navbar-form pull-right") do %>
+									        <table><tbody>
+										        <tr><td>
+									                <%= text_field_tag "search_key[itemname]" ,@keyword,class: "span", style: "text-align: center; width: 9em; height: 4em" ,placeholder: "検索キーワード" %></td>
+										        <td><%= submit_tag "キーワード" , class: "btn" %><br>
+										          <%= submit_tag "タグ", class: "btn2" ,style: "width: 6.4em" %>
+										        </td>
+										        </tr>
+								            </tbody></table>
+							            <% end %>
+							        </div>
 							      </li>
 								</ul>
 							</li>
@@ -37,8 +44,11 @@
 			        </div>
 			    <% end %>
 			</nav>
-
-		    <div class="container" style="margin-top: 80px;margin-bottom: 80px">
+<br/>
+<br/>
+<br/>
+<br/>
+		    <div class="container" style="margin-bottom: 25%">
 		      <%= yield %>
 		    </div>
 

@@ -122,6 +122,18 @@
     render :wantindex
   end
 
+  def search_key
+    @keyword = params["search_key"]["itemname"]
+    @items = Item.joins(:category).where("itemname like '%#{@keyword}%' or categories.categoryname like '%#{@keyword}%'")
+    render :index
+  end
+
+  def search_tag2
+    @tagword = params["search_tag2"]["tag"]
+    @tags = Item.where("tag like '%#{@tagword}%'")
+    render :action => "index",:layout => "tags"
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -24,6 +24,8 @@
     get 'favcateg', on: :collection
     get 'favindex', on: :collection
     get 'wantindex', on: :collection
+    post 'search_key', on: :collection
+    post 'search_tag2', on: :collection
   end
   resources :users do
    get 'color', on: :member
