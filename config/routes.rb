@@ -26,7 +26,6 @@
     get 'wantindex', on: :collection
     get 'skey_index', on: :collection
     post 'search_key', on: :collection
-    post 'search_tag2', on: :collection
     post 'alert', on: :collection
   end
   resources :users do

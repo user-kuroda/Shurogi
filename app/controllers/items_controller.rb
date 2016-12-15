@@ -128,17 +128,17 @@
 
   def search_key
     @keyword = params["search_key"]["itemname"]
-    @categories = Category.where(user: session[:usr]).where("categoryname like '%#{@keyword}'")
-    @items = Item.joins(:category).where("itemname like '%#{@keyword}%'")
-    render :skey_index
-  end
 
-  def search_tag2
-    @tagword = params["search_tag2"]["tag"]
-    @tags = Item.where("tag like '%#{@tagword}%'")
-    render :action => "index",:layout => "tags"
-  end
+    if params[:key]
+      @categories = Category.where(user: session[:usr]).where("categoryname like '%#{@keyword}'")
+      @items = Item.where("itemname like '%#{@keyword}%'")
+      render :skey_index
 
+    else
+      @items = Item.where(user: session[:usr]).tagged_with(@keyword)
+      render :index
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
