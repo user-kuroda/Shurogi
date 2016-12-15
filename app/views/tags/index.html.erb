@@ -1,4 +1,6 @@
-﻿<h1>タグ一覧</h1>
+﻿<div align ="center">
+  <h1>Tag</h1>
+</div>
  <% @tags.each do |tag| %>
      <%= link_to "##{tag}", search_tag_items_path(tag: tag) %>
  <% end %>

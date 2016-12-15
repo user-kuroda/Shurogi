@@ -8,6 +8,11 @@
     @call = []
   end
 
+  def alert
+    session[:alert] = 0
+    redirect_to items_path
+  end
+
   # GET /items/1
   # GET /items/1.json
   def show
@@ -118,10 +123,14 @@
     render :wantindex
   end
 
+  def skey_index
+  end
+
   def search_key
     @keyword = params["search_key"]["itemname"]
-    @items = Item.joins(:category).where("itemname like '%#{@keyword}%' or categories.categoryname like '%#{@keyword}%'")
-    render :index
+    @categories = Category.where(user: session[:usr]).where("categoryname like '%#{@keyword}'")
+    @items = Item.joins(:category).where("itemname like '%#{@keyword}%'")
+    render :skey_index
   end
 
   def search_tag2
