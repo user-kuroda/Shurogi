@@ -1,4 +1,6 @@
-﻿<%= form_for(@user, url: set_path(@user)) do |f| %>
+﻿<p id="notice"><%= notice %></p>
+
+<%= form_for(@user, url: set_path(@user)) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -14,6 +16,8 @@
   <h1 style = "margin-left: 8%; text-align: left">Set</h1>
 
   <div style = "width:90%;margin-left: 5%">
+
+
 
     <div class="panel-group" id="setting">
 
@@ -95,7 +99,8 @@
   </div>
   
   <div style = "margin-left: 5%">
-    <%= link_to 'ユーザー削除', userdelete_sets_path, method: :destroy %> | <%= link_to 'ログアウト', top_index_path%>
+    <button class="btn btn-default"><%= link_to 'ユーザー削除', userdelete_sets_path, method: :destroy, data: { confirm: '本当に削除しますか?' } %> </button>
+    <button class="btn btn-default"> <%= link_to 'ログアウト', top_index_path%></button>
   </div>
   <span>
     <div class="actions" style = "text-align: right; width: 95%">

@@ -4,22 +4,33 @@
     @user = User.find(session[:usr])
   end
 
-  def update
-      if params["firstpass"].present?
-        if params["firstpass"] == @user[:pass]
-          check
-          return
-        else
-          @user.errors.add(:base, "パスワードが違います。")
-          render :index
-          return
-        end
-      else 
-        params[:user][:pass] = @user.pass
-        params[:user][:pass_confirmation] = @user.pass
+  def update 
+    if params["firstpass"].present?
+      if params["firstpass"] == @user[:pass]
         check
         return
+      else
+        @user.errors.add(:base, "パスワードが違います。")
+        render :index
+        return
       end
+    else 
+      params[:user][:pass] = @user.pass
+      params[:user][:pass_confirmation] = @user.pass
+      check
+      return
+    end
+
+    respond_to do |format|
+      if @sets.update(sets_params)
+        format.html { redirect_to sets_path, notice: '登録情報を変更しました。' }
+        format.json { render :sets, status: :ok, location: @sets }
+      else
+        format.html { render :sets }
+        format.json { render json: @sets.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   def userdelete
@@ -28,7 +39,7 @@
     User.destroy(session[:usr])
 
     respond_to do |format| 
-      format.html { redirect_to  users_url, notice: 'アカウントを削除しました' } 
+      format.html { redirect_to top_index_path, notice: 'アカウントを削除しました。' } 
       format.json { head :no_content } 
     end 
   end 
@@ -39,7 +50,7 @@
     
     def check
      if @user.update(user_params)
-       redirect_to controller: :sets,action: :index
+       redirect_to sets_path, notice: '登録情報を変更しました。'
      else
        render :index
      end

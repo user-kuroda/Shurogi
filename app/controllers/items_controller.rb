@@ -19,7 +19,6 @@
   end
 
   def show_image
-
     # send_dataはバイナリファイルをブラウザに表示するため
     # http://railsdoc.com/references/send_data
 
@@ -44,6 +43,7 @@
 
   # GET /items/1/edit
   def edit
+
   end
 
   # POST /items
