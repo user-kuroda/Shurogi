@@ -212,7 +212,10 @@ ja:
         call: 通知日
 
       item:
-        itemname: アイテム名
+        itemname: アイテムの名前
         situ: 購入の有無
         ani: 何の日か
+
+      category:
+        categoryname: そのカテゴリー
      
