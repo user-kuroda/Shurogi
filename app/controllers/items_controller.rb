@@ -65,8 +65,9 @@
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+    data = delete_image(params[:delete],item_params)
     respond_to do |format|
-      if @item.update(item_params)
+      if @item.update(data)
         format.html { redirect_to items_path, notice: '更新完了！' }
         format.json { render :show, status: :ok, location: @item }
       else
@@ -145,6 +146,20 @@
     def set_item
       @item = Item.find(params[:id])
     end
+
+    def delete_image(delete,iparam)
+      if delete[:image] == "1"
+        iparam[:image] = nil
+      end
+      if delete[:image2] == "1"
+        iparam[:image2] = nil
+      end
+      if delete[:image3] == "1"
+        iparam[:image3] = nil
+      end
+      return iparam
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params

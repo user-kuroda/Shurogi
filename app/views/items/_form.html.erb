@@ -113,12 +113,15 @@
           <span class="fimg">
             <%= f.file_field :image,accept: "image/jpeg", style: "display: none;" %>
             <%= text_field_tag 'img1_dammy', 'ファイル1', readonly: true, style: 'width: 5em' %>
+            <%= check_box :delete,:image %>
             <br /><br />
             <%= f.file_field :image2, accept: "image/jpeg", style: "display: none;" %>
             <%= text_field_tag 'img2_dammy', 'ファイル2', readonly: true, style: 'width: 5em' %>
+            <%= check_box :delete,:image2 %>
             <br /><br />
             <%= f.file_field :image3, accept: "image/jpeg", style: "display: none;" %>
             <%= text_field_tag 'img3_dammy', 'ファイル3', readonly: true, style: 'width:5em' %>
+            <%= check_box :delete,:image3 %>
           </span>
         </td>
         <td>
