@@ -58,6 +58,10 @@
         $('#img3_dammy').val($(this).val());
       })
     });
+
+  $(function () {
+    $('.demo001').pickadate();
+  });
 </script>
 
 <style type="text/css">
@@ -169,7 +173,7 @@
         <td align="center">
           <span class="fani">
             <%= f.text_field :ani, :placeholder => "賞味期限、記念日etc.", style: 'width: 10em' %><br />
-            <%= f.date_select :day %>
+            <%= f.text_field :day, :class => "demo001",style: 'width: 10em', :placeholder => "日付を選択"%>
           </span>
         </td>
       </tr>
