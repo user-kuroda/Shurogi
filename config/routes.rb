@@ -25,6 +25,7 @@
     get 'favindex', on: :collection
     get 'wantindex', on: :collection
     get 'skey_index', on: :collection
+    get 'stag_index', on: :collection
     post 'search_key', on: :collection
     post 'alert', on: :collection
   end

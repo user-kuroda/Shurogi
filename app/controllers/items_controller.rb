@@ -128,6 +128,9 @@
   def skey_index
   end
 
+  def stag_index
+  end
+
   def search_key
     @keyword = params["search_key"]["itemname"]
 
