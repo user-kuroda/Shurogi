@@ -108,10 +108,8 @@
   <%# 編集と削除 %>
   <br>
   <div class="floatleft" align="center" style="width: 20em; height: 13em;">
-    <button class="btn btn-default"><%= link_to '編集', edit_item_path %></button>
-    <button class="btn btn-default"><%= link_to '削除', @item, method: :delete, data: { confirm: '本当にいいですか?' } %></button>
-   <%#= link_to image_tag('pen.png', { :border => '0', :alt => '編集',:size => '200x80'}), edit_item_path %><br>
-   <%#= link_to image_tag('dustbox.png', { :border => '0', :alt => '削除',:size => '200x80'}), @item, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <td><button class="btn"><%= link_to "", edit_item_path ,class:"glyphicon glyphicon-pencil darkgray"  %></button>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><button class="btn"><%= link_to "", @item, method: :delete, data: { confirm: '本当にいいですか?' } ,class:"glyphicon glyphicon-trash darkgray"  %></button></td>
   </div>
   <%# 日付とか %>
   <div class ="floatright" align="center">
