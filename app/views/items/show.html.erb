@@ -13,32 +13,40 @@
    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
    <meta http-equiv="content-style-type" content="text/css">
    <style type="text/css">
-         *.floatleft
-         {
-            float: left;
-         }
-         *.floatright
-         {
-            float: right;
-            margin-right: 45em;
-            width: 15em; 
-            height: 15em;
-         }
-         *.floatright-ph
-         {
-            float: right;
-            margin-right: 1em;
-         }
-         *.floatclear
-         {
-            clear: both;
-         }
-         .carousel-control.left{
-          background-image: none;
-         }
-         .carousel-control.right{
-          background-image: none;
-         }
+        *.floatleft{
+          float: left;
+        }
+        *.floatright{
+          float: right;
+          margin-right: 45em;
+          width: 15em; 
+          height: 15em;
+        }
+        *.floatright-ph{
+          float: right;
+          margin-right: 1em;
+        }
+        *.floatclear{
+          clear: both;
+        }
+        .carousel-control.left{
+        background-image: none;
+        }
+        .carousel-control.right{
+        background-image: none;
+        }
+        @font-face{
+          font-family: "amemuchi";
+          src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+        }
+          h1.name{
+            font-family: "amemuchi";
+            font-size: 3em;
+          }
+          h2.font{
+            font-family: "amemuchi";
+            font-size: 1em; 
+          }
    </style>
 </head>
 
@@ -49,7 +57,7 @@
 <div class="visible-lg visible-md visible-sm">
   <p>
     <h2 style = display:inline;>▽</h2>
-    <h1 style = display:inline;><%= @item.itemname %></h1>
+    <h1 class ="name" style = display:inline;><%= @item.itemname %></h1>
   </p>
 
   <p>
@@ -89,6 +97,7 @@
       </a>
     </div>
   </div>
+
   <%# タグ %>
   <div class ="floatright" style="background: #f5f5f5;">
     <% @item.tag_list.each do |tag| %>
@@ -99,26 +108,30 @@
   <%# 編集と削除 %>
   <br>
   <div class="floatleft" align="center" style="width: 20em; height: 13em;">
-   <%= link_to image_tag('pen.png', { :border => '0', :alt => '編集',:size => '200x80'}), edit_item_path %><br>
-   <%= link_to image_tag('dustbox.png', { :border => '0', :alt => '削除',:size => '200x80'}), @item, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <button class="btn btn-default"><%= link_to '編集', edit_item_path %></button>
+    <button class="btn btn-default"><%= link_to '削除', @item, method: :delete, data: { confirm: '本当にいいですか?' } %></button>
+   <%#= link_to image_tag('pen.png', { :border => '0', :alt => '編集',:size => '200x80'}), edit_item_path %><br>
+   <%#= link_to image_tag('dustbox.png', { :border => '0', :alt => '削除',:size => '200x80'}), @item, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
   <%# 日付とか %>
   <div class ="floatright" align="center">
-     <font size="3">
+    <% if @item.itemcall == true %>
+      <h2 class ="font">
        </br>
        <%= @item.ani %></br>
        <%= @item.day %>
-     </font>
+      </h2>
+    <% end %>
   </div>
   <br class="floatclear">
 </div>
 
-<%# スマホ用 %>
+<%# iphone5用 %>
 <div class="visible-xs">
   <p>
     <br>
     <h3 style = display:inline;>▽</h3>
-    <h2 style = display:inline;><%= @item.itemname %></h2>
+    <h1 class="name" style = display:inline;><%= @item.itemname %></h1>
   </p>
 
   <p>
@@ -161,10 +174,11 @@
       </a>
     </div>
   </div>
+
   <%# タグ %>
   <div class ="floatright-ph" style="background: #d3d3d3; width: 6em; height: 10.1em; margin-top: 1.4em;">
     <% @item.tag_list.each do |tag| %>
-       <%= link_to "##{tag}", search_tag_items_path(tag: tag) %><br>
+       <%= link_to "##{tag}", search_tag_items_path(tag: tag) %>
     <% end %>
   </div>
   <br class="floatclear">
@@ -172,17 +186,22 @@
   <br>
   <div align="center" class ="floatleft" style="width: 12em; height: 8em;">
     <br>
-    <%= link_to image_tag('pen.png', { :border => '0', :alt => '編集',:size => '100x40'}), edit_item_path %>
-    <%= link_to image_tag('dustbox.png', { :border => '0', :alt => '削除',:size => '100x40'}), @item, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <button class="btn btn-default"><%= link_to '編集', edit_item_path %></button>
+    <button class="btn btn-default"><%= link_to '削除', @item, method: :delete, data: { confirm: '本当にいいですか?' } %></button>
+
+    <%#= link_to image_tag('pen.png', { :border => '0', :alt => '編集',:size => '100x40'}), edit_item_path %>
+    <%#= link_to image_tag('dustbox.png', { :border => '0', :alt => '削除',:size => '100x40'}), @item, method: :delete, data: { confirm: 'Are you sure?' } %>
     <br class="floatclear">
   </div> 
   <%# 日付とか %>
   <div class ="floatright-ph" align="center" style="width: 6em; height: 5em;">
-     <font size="2">
+    <% if @item.itemcall == true %>
+      <h2 class="font">
        <br>
        <%= @item.ani %></br>
        <%= @item.day %>
-     </font>
+      </h2>
+    <% end %>
   </div>
   <br class="floatclear">
 </div>

@@ -1,8 +1,23 @@
-﻿<p id="notice"><%= notice %></p>
+﻿<style type="text/css">
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  h1.pagetitle{
+    font-family: "amemuchi";
+    font-size: 3em;
+  }
+  h2.font{
+    font-family: "amemuchi";
+    font-size: 1.4em; 
+  }
+</style>
+
+<p id="notice"><%= notice %></p>
 
 <div align ="center">
 
-  <h1>Want</h1>
+  <h1 class ="pagetitle">Want</h1>
 
   <table>
     <thead>
@@ -14,7 +29,7 @@
     <tbody>
       <% @categories.each do |category| %>
         <tr>
-            <td>▽　<%= link_to category.categoryname, search_wantcategory_items_path(category: category) %></td>
+          <td><h2 class="font">▽　<%= link_to category.categoryname, search_wantcategory_items_path(category: category) %></h2></td>
         </tr>
       <% end %>
     </tbody>

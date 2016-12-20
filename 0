@@ -1,0 +1,5 @@
+== 20161017023428 AddMissingTaggableIndex: reverting ==========================
+-- remove_index(:taggings, [:taggable_id, :taggable_type, :context])
+   -> 0.0000s
+== 20161017023428 AddMissingTaggableIndex: reverted (0.0000s) =================
+

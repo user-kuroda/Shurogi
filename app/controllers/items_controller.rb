@@ -106,21 +106,22 @@
 
   def search_tag
     @items = Item.where(user: session[:usr]).tagged_with(params["tag"])
+    @pagetitle = 1
     render :index
   end
 
   def search_category
-    @items = Item.where(user: session[:usr]).where(category: params["category_id"].to_i)
+    @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
     render :index
   end
 
   def search_favcategory
-    @items = Item.where(user: session[:usr]).where(category: params["category_id"].to_i)
+    @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
     render :favindex
   end
 
   def search_wantcategory
-    @items = Item.where(user: session[:usr]).where(category: params["category_id"].to_i)
+    @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
     render :wantindex
   end
 

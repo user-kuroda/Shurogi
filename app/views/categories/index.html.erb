@@ -1,7 +1,22 @@
-﻿<p id="notice"><%= notice %></p>
+﻿<style type="text/css">
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  h1.pagetitle{
+    font-family: "amemuchi";
+    font-size: 3em;
+  }
+  h2.font{
+    font-family: "amemuchi";
+    font-size: 1.4em; 
+  }
+</style>
+
+<p id="notice"><%= notice %></p>
 
 <div align ="center">
-  <h1>Category</h1>
+  <h1 class="pagetitle">Category</h1>
   <%= link_to image_tag('plus.png', { :border => '0',:size => '40x40'}), new_category_path %>
 
   <table>
@@ -14,10 +29,8 @@
     <tbody>
       <% @categories.each do |category| %>
         <tr>
-            <td>▽　<%= link_to category.categoryname, search_category_items_path(category: category) %></td>
-
-          <td>　　<%= link_to '編集 ', edit_category_path(category) %>|</td>
-          <td><%= link_to ' 消す', category, method: :delete, data: { confirm: 'マジで?' } %></td>
+          <td><h2 class="font">▽　<%= link_to category.categoryname, search_category_items_path(category: category) %></h2></td>
+          
         </tr>
       <% end %>
     </tbody>

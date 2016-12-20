@@ -1,6 +1,7 @@
 ﻿class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :color]
   skip_before_action :check_logined
+  before_action :auth_master
 
   # GET /users
   # GET /users.json
@@ -66,6 +67,14 @@
 
   def color
     render layout: false 
+  end
+
+  def auth_master
+    name = 'team_shurogi'
+    password = 'shurogi'
+    authenticate_or_request_with_http_basic('Railbook') do |n,p|
+      n == name && p == password
+    end
   end
 
   private

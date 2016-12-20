@@ -1,20 +1,50 @@
-﻿<div align ="center">
-  <%= image_tag 'login.png', {  :alt => 'top',:size => '600x397'} %></br>
+﻿<style type="text/css">
+  body {
+    background-image: url(<%= asset_path 'login_image.jpg' %>);
+    background-size: cover;
+  }
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  @media (max-width: 768px){
+    h1.title{
+      font-family: "amemuchi";
+      font-size: 4em;
+    }
+  }
+  @media (min-width: 768px){
+    h1.title{
+      font-family: "amemuchi";
+      font-size: 7em;
+    }
+  }
 
-  <p><style="color : red"><%= @error %></p>
-  <%= form_tag action: :auth do %>
-    <div class="field">
-      <%= label_tag :userid, 'ID' %>:<br />
-      <%= text_field_tag :userid, '' %>
-    </div>
-    <div class="field">
-      <%= label_tag :pass, 'Pass' %>:<br />
-      <%= text_field_tag :pass, '' %>
-    </div>
+</style>
+<div align="right">
+  <%= link_to "サインイン", new_user_path %>
+</div>
+<meta name="viewport" content="width=device-width">
+<div align ="center">
+  <h1 class="title">
+    Welcome!<br>
+    Shurogi
+  </h1>
+</div>
+<p><style="color : red"><%= @error %></p>
+<%= form_tag action: :auth do %>
+  <div class="field" align ="center">
+    <%= label_tag :userid, 'ID' %><br>
+    <%= text_field_tag :userid, '' %>
+  </div>
+  <div class="field" align = "center">
+    <%= label_tag :pass, 'Pass' %><br>
+    <%= password_field_tag :pass, '' %>
+  </div>
+  <div align ="right">
     <%= hidden_field_tag :referer, flash[:referer] %>
     <br>
-    <%= image_submit_tag('OK.png', { :border => '0', :alt => '次へ', :size => '60x60'}) %>
-    <br>
-    <%= link_to image_tag('back.png', { :border => '0', :alt => 'sign out',:size => '100x70'}), new_user_path %>
-  <% end %>
-</div>
+    <%= image_submit_tag('OK_new.png', { :border => '0', :alt => '次へ', :size => '60x60'}) %>
+  </div>
+<% end %>
+

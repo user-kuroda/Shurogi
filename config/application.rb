@@ -25,5 +25,7 @@ module Shurogi
     config.active_record.raise_in_transactional_callbacks = true
     config.action_view.field_error_proc = proc { |html_tag, instance| html_tag }
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
+    config.assets.paths << "#{Rails}/assets/fonts"
+
   end
 end
