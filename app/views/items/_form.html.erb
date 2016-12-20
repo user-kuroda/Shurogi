@@ -60,6 +60,34 @@
     });
 </script>
 
+<style type="text/css">
+  .btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  }
+
+  .btn-circle.btn-lg2 {
+  width: 80px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  }
+
+  .darkgray {
+    color: #808080;
+  }
+  .gray{
+    color: #f2f2f2;
+  }
+
+</style>
+
 <%= form_for(@item) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
@@ -72,7 +100,7 @@
   <% end %>
 
 
-<table><tbody>
+<table Align="center"><tbody>
   <div class="field">
     <%= f.label :Name %>
   <span class="field">
@@ -84,36 +112,44 @@
     <%= f.collection_select :category_id,Category.where(user: session[:usr]),:id,:categoryname %>
   </span></div>
 
-  通知<br/>
+  <br/>
+  通知 :
   <div class="field" style="display: inline-block " Align="center" >
-    on　  off<br/>
+   on　  off<br/>
     <%= f.radio_button :itemcall, true %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= f.radio_button :itemcall, false %>
-  </div>|
+  </div>&nbsp;&nbsp;&nbsp;&nbsp;|
 
   <div class="field" style="display: inline-block " Align="center">
     ほしい　かった<br/>
     <%= f.radio_button :situ,true %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= f.radio_button :situ,false %>
-  </div><br/>
+  </div><br/><br/>
   <table>
       <tr>
-        <td style="width: 10em">
-          <camera><%= image_tag('camera.png', { :border => '0', :alt => '画像',:size => '50x50'}) %></camera>
-          <span class="glyphicon glyphicon-trash" aria-hidden="true" style="font-size: 80%"></span>
+        <td style="width: 10em" align="center">
+          <camera><button type="button" class="btn btn-gray btn-circle btn-lg darkgray">
+          <span class="glyphicon glyphicon-picture darkgray" aria-hidden="true"></span></button></camera>
+          <span class="glyphicon glyphicon-trash darkgray" aria-hidden="true" style="font-size: 80%"></span>
         </td>
-        <td style="width: 10em">
-          <itag><%= image_tag('itag.png', { :border => '0', :alt => 'タグ',:size => '50x50'}) %></itag>
+        <td style="width: 10em" align="center">
+          <itag><button type="button" class="btn btn-gray btn-circle btn-lg darkgray">
+          <span class="glyphicon glyphicon-tag darkgray" aria-hidden="true"></span></button></itag>
         </td>
-        <td style="width: 10em">
-          <day><%= image_tag('day.png', { :border => '0', :alt => '何の日',:size => '50x50'}) %></day>
+        <td style="width: 10em" align="center">
+          <day><button type="button" class="btn btn-gray btn-circle btn-lg darkgray">
+          <span class="glyphicon glyphicon-calendar darkgray" aria-hidden="true"></span></button></day>
         </td>
       </tr>
       <tr>
-        <td>
+        <td align="center">
           <span class="fimg">
             <%= f.file_field :image,accept: "image/jpeg", style: "display: none;" %>
-            <%= text_field_tag 'img1_dammy', '画像無', readonly: true, style: 'width: 3.5em' %>
+            <% if :image.present?  %>
+              <%= text_field_tag 'img1_dammy', '画像有', readonly: true, style: 'width: 3.5em' %>
+            <% else %>
+              <%= text_field_tag 'img1_dammy', '画像無', readonly: true, style: 'width: 3.5em' %>
+            <% end %>
             <%= check_box :delete,:image %>
             <br /><br />
             <%= f.file_field :image2, accept: "image/jpeg", style: "display: none;" %>
@@ -125,12 +161,12 @@
             <%= check_box :delete,:image3 %>
           </span>
         </td>
-        <td>
+        <td align="center">
           <span class="ftag">
             <%= text_area_tag 'item[tag_list]', @item.tag_list.join(','), :placeholder => ",でタグの複数設定可", style: 'width: 5em; height: 8em' %>
           </span>
         </td>
-        <td>
+        <td align="center">
           <span class="fani">
             <%= f.text_field :ani, :placeholder => "賞味期限、記念日etc.", style: 'width: 10em' %><br />
             <%= f.date_select :day %>
@@ -140,8 +176,10 @@
     </table>
 
 </br>
-  <div class="actions" style = "text-align: right">
-    <%=  image_submit_tag('OK.png')  %>
+  <div class="actions" style = "text-align: right" >
+    <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
+    <span style="text-align: center;">登録
+    <% end %>
   </div>
   </tbody></table>
 <% end %>

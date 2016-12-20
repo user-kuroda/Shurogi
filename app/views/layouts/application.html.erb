@@ -12,6 +12,12 @@
 			  src: url('/assets/glyphicons-halflings-regular.eot');
 			  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 			}
+			.darkgray {
+				color: #808080;
+			}
+			.navbar-default{
+				background-color: color;
+			}
 		</style>
 
     </head>
@@ -19,18 +25,18 @@
     	<div>
 	        <nav class="navbar navbar-default navbar-fixed-top">
 		         <% if session[:usr] %>
-				    <div>
-				        <ul class="nav nav-pills" style="text-align: center;">
+				    <div style="font-size: 250%">
+				        <ul class="nav nav-pills" style="text-align: center">
 							<li style="width: 19%">
-				          	  <%= link_to image_tag('set.png', {size: "60x60"}), sets_path %>
+				          	  <%= link_to "", sets_path,class:"glyphicon glyphicon-home darkgray"  %>
 							</li>
 							<li style="width: 60%">
-				              <%= link_to image_tag('title.png', {style: "width: 100%; max-width: 200px;"}), items_path %>
+				              <%= link_to "シュロギ", items_path,class:"darkgray" %>
 							</li>
 							<li style="width: 19%" class="dropdown">
 				          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-				          	    <%= image_tag('search.png', {size: "60x60"}) %>
-				          	    <span class="caret"></span></a>
+				          	    <span class="glyphicon glyphicon-search darkgray" aria-hidden="true"></span>
+				          	    <span></span></a>
 				          	    <ul style="right: 0; left: auto;" class="dropdown-menu" role="menu">
 							      <li>
 							        <div style = "text-align: right">
@@ -57,28 +63,28 @@
 <br/>
 <br/>
 <br/>
-		    <div class="container" style="margin-bottom: 25%">
+		    <div class="container darkgray" style="margin-bottom: 25%">
 		      <%= yield %>
 		    </div>
 
 		    <nav class="navbar navbar-default navbar-fixed-bottom">
 		        <% if session[:usr] %>
 				    <div>
-					    <ul class="nav nav-pills" style="text-align: center;">
+					    <ul class="nav nav-pills" style="text-align: center; font-size: 300%">
 							<li style="width: 19%">
-							  <%= link_to image_tag('fav_link.png', {alt: "fav",size: "60x60"}), favcateg_items_path %>
+							  <%= link_to "", favcateg_items_path,class:"glyphicon glyphicon-heart darkgray"  %>
 							</li>
 							<li style="width: 19%">
-							  <%= link_to image_tag('category.png', {alt: "fav",size: "60x60"}), categories_path %>
+							  <%= link_to "", categories_path,class:"glyphicon glyphicon-inbox darkgray" %>
 							</li>
 							<li style="width: 19%">
-							  <%= link_to image_tag('item.png', {alt: "fav",size: "60x60"}), new_item_path %>
+							  <%= link_to "", new_item_path,class:"glyphicon glyphicon-plus darkgray" %>
 							</li>
 							<li style="width: 19%">
-							  <%= link_to image_tag('tag.png', {alt: "fav",size: "60x60"}), tags_index_path %>
+							  <%= link_to "", tags_index_path,class:"glyphicon glyphicon-tags darkgray" %>
 							</li>
 							<li style="width: 19%">
-							  <%= link_to image_tag('want.png',{alt: "fav",size: "60x60"}), wantcateg_items_path %>
+							  <%= link_to "", wantcateg_items_path,class:"glyphicon glyphicon-gift darkgray" %>
 							</li>
 					    </ul>
 				    </div>

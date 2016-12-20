@@ -1,4 +1,12 @@
-﻿<%= form_for(@user) do |f| %>
+﻿<head>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".cb").hide();
+
+    });
+  </script>
+
+<%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,11 +19,19 @@
     </div>
   <% end %>
 
-  <div class="field"> 
-    <%= f.label :color %><br> 
-    <%= select :user, :color, ["RED", "BLUE", "YELLOW", "PINK", "GREEN", "BLACK", "WHITE"] %> 
-  </div> 
-  <div class="actions"> 
-    <%= image_submit_tag('OK.png') %> 
-  </div> 
+
+    <div class="field" align="center" style="margin-top: 20%"> <br/>
+      <%= f.label "好きな色を選択してください" %><br>
+      <%= f.collection_radio_buttons(:color,{red: "red",blue:"blue",yellow:"yellow",green:"green",orange:"orange",purple:"purple",lblue:"lblue",black:"black"},:last,:first) do |b| %>
+      <span class="rsample">
+        <%= image_tag "off#{b.value}.png", class: ["sw_hante"],id: "img_#{b.value}",:size => "120x120" %>
+      </span>
+        <%= b.radio_button(class:["cb","cb_#{b.value}"]) %>
+      <% end %>
+
+    </div> 
+<br/>
+    <div class="actions" align="center"> 
+      <%= image_submit_tag('OK.png') %>
+    </div>
 <% end %> 
