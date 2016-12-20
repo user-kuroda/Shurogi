@@ -25,15 +25,27 @@
       bottom:5%; 
       width:90%; text-align:center;
     }
+    @font-face{
+      font-family: "amemuchi";
+      src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+    }
+    h1.pagetitle{
+      font-family: "amemuchi";
+      font-size: 3em;
+    }
+    h2.font{
+      font-family: "amemuchi";
+      font-size: 1em; 
+    }
   </style>
-</head>>
+</head>
 
 
 
 <p id="notice"><%= notice %></p>
 
 <div align ="center">
-  <h1>Favorite</h1>
+  <h1 class="pagetitle">Favorite</h1>
 </div>
 
 <table>
@@ -46,32 +58,44 @@
           <div class="noimg">
             <div class="image">
               <p style="display:inline;">
-                <%= image_tag show_image_item_path(item), class: ["large-img","noimg"] %>
+                <% if item.image.present? == true %>
+                  <%= image_tag show_image_item_path(item), class: ["large-img"] %>
+                <% elsif item.image2.present? == true %>
+                  <%= image_tag show_image2_item_path(item), class: ["large-img"] %>
+                <% else %>
+                  <%= image_tag show_image3_item_path(item), class: ["large-img","noimg"] %>
+                <% end %>
               </p>
             </div>
           </div>
         <% end %>
         <br />
         <div class="name">
-          <%= item.itemname %>
+          <h2 class="font"><%= item.itemname %></h2>
         </div>
       </div>
     </div>
-    <%# スマホ用 %>
+    <%# iphone5用 %>
     <div class="visible-xs">
       <div align="center" class="col-xs-6 col-sm-4" style="height:10em;"> 
         <%= link_to item do %>
           <div class="noimg">
             <div class="image">
               <p style="display:inline;">
-                <%= image_tag show_image_item_path(item), class: ["large-img","noimg"] %>
+                <% if item.image.present? == true %>
+                  <%= image_tag show_image_item_path(item), class: ["large-img"] %>
+                <% elsif item.image2.present? == true %>
+                  <%= image_tag show_image2_item_path(item), class: ["large-img"] %>
+                <% else %>
+                  <%= image_tag show_image3_item_path(item), class: ["large-img","noimg"] %>
+                <% end %>
               </p>
             </div>
           </div>
         <% end %>
         <br />
         <div class="name">
-          <%= item.itemname %>
+          <h2 class ="font"><%= item.itemname %></h2>
         </div>
       </div>
     </div>
