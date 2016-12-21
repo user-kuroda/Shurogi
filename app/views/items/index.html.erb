@@ -97,6 +97,10 @@
 <div align ="center">
   <% if @pagetitle == 1 %>
     <h1 class="pagetitle">#<%= params["tag"] %></h1>
+  <% elsif @pagetitle == 2 %>
+    <h1 class="pagetitle">#<%= @keyword %></h1>
+  <% elsif @pagetitle == 3 %>
+    <h1 class="pagetitle">▽<%= @keyword %></h1>
   <% else %>
     <h1 class="pagetitle">Item</h1>
   <% end %>

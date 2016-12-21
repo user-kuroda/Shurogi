@@ -112,6 +112,7 @@
 
   def search_category
     @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
+    @pagetitle = 3
     render :index
   end
 
@@ -135,12 +136,13 @@
     @keyword = params["search_key"]["itemname"]
 
     if params[:key]
-      @categories = Category.where(user: session[:usr]).where("categoryname like '%#{@keyword}'")
+      @categories = Category.where(user: session[:usr]).where("categoryname like '%#{@keyword}%'")
       @items = Item.where("itemname like '%#{@keyword}%'")
       render :skey_index
 
     else
       @items = Item.where(user: session[:usr]).tagged_with(@keyword)
+      @pagetitle = 2
       render :index
     end
   end

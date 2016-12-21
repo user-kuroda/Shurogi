@@ -49,7 +49,7 @@
     <tbody>
       <% @categories.each do |category| %>
         <tr>
-            <td>▽　<%= link_to category.categoryname, search_category_items_path(category: category) %></td>
+          <td><h2 class="font">▽　<%= link_to category.categoryname, search_category_items_path(category: category) %></h2></td>
         </tr>
       <% end %>
     </tbody>
