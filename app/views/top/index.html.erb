@@ -1,6 +1,47 @@
+<style type="text/css">
+  body {
+    background-image: url(<%= asset_path 'top_img.jpg' %>);
+    background-size: cover;
+  }
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  @media (max-width: 768px){
+    h1.title{
+      font-family: "amemuchi";
+      font-size: 4em;
+    }
+    h2.font{
+      font-family: "amemuchi";
+      font-size: 10em;	
+    }
+  }
+  @media (min-width: 768px){
+    h1.title{
+      font-family: "amemuchi";
+      font-size: 7em;
+    }
+  }
+ </style>
 
-<%= image_tag 'top.png', {  :alt => 'top',:size => '600x397'} %></br>
- <%= link_to image_tag('sign in.png', { :border => '0', :alt => 'sign in',:hspace => '110'}), controller: :login,action: :index %> </br>
+<meta name="viewport" content="width=device-width">
+<div align ="center">
+  <br>
+  <h1 class="title">
+    Hello!<br>
+    Shurogi<br>
+  </h1>
+</div>
 
-
-<%= link_to image_tag('sign up.png', { :border => '0', :alt => 'sign out',:hspace => '110'}), new_user_path %>
+<%#= image_tag 'top.png', {  :alt => 'top',:size => '600x397'} %>
+<div align="center">
+  <h1 class="font">
+    <br>
+    <br>
+    <%= link_to "　Sign In　", controller: :login,action: :index %><br><br>
+    <%= link_to "　Sign Up　", new_user_path %>
+  </h1>
+  <%#= link_to image_tag('sign in.png', { :border => '0', :alt => 'sign in',:hspace => '110'}), controller: :login,action: :index %>
+  <%#= link_to image_tag('sign up.png', { :border => '0', :alt => 'sign out',:hspace => '110'}), new_user_path %>
+</div>

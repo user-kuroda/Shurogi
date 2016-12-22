@@ -5,7 +5,7 @@
   }
   h1.font{
     font-family: "amemuchi";
-    font-size: 0.8em; 
+    font-size: 1em; 
   }
   h2.font_s{
     font-family: "amemuchi";
@@ -29,66 +29,66 @@
 
 </style>
 
-<div align="center"> 
-  <div style="width: 30em; height: 55em; background-color: white; margin-top: 2em;" align="left">
-    <%= form_for(@user) do |f| %>
-      <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-              <li><h2 class="font_s"><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      <div class="field">
-        <h2 class="font_s">
-          <%= f.label :userid %><br>
-          ※半角英数字のみ
-        </h2>
-        <%= f.text_field :userid %>
-      </div>
-
-      <div class="field">
-        <h2 class="font_s">
-          <%= f.label :name %><br>
-          <%= f.text_field :name %>
-        </h2>
-      </div>
-
-      <div class="field">
-        <h2 class="font_s">
-          <%= f.label :mail %><br>
-          <%= f.text_field :mail %>
-          <span class="field">
-            <%= select :user, :mailback, ["@docomo.ne.jp","@softbank.ne.jp","@ezweb.ne.jp"] %>
-          </span>
-        </h2>
-      </div>
-
-      <div class="field">
-        <h2 class="font_s">
-          <%= f.label :pass %><br>
-          ※8字以上、半角英数字のみ<br>
-        </h2>
-        <%= f.password_field :pass %>
-        <%= f.password_field :pass_confirmation %>
-      </div>
-
-      <div class="field"> 
-        <h2 class="font_s">
-          <%= f.label :call %><br> 
-          <%= f.number_field :call, min: 0  %>日前
-        </h2>
-      </div> 
-
-      <div class="actions" align ="center">
-        <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
-         <span style="text-align: center;">登録</span>
+  <div align="center"> 
+    <div style="width: 30em; height: 55em; background-color: white; margin-top: 3em;" align="left">
+      <%= form_for(@user) do |f| %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><h2 class="font_s"><%= message %></h2></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </div>
 
-    <% end %>
+        <div class="field">
+          <h1 class="font">
+            <%= f.label :userid %><br>
+            ※半角英数字のみ
+          </h1>
+          <%= f.text_field :userid %>
+        </div>
+
+        <div class="field">
+          <h1 class="font">
+            <%= f.label :name %><br>
+            <%= f.text_field :name %>
+          </h1>
+        </div>
+
+        <div class="field">
+          <h1 class="font">
+            <%= f.label :mail %><br>
+            <%= f.text_field :mail %>
+            <span class="field">
+              <%= select :user, :mailback, ["@docomo.ne.jp","@softbank.ne.jp","@ezweb.ne.jp"] %>
+            </span>
+          </h1>
+        </div>
+
+        <div class="field">
+          <h1 class="font">
+            <%= f.label :pass %><br>
+            ※8字以上、半角英数字のみ<br>
+          </h1>
+          <%= f.password_field :pass %>
+          <%= f.password_field :pass_confirmation %>
+        </div>
+
+        <div class="field"> 
+          <h1 class="font">
+            <%= f.label :call %><br> 
+            <%= f.number_field :call, min: 0  %>日前
+          </h1>
+        </div> 
+
+        <div class="actions" align ="center">
+          <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
+           <span style="text-align: center;">登録</span>
+          <% end %>
+        </div>
+
+      <% end %>
+    </div>
   </div>
-</div>

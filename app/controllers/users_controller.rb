@@ -72,7 +72,7 @@
   def auth_master
     name = 'team_shurogi'
     password = 'shurogi'
-    authenticate_or_request_with_http_basic('Railbook') do |n,p|
+    authenticate_or_request_with_http_basic('Shurogi') do |n,p|
       n == name && p == password
     end
   end
