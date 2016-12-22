@@ -1,4 +1,18 @@
-﻿
-<h1 style = "width:98%; text-align: center">Item</h1>
+﻿<style type="text/css">
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  h1.pagetitle{
+    font-family: "amemuchi";
+    font-size: 3em;
+  }
+  h2.font{
+    font-family: "amemuchi";
+    font-size: 1em; 
+  }
+</style>
+
+<h1 class="pagetitle" style = "width:98%; text-align: center">Item</h1>
 
 <%= render 'form' %>

@@ -45,6 +45,10 @@
           }
           h2.font{
             font-family: "amemuchi";
+            font-size: 2em; 
+          }
+          h3.font_s{
+            font-family: "amemuchi";
             font-size: 1em; 
           }
    </style>
@@ -108,14 +112,13 @@
   <%# 編集と削除 %>
   <br>
   <div class="floatleft" align="center" style="width: 20em; height: 13em;">
-    <td><button class="btn"><%= link_to "", edit_item_path ,class:"glyphicon glyphicon-pencil darkgray"  %></button>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><button class="btn"><%= link_to "", @item, method: :delete, data: { confirm: '本当にいいですか?' } ,class:"glyphicon glyphicon-trash darkgray"  %></button></td>
+    <td><button class="btn" style="width: 5em;"><%= link_to "", edit_item_path ,class:"glyphicon glyphicon-pencil darkgray"  %></button>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><button class="btn" style="width: 5em;"><%= link_to "", @item, method: :delete, data: { confirm: '本当にいいですか?' } ,class:"glyphicon glyphicon-trash darkgray"  %></button></td>
   </div>
   <%# 日付とか %>
-  <div class ="floatright" align="center">
+  <div class ="floatright" align="center" style="width: 15em; height: 8em;">
     <% if @item.itemcall == true %>
       <h2 class ="font">
-       </br>
        <%= @item.ani %></br>
        <%= @item.day %>
       </h2>
@@ -129,7 +132,7 @@
   <p>
     <br>
     <h3 style = display:inline;>▽</h3>
-    <h1 class="name" style = display:inline;><%= @item.itemname %></h1>
+    <h2 class="font" style = display:inline;><%= @item.itemname %></h2>
   </p>
 
   <p>
@@ -182,25 +185,19 @@
   <br class="floatclear">
   <%# 編集と削除 %>
   <br>
-  <div align="center" class ="floatleft" style="width: 12em; height: 8em;">
-    <br>
-    <button class="btn btn-default"><%= link_to '編集', edit_item_path %></button>
-    <button class="btn btn-default"><%= link_to '削除', @item, method: :delete, data: { confirm: '本当にいいですか?' } %></button>
-
-    <%#= link_to image_tag('pen.png', { :border => '0', :alt => '編集',:size => '100x40'}), edit_item_path %>
-    <%#= link_to image_tag('dustbox.png', { :border => '0', :alt => '削除',:size => '100x40'}), @item, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <br class="floatclear">
-  </div> 
-  <%# 日付とか %>
-  <div class ="floatright-ph" align="center" style="width: 6em; height: 5em;">
-    <% if @item.itemcall == true %>
-      <h2 class="font">
-       <br>
-       <%= @item.ani %></br>
-       <%= @item.day %>
-      </h2>
-    <% end %>
+  <div class="floatleft" align="center" style="width: 20em; height: 4em;">
+    <td><button class="btn" style="width: 5em;"><%= link_to "", edit_item_path ,class:"glyphicon glyphicon-pencil darkgray"  %></button>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><button class="btn" style="width: 5em;"><%= link_to "", @item, method: :delete, data: { confirm: '本当にいいですか?' } ,class:"glyphicon glyphicon-trash darkgray"  %></button></td>
   </div>
   <br class="floatclear">
+  <%# 日付とか %>
+  <div align="center" style="width: 20em; height: 5em;">
+    <% if @item.itemcall == true %>
+      <h3 class="font_s">
+       <%= @item.ani %></br>
+       <%= @item.day %>
+      </h3>
+    <% end %>
+  </div>
 </div>
 

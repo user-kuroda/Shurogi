@@ -1,5 +1,16 @@
-﻿<head>
 <style type="text/css">
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  h1.pagetitle{
+    font-family: "amemuchi";
+    font-size: 3em; 
+  }
+  h2.font{
+    font-family: "amemuchi";
+    font-size: 1em; 
+  }
   .btn-circle.btn-lg {
   width: 50px;
   height: 50px;
@@ -26,24 +37,23 @@
   }
 
 </style>
-</head>
 
 <p id="notice"><%= notice %></p>
 
 <%= form_for(@user, url: set_path(@user)) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><% pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
       <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li><h2 class="font"><%= message %></h2></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <h1 style = "margin-left: 8%; text-align: left">Set</h1>
+  <h1 class="pagetitle" style = "margin-left: 8%; text-align: left">Set</h1>
 
   <div style = "width:90%;margin-left: 5%">
 
@@ -56,7 +66,7 @@
         <div class="panel-heading">
           <h3 class="panel-title">
             <a data-toggle="collapse" data-parent="#setting" href="#setname">
-              Name▽
+              <h2 class="font">Name▽</h2>
             </a>
           </h3>
         </div>
@@ -74,15 +84,16 @@
         <div class="panel-heading">
           <h3 class="panel-title">
             <a data-toggle="collapse" data-parent="#setting" href="#setpass">
-              Password▽
+              <h2 class="font">Password▽</h2>
             </a>
           </h3>
         </div>
 
         <div id="setpass" class="panel-collapse collapse">
           <div class="panel-body">
-            現在のパスワード<br><%= password_field_tag "firstpass" %><br>
-            新しいパスワード<p style = "display: :inline_block">
+            <h2 class="font">現在のパスワード</h2><br>
+            <%= password_field_tag "firstpass" %><br>
+            <h2 class="font">新しいパスワード</h2><p style = "display: :inline_block">
             <%= f.password_field :pass %>
             <%= f.password_field :pass_confirmation %></p>
           </div>
@@ -95,7 +106,7 @@
         <div class="panel-heading">
           <h3 class="panel-title">
             <a data-toggle="collapse" data-parent="#setting" href="#setcolor">
-              Color▽
+              <h2 class="font">Color▽</h2>
             </a>
           </h3>
         </div>
@@ -113,14 +124,14 @@
         <div class="panel-heading">
           <h3 class="panel-title">
             <a data-toggle="collapse" data-parent="#setting" href="#setcall">
-              Call▽
+              <h2 class="font">Call▽</h2>
             </a>
           </h3>
         </div>
 
         <div id="setcall" class="panel-collapse collapse">
           <div class="panel-body">
-            <%= f.number_field :call, min: 0  %>日前
+            <h2 class="font"><%= f.number_field :call, min: 0  %>日前</h2>
           </div>
         </div>
       </div>
@@ -129,15 +140,15 @@
   </div>
   
   <div style = "margin-left: 5%">
-    <button class="btn btn-default"><%= link_to 'ユーザー削除', userdelete_sets_path, method: :destroy, data: { confirm: '本当に削除しますか?' } %> </button>
-    <button class="btn btn-default"> <%= link_to 'サインアウト', top_index_path%></button>
+    <button class="btn btn-default"><h2 class="font"><%= link_to 'ユーザー削除', userdelete_sets_path, method: :destroy, data: { confirm: '本当に削除しますか?' } %></h2></button>
+    <button class="btn btn-default"><h2 class="font"><%= link_to 'サインアウト', top_index_path%></h2></button>
   </div>
 
   <br/>
   <span>
-    <div class="actions" style = "text-align: right; width: 95%">
+    <div class="actions" align ="center">
       <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
-        <span style="text-align: center;">登録</span>
+       <span style="text-align: center;">登録</span>
       <% end %>
     </div>
   </span>

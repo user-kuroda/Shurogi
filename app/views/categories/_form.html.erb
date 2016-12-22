@@ -1,3 +1,17 @@
+<style type="text/css">
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  h1.pagetitle{
+    font-family: "amemuchi";
+    font-size: 3em;
+  }
+  h2.font{
+    font-family: "amemuchi";
+    font-size: 1em; 
+  }
+</style>
 <%= form_for(@category) do |f| %>
   <% if @category.errors.any? %>
     <div id="error_explanation">
@@ -10,14 +24,18 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :categoryname %>
-  </div>
-  <div class="actions">
-    <br>
-    <%= submit_tag "OK!" %>
-    <%#= image_submit_tag('OK_new.png', { :border => '0', :alt => '次へ', :size => '60x60'}) %>
+  <div align ="center">
+    <div class="field">
+      <h2 class="font"><%= f.label :name %><br></h2>
+      <%= f.text_field :categoryname %>
+    </div>
+    <div class="actions" style = "text-align: right" >
+      <br>
+      <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
+        <span style="text-align: center;">登録</span>
+      <% end %>
+      <%#= submit_tag "OK!" %>
+      <%#= image_submit_tag('OK_new.png', { :border => '0', :alt => '次へ', :size => '60x60'}) %>
+    </div>
   </div>
 <% end %>
