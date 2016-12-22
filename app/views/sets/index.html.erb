@@ -184,13 +184,13 @@
   </div>
   
   <div style = "margin-left: 5%">
-    <button class="btn btn-default"><h2 class="font"><%= link_to 'ユーザー削除', userdelete_sets_path, method: :destroy, data: { confirm: '本当に削除しますか?' } %></h2></button>
-    <button class="btn btn-default"><h2 class="font"><%= link_to 'サインアウト', top_index_path%></h2></button>
+    <span style="display:inline-block;"><h2 class="font"><%= link_to 'ユーザー削除', userdelete_sets_path, method: :destroy, data: { confirm: '本当に削除しますか?' },class:"btn btn-default" %></h2></span> |
+    <span style="display:inline-block;"><h2 class="font"><%= link_to 'サインアウト', top_index_path,class:"btn btn-default"%></h2></span>
   </div>
 
   <br/>
   <span>
-    <div class="actions" style = "margin-left: 87%">
+    <div class="actions" align="center">
       <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
        <span style="text-align: center;">登録</span>
       <% end %>

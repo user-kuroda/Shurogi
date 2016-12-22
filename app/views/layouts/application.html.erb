@@ -20,11 +20,35 @@
 			    font-family: "amemuchi";
 			    font-size: 1em;
 			}
-			.darkgray {
-				color: #ecf0f1;
-			}
 			.gray {
 				color: #7f8c8d;
+			}
+			.navbar-default .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-red .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-blue .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-yellow .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-green .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-lblue .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-purple .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-black .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-orange .nav > li > a {
+			    color: #ecf0f1;
 			}
 			.navbar-default{
 			    background-color: #95a5a6;
@@ -84,14 +108,14 @@
 				    <div style="font-size: 250%">
 				        <ul class="nav nav-pills" style="text-align: center">
 							<li style="width: 19%">
-				          	  <%= link_to "", sets_path,class:"glyphicon glyphicon-home darkgray"  %>
+				          	  <%= link_to "", sets_path,class:"glyphicon glyphicon-home "  %>
 							</li>
 							<li style="width: 60%; font-size: 36%">
-				              <h1 class="pagetitle"><%= link_to "シュロギ", items_path,class:"darkgray" %></h1>
+				              <h1 class="pagetitle"><%= link_to "シュロギ", items_path %></h1>
 							</li>
 							<li style="width: 19%" class="dropdown">
 				          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-				          	    <span class="glyphicon glyphicon-search darkgray" aria-hidden="true"></span>
+				          	    <span class="glyphicon glyphicon-search " aria-hidden="true"></span>
 				          	    <span></span></a>
 				          	    <ul style="right: 0; left: auto;" class="dropdown-menu" role="menu">
 							      <li>
@@ -146,19 +170,19 @@
 				    <div>
 					    <ul class="nav nav-pills" style="text-align: center; font-size: 300%">
 							<li style="width: 19%">
-							  <%= link_to "", favcateg_items_path,class:"glyphicon glyphicon-heart darkgray"  %>
+							  <%= link_to "", favcateg_items_path,class:"glyphicon glyphicon-heart "  %>
 							</li>
 							<li style="width: 19%">
-							  <%= link_to "", categories_path,class:"glyphicon glyphicon-inbox darkgray" %>
+							  <%= link_to "", categories_path,class:"glyphicon glyphicon-inbox" %>
 							</li>
 							<li style="width: 19%">
-							  <%= link_to "", new_item_path,class:"glyphicon glyphicon-plus darkgray" %>
+							  <%= link_to "", new_item_path,class:"glyphicon glyphicon-plus " %>
 							</li>
 							<li style="width: 19%">
-							  <%= link_to "", tags_index_path,class:"glyphicon glyphicon-tags darkgray" %>
+							  <%= link_to "", tags_index_path,class:"glyphicon glyphicon-tags " %>
 							</li>
 							<li style="width: 19%">
-							  <%= link_to "", wantcateg_items_path,class:"glyphicon glyphicon-gift darkgray" %>
+							  <%= link_to "", wantcateg_items_path,class:"glyphicon glyphicon-gift " %>
 							</li>
 					    </ul>
 				    </div>
