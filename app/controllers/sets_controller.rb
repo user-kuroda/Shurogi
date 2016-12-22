@@ -5,6 +5,7 @@
   end
 
   def update 
+    session[:color] = @user[:color]
     if params["firstpass"].present?
       if params["firstpass"] == @user[:pass]
         check
