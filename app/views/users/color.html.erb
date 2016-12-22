@@ -7,9 +7,7 @@
       $(".cb:checked").each(function(i){
         color = $(this).attr("id").split("_")[2]
         $("#user_color_" + color).prop("checked", true);
-        asset_path = <%= asset_path("onred.png").sub("onred.png","") %>
-        color_path = color + asset_path;
-        $("#img_"+color).attr("src",color_path);
+        $("#img_"+color).attr("src","/images/on" + color + ".png");
       })
     });
     $(function(){
@@ -17,22 +15,15 @@
         $(".cb").each(function(i){
           color = $(this).attr("id").split("_")[2]
           $("#user_color_" + color).prop("checked", false);
-          asset_path = <%= asset_path("offred.png").sub("offred.png","") %>
-          color_path = color + asset_path;
-          $("#img_"+color).attr("src",color_path);
+          $("#img_"+color).attr("src","/images/off" + color + ".png");
         })
         color = $(this).attr("id").split("_")[1]
-        alert(color);
         if($(".cb_" + color + ":checked").val()){
           $("#user_color_" + color).prop("checked", false);
-          asset_path = <%= asset_path("offred.png").sub("offred.png","") %>
-          color_path = color + asset_path;
-          $("#img_"+color).attr("src",color_path);
+          $("#img_"+color).attr("src","/images/off" + color + ".png");
         }else{
           $("#user_color_" + color).prop("checked", true);
-          asset_path = <%= asset_path("onred.png").sub("onred.png","") %>
-          color_path = color + asset_path;
-          $("#img_"+color).attr("src",color_path);
+          $("#img_"+color).attr("src","/images/on" + color + ".png");
         }
       })
     });
@@ -40,7 +31,6 @@
   <style type="text/css">
   .rsample{
       position:relative;
-      width:100px;
   }
   .rsample span{
       position:absolute;
@@ -50,7 +40,7 @@
       text-align:center;
   }
   .rsample img{
-      width:100px;
+      width:150px;
   }
 
   .btn-circle.btn-lg2 {
@@ -90,7 +80,7 @@
       <%= f.label "好きな色を選択してください" %><br>
       <%= f.collection_radio_buttons(:color,{red: "red",blue:"blue",yellow:"yellow",green:"green",orange:"orange",purple:"purple",lblue:"lblue",black:"black"},:last,:first) do |b| %>
       <span class="rsample">
-        <%= image_tag "off#{b.value}.png", class: ["sw_hante"],id: "img_#{b.value}" %>
+        <%= image_tag "off#{b.value}.png", class: ["sw_hante"],id: "img_#{b.value}",:size => "150x150" %>
       </span>
       <%= b.radio_button(class: ["cb", "cb_#{b.value}"]) %>
       <% end %>

@@ -58,7 +58,9 @@ gem 'acts-as-taggable-on','~> 3.4'
 
 gem "chartkick"
  
- gem 'therubyracer',  platforms: :ruby
+gem 'therubyracer',  platforms: :ruby
+
+gem 'rails_12factor', group: :production
  
  #gem 'fullcalendar-rails'
  
