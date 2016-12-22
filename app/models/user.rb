@@ -9,6 +9,7 @@
  validates :call,presence: true
  validates_uniqueness_of :userid, :message => "は既に使用されています"
 
+
  validates_confirmation_of :pass  
  attr_accessor :pass_confirmation  
 

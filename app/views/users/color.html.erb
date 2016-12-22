@@ -78,7 +78,7 @@
 
     <div class="field" align="center" style="margin-top: 20%"> <br/>
       <%= f.label "好きな色を選択してください" %><br>
-      <%= f.collection_radio_buttons(:color,{red: "red",blue:"blue",yellow:"yellow",green:"green",orange:"orange",purple:"purple",lblue:"lblue",black:"black"},:last,:first) do |b| %>
+      <%= f.collection_radio_buttons(:color,{red: "red",blue:"blue",yellow:"yellow",green:"green",orange:"orange",purple:"purple",lblue:"lblue",black:"black"},:last,:first, checked: "red" ) do |b| %>
       <span class="rsample">
         <%= image_tag "off#{b.value}.png", class: ["sw_hante"],id: "img_#{b.value}",:size => "150x150" %>
       </span>

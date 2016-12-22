@@ -16,7 +16,7 @@
     else
       flash.now[:referer] = params[:referer]
       @error = 'ユーザーID/パスワードが間違っています。'
-      render 'index'
+      render :index,layout: false
     end
   end
 end

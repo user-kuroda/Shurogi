@@ -35,7 +35,7 @@
         format.html { redirect_to color_user_path(@user) }
         format.json { redirect_to color_user_path(@user), status: :created, location: @user }
       else
-        format.html { render :new }
+        format.html { render :new ,layout: false}
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -49,7 +49,7 @@
         format.html { redirect_to controller: :login,action: :index }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :color }
+        format.html { render :color  }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
