@@ -23,7 +23,7 @@
 
     respond_to do |format|
       if @sets.update(sets_params)
-        format.html { redirect_to sets_path, notice: '登録情報を変更しました。' }
+        format.html { redirect_to sets_path }
         format.json { render :sets, status: :ok, location: @sets }
       else
         format.html { render :sets }

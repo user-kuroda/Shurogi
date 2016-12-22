@@ -59,40 +59,19 @@
     	<div>
 		    <% if session[:color] == "red" %>
 	          <nav class="navbar navbar-red navbar-fixed-top">
-	        <% else %>
-	          <nav class="navbar navbar-default navbar-fixed-top">
-	        <% end %>
-	        <% if session[:color] == "blue" %>
+	        <% elsif session[:color] == "blue" %>
 	          <nav class="navbar navbar-blue navbar-fixed-top">
-	        <% else %>
-	          <nav class="navbar navbar-default navbar-fixed-top">
-	        <% end %>
-	        <% if session[:color] == "yellow" %>
+	        <% elsif session[:color] == "yellow" %>
 	          <nav class="navbar navbar-yellow navbar-fixed-top">
-	        <% else %>
-	          <nav class="navbar navbar-default navbar-fixed-top">
-	        <% end %>
-	        <% if session[:color] == "green" %>
+	        <% elsif session[:color] == "green" %>
 	          <nav class="navbar navbar-green navbar-fixed-top">
-	        <% else %>
-	          <nav class="navbar navbar-default navbar-fixed-top">
-	        <% end %>
-	        <% if session[:color] == "orange" %>
+	        <% elsif session[:color] == "orange" %>
 	          <nav class="navbar navbar-orange navbar-fixed-top">
-	        <% else %>
-	          <nav class="navbar navbar-default navbar-fixed-top">
-	        <% end %>
-	        <% if session[:color] == "lblue"  %>
+	        <% elsif session[:color] == "lblue"  %>
 	          <nav class="navbar navbar-lblue navbar-fixed-top">
-	        <% else %>
-	          <nav class="navbar navbar-default navbar-fixed-top">
-	        <% end %>
-	        <% if session[:color] == "purple" %>
+	        <% elsif session[:color] == "purple" %>
 	          <nav class="navbar navbar-purple navbar-fixed-top">
-	        <% else %>
-	          <nav class="navbar navbar-default navbar-fixed-top">
-	        <% end %>
-	        <% if session[:color] == "black" %>
+	        <% elsif session[:color] == "black" %>
 	          <nav class="navbar navbar-black navbar-fixed-top">
 	        <% else %>
 	          <nav class="navbar navbar-default navbar-fixed-top">
@@ -139,8 +118,27 @@
 		    <div class="container darkgray" style="margin-bottom: 25%">
 		      <%= yield %>
 		    </div>
+            
 
-		    <nav class="navbar navbar-default navbar-fixed-bottom">
+            <% if session[:color] == "red" %>
+	          <nav class="navbar navbar-red navbar-fixed-bottom">
+	        <% elsif session[:color] == "blue" %>
+	          <nav class="navbar navbar-blue navbar-fixed-bottom">
+	        <% elsif session[:color] == "yellow" %>
+	          <nav class="navbar navbar-yellow navbar-fixed-bottom">
+	        <% elsif session[:color] == "green" %>
+	          <nav class="navbar navbar-green navbar-fixed-bottom">
+	        <% elsif session[:color] == "orange" %>
+	          <nav class="navbar navbar-orange navbar-fixed-bottom">
+	        <% elsif session[:color] == "lblue"  %>
+	          <nav class="navbar navbar-lblue navbar-fixed-bottom">
+	        <% elsif session[:color] == "purple" %>
+	          <nav class="navbar navbar-purple navbar-fixed-bottom">
+	        <% elsif session[:color] == "black" %>
+	          <nav class="navbar navbar-black navbar-fixed-bottom">
+	        <% else %>
+	          <nav class="navbar navbar-default navbar-fixed-bottom">
+	        <% end %>
 		        <% if session[:usr] %>
 				    <div>
 					    <ul class="nav nav-pills" style="text-align: center; font-size: 300%">
