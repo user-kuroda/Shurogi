@@ -1,4 +1,4 @@
-﻿<style type="text/css">
+<style type="text/css">
   body {
     background-image: url(<%= asset_path 'newuser_image.jpg' %>);
     background-size: cover;
@@ -6,3 +6,9 @@
  </style>
 
 <%= render 'form' %>
+
+﻿<div style="margin-left: 40%;">
+  <span style="margin-left: 90%">
+    <%= link_to 'サインイン', controller: :login,action: :index  %>
+  </span>
+</div>

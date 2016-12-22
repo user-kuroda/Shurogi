@@ -1,15 +1,81 @@
 ﻿<head>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <script type="text/javascript">
     $(document).ready(function(){
       $(".cb").hide();
-
+      $(".cb:checked").each(function(i){
+        color = $(this).attr("id").split("_")[2]
+        $("#user_color_" + color).prop("checked", true);
+        asset_path = <%= asset_path("onred.png").sub("onred.png","") %>
+        color_path = color + asset_path;
+        $("#img_"+color).attr("src",color_path);
+      })
+    });
+    $(function(){
+      $(".sw_hante").click(function(){
+        $(".cb").each(function(i){
+          color = $(this).attr("id").split("_")[2]
+          $("#user_color_" + color).prop("checked", false);
+          asset_path = <%= asset_path("offred.png").sub("offred.png","") %>
+          color_path = color + asset_path;
+          $("#img_"+color).attr("src",color_path);
+        })
+        color = $(this).attr("id").split("_")[1]
+        alert(color);
+        if($(".cb_" + color + ":checked").val()){
+          $("#user_color_" + color).prop("checked", false);
+          asset_path = <%= asset_path("offred.png").sub("offred.png","") %>
+          color_path = color + asset_path;
+          $("#img_"+color).attr("src",color_path);
+        }else{
+          $("#user_color_" + color).prop("checked", true);
+          asset_path = <%= asset_path("onred.png").sub("onred.png","") %>
+          color_path = color + asset_path;
+          $("#img_"+color).attr("src",color_path);
+        }
+      })
     });
   </script>
+  <style type="text/css">
+  .rsample{
+      position:relative;
+      width:100px;
+  }
+  .rsample span{
+      position:absolute;
+      bottom:0px;
+      left:-3px;
+      width:100px;
+      text-align:center;
+  }
+  .rsample img{
+      width:100px;
+  }
+
+  .btn-circle.btn-lg2 {
+  width: 80px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  }
+
+  .darkgray {
+    color: #808080;
+  }
+  .gray{
+    color: #f2f2f2;
+  }
+
+  </style>
+</head>
 
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
 
       <ul>
       <% @user.errors.full_messages.each do |message| %>
@@ -24,14 +90,15 @@
       <%= f.label "好きな色を選択してください" %><br>
       <%= f.collection_radio_buttons(:color,{red: "red",blue:"blue",yellow:"yellow",green:"green",orange:"orange",purple:"purple",lblue:"lblue",black:"black"},:last,:first) do |b| %>
       <span class="rsample">
-        <%= image_tag "off#{b.value}.png", class: ["sw_hante"],id: "img_#{b.value}",:size => "120x120" %>
+        <%= image_tag "off#{b.value}.png", class: ["sw_hante"],id: "img_#{b.value}" %>
       </span>
-        <%= b.radio_button(class:["cb","cb_#{b.value}"]) %>
+      <%= b.radio_button(class: ["cb", "cb_#{b.value}"]) %>
       <% end %>
-
     </div> 
 <br/>
     <div class="actions" align="center"> 
-      <%= image_submit_tag('OK.png') %>
+    <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
+    <span style="text-align: center;">登録
+    <% end %>
     </div>
 <% end %> 

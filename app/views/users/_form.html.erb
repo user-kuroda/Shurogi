@@ -11,6 +11,22 @@
     font-family: "amemuchi";
     font-size: 0.7em; 
   }
+ .btn-circle.btn-lg2 {
+  width: 80px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  }
+
+  .darkgray {
+    color: #808080;
+  }
+  .gray{
+    color: #f2f2f2;
+  }
+
 </style>
 
 <div align="center"> 
@@ -18,15 +34,13 @@
     <%= form_for(@user) do |f| %>
       <% if @user.errors.any? %>
         <div id="error_explanation">
-
           <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><h2 class="font_s"><%= message %></li>
-          <% end %>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><h2 class="font_s"><%= message %></li>
+            <% end %>
           </ul>
         </div>
       <% end %>
-
 
       <div class="field">
         <h2 class="font_s">
@@ -69,12 +83,11 @@
         </h2>
       </div> 
 
-      
       <div class="actions" align ="center">
-        <%= image_submit_tag('OK.png') %>
+        <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
+         <span style="text-align: center;">登録</span>
+        <% end %>
       </div>
-
-      <%= link_to image_tag('back.png', { :border => '0', :alt => 'ログインへ',:size => '100x70'}), controller: :login,action: :index  %>
 
     <% end %>
   </div>

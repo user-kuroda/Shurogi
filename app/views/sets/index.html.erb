@@ -119,8 +119,10 @@
     <button class="btn btn-default"><h2 class="font"><%= link_to 'サインアウト', top_index_path%></h2></button>
   </div>
   <span>
-    <div class="actions" style = "text-align: right; width: 95%">
-      <%= image_submit_tag('OK.png') %>
+    <div class="actions" align ="center">
+      <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
+       <span style="text-align: center;">登録</span>
+      <% end %>
     </div>
   </span>
 

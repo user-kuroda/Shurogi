@@ -21,9 +21,25 @@
   }
   
 
+ .btn-circle.btn-lg2 {
+  width: 80px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  }
+
+  .darkgray {
+    color: #808080;
+  }
+  .gray{
+    color: #f2f2f2;
+  }
+
 </style>
 <div align="right">
-  <%= link_to "サインイン", new_user_path %>
+  <%= link_to "サインアップ", new_user_path %>
 </div>
 <meta name="viewport" content="width=device-width">
 <div align ="center">
@@ -32,7 +48,7 @@
     Shurogi
   </h1>
 </div>
-<p><style="color : red"><%= @error %></p>
+<p><%= @error %></p>
 <%= form_tag action: :auth do %>
   <div class="field" align ="center">
     <%= label_tag :userid, 'ID' %><br>
@@ -42,10 +58,12 @@
     <%= label_tag :pass, 'Pass' %><br>
     <%= password_field_tag :pass, '' %>
   </div>
-  <div align ="right">
+  <div style="margin-left: 65%">
     <%= hidden_field_tag :referer, flash[:referer] %>
     <br>
-    <%= image_submit_tag('OK_new.png', { :border => '0', :alt => '次へ', :size => '60x60'}) %>
+    <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
+    <span style="text-align: center;">登録</span>
+    <% end %>
   </div>
 <% end %>
 
