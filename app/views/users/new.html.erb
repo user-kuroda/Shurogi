@@ -1,0 +1,16 @@
+ <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+ <meta http-equiv="content-style-type" content="text/css">
+ <style type="text/css">
+  body {
+    background-image: url(<%= asset_path 'newuser_image.jpg' %>);
+    background-size: cover;
+  }
+ </style>
+
+  <div align="right">
+    <%= link_to "サインイン", controller: :login,action: :index %>
+  </div>
+
+
+<%= render 'form' %>
+

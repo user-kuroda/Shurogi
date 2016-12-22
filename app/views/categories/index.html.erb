@@ -1,0 +1,49 @@
+﻿<style type="text/css">
+　　@font0-face {
+        font-family: 'Glyphicons Halflings';
+        src: url('/assets/glyphicons-halflings-regular.eot');
+        src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+  }
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  h1.pagetitle{
+    font-family: "amemuchi";
+    font-size: 3em;
+  }
+  h2.font{
+    font-family: "amemuchi";
+    font-size: 1.4em; 
+  }
+</style>
+
+<p id="notice"><%= notice %></p>
+
+<div align ="center">
+  <h1 class="pagetitle">Category</h1>
+  <%#= link_to image_tag('plus.png', { :border => '0',:size => '40x40'}), new_category_path %>
+  <div style="font-size: 250%">
+    <%= link_to "", new_category_path, class:"glyphicon glyphicon-plus darkgray" %>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><h2 class="font">▽　<%= link_to category.categoryname, search_category_items_path(category: category) %>&nbsp;&nbsp;</h2></td>
+          <td><button class="btn"><%= link_to "", edit_category_path(category) ,class:"glyphicon glyphicon-pencil darkgray"  %></button>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td><button class="btn"><%= link_to "", category, method: :delete, data: { confirm: 'マジで?' } ,class:"glyphicon glyphicon-trash darkgray"  %></button></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
+

@@ -1,0 +1,16 @@
+﻿<style type="text/css">
+	@font-face{
+	  font-family: "amemuchi";
+	  src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+	}
+	  h1.pagetitle{
+	    font-family: "amemuchi";
+	    font-size: 3em;
+	  }
+</style>
+<div align ="center">
+  <h1 class="pagetitle">Tag</h1>
+</div>
+<% @tags.each do |tag| %>
+  <%= link_to "##{tag}", search_tag_items_path(tag: tag) %>
+<% end %>

@@ -1,0 +1,200 @@
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".cb").hide();
+      $(".cb:checked").each(function(i){
+        color = $(this).attr("id").split("_")[2]
+        $("#user_color_" + color).prop("checked", true);
+        $("#img_"+color).attr("src","/images/on" + color + ".png");
+      })
+    });
+    $(function(){
+      $(".sw_hante").click(function(){
+        $(".cb").each(function(i){
+          color = $(this).attr("id").split("_")[2]
+          $("#user_color_" + color).prop("checked", false);
+          $("#img_"+color).attr("src","/images/off" + color + ".png");
+        })
+        color = $(this).attr("id").split("_")[1]
+        if($(".cb_" + color + ":checked").val()){
+          $("#user_color_" + color).prop("checked", false);
+          $("#img_"+color).attr("src","/images/off" + color + ".png");
+        }else{
+          $("#user_color_" + color).prop("checked", true);
+          $("#img_"+color).attr("src","/images/on" + color + ".png");
+        }
+      })
+    });
+  </script>
+<style type="text/css">
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  h1.pagetitle{
+    font-family: "amemuchi";
+    font-size: 3em; 
+  }
+  h2.font{
+    font-family: "amemuchi";
+    font-size: 1em; 
+  }
+  .btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  }
+
+  .btn-circle.btn-lg2 {
+  width: 80px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  }
+
+  .darkgray {
+    color: #808080;
+  }
+  .gray{
+    color: #f2f2f2;
+  }
+  .rsample{
+      position:relative;
+  }
+  .rsample span{
+      position:absolute;
+      bottom:0px;
+      left:-3px;
+      width:100px;
+      text-align:center;
+  }
+  .rsample img{
+      width:50px;
+  }
+</style>
+
+<p id="notice"><%= notice %></p>
+
+<%= form_for(@user, url: set_path(@user)) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><% pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><h2 class="font"><%= message %></h2></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h1 class="pagetitle" style = "margin-left: 8%; text-align: left">Set</h1>
+
+  <div style = "width:90%;margin-left: 5%">
+
+
+
+    <div class="panel-group" id="setting">
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a data-toggle="collapse" data-parent="#setting" href="#setname">
+              <h2 class="font">Name▽</h2>
+            </a>
+          </h3>
+        </div>
+
+        <div id="setname" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <%= f.text_field :name %>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a data-toggle="collapse" data-parent="#setting" href="#setpass">
+              <h2 class="font">Password▽</h2>
+            </a>
+          </h3>
+        </div>
+
+        <div id="setpass" class="panel-collapse collapse">
+          <div class="panel-body">
+            <h2 class="font">現在のパスワード</h2><br>
+            <%= password_field_tag "firstpass" %><br>
+            <h2 class="font">新しいパスワード</h2><p style = "display: :inline_block">
+            <%= f.password_field :pass %>
+            <%= f.password_field :pass_confirmation %></p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a data-toggle="collapse" data-parent="#setting" href="#setcolor">
+              <h2 class="font">Color▽</h2>
+            </a>
+          </h3>
+        </div>
+
+        <div id="setcolor" class="panel-collapse collapse">
+          <div class="field" align="center"> <br/>
+            <%= f.collection_radio_buttons(:color,{red: "red",blue:"blue",yellow:"yellow",green:"green",orange:"orange",purple:"purple",lblue:"lblue",black:"black"},:last,:first) do |b| %>
+              <span class="rsample">
+              <%= image_tag "off#{b.value}.png", class: ["sw_hante"],id: "img_#{b.value}",:size => "50x50" %>
+              </span>
+              <%= b.radio_button(class: ["cb", "cb_#{b.value}"]) %>
+            <% end %>
+          </div> 
+        </div>
+
+      </div>
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a data-toggle="collapse" data-parent="#setting" href="#setcall">
+              <h2 class="font">Call▽</h2>
+            </a>
+          </h3>
+        </div>
+
+        <div id="setcall" class="panel-collapse collapse">
+          <div class="panel-body">
+            <h2 class="font"><%= f.number_field :call, min: 0  %>日前</h2>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+  <div style = "margin-left: 5%">
+    <span style="display:inline-block;"><h2 class="font"><%= link_to 'ユーザー削除', userdelete_sets_path, method: :destroy, data: { confirm: '本当に削除しますか?' },class:"btn btn-default" %></h2></span> |
+    <span style="display:inline-block;"><h2 class="font"><%= link_to 'サインアウト', top_index_path,class:"btn btn-default"%></h2></span>
+  </div>
+
+  <br/>
+  <span>
+    <div class="actions" align="center">
+      <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
+       <span style="text-align: center;">保存</span>
+      <% end %>
+    </div>
+  </span>
+
+<% end %>

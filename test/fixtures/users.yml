@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  userid: MyString
+  name: MyString
+  pass: MyString
+  mail: MyString
+  color: MyString
+  call: 1
+
+two:
+  userid: MyString
+  name: MyString
+  pass: MyString
+  mail: MyString
+  color: MyString
+  call: 1

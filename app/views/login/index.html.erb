@@ -1,0 +1,69 @@
+﻿<style type="text/css">
+  body {
+    background-image: url(<%= asset_path 'login_image.jpg' %>);
+    background-size: cover;
+  }
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  @media (max-width: 768px){
+    h1.title{
+      font-family: "amemuchi";
+      font-size: 4em;
+    }
+  }
+  @media (min-width: 768px){
+    h1.title{
+      font-family: "amemuchi";
+      font-size: 7em;
+    }
+  }
+  
+
+ .btn-circle.btn-lg2 {
+  width: 80px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  }
+
+  .darkgray {
+    color: #808080;
+  }
+  .gray{
+    color: #f2f2f2;
+  }
+
+</style>
+<div align="right">
+  <%= link_to "サインアップ", new_user_path %>
+</div>
+<meta name="viewport" content="width=device-width">
+<div align ="center">
+  <h1 class="title">
+    Welcome!<br>
+    Shurogi<br>
+  </h1>
+</div>
+<p align="center"><%= @error %></p>
+<%= form_tag action: :auth do %>
+  <div class="field" align ="center">
+    <%= label_tag :userid, 'ID' %><br>
+    <%= text_field_tag :userid, '' %>
+  </div>
+  <div class="field" align = "center">
+    <%= label_tag :pass, 'Pass' %><br>
+    <%= password_field_tag :pass, '' %>
+  </div>
+  <div style="margin-left: 65%">
+    <%= hidden_field_tag :referer, flash[:referer] %>
+    <br>
+    <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
+    <span style="text-align: center;">OK</span>
+    <% end %>
+  </div>
+<% end %>
+

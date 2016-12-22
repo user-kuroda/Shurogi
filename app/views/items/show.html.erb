@@ -1,0 +1,203 @@
+
+<head>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.noimg').error(function() {
+        $(this).attr({
+            src: '/noimg.png'
+        });
+      });
+    });
+  </script> 
+
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta http-equiv="content-style-type" content="text/css">
+   <style type="text/css">
+        *.floatleft{
+          float: left;
+        }
+        *.floatright{
+          float: right;
+          margin-right: 45em;
+          width: 15em; 
+          height: 15em;
+        }
+        *.floatright-ph{
+          float: right;
+          margin-right: 1em;
+        }
+        *.floatclear{
+          clear: both;
+        }
+        .carousel-control.left{
+        background-image: none;
+        }
+        .carousel-control.right{
+        background-image: none;
+        }
+        @font-face{
+          font-family: "amemuchi";
+          src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+        }
+          h1.name{
+            font-family: "amemuchi";
+            font-size: 3em;
+          }
+          h2.font{
+            font-family: "amemuchi";
+            font-size: 2em; 
+          }
+          h3.font_s{
+            font-family: "amemuchi";
+            font-size: 1em; 
+          }
+   </style>
+</head>
+
+
+<p id="notice"><%= notice %></p>
+
+<%# PC用 %>
+<div class="visible-lg visible-md visible-sm">
+  <p>
+    <h2 style = display:inline;>▽</h2>
+    <h1 class ="name" style = display:inline;><%= @item.itemname %></h1>
+  </p>
+
+  <p>
+    <% if @item.fav == true %>
+      <%= image_tag('fav.png', { :border => '0', :alt => 'お気に入り',:width => '30em'}) %>
+    <% else %>
+      <div style="height: 2.1em"></div>
+    <% end %>
+  </p>
+
+  <div class="floatleft">
+    <div id="sampleCarousel" class="carousel slide" data-ride="carousel" style="width: 20em; height: 15em;">
+     <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      </ol>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active" align="center" style="margin-top: 1.2em; width: 21em; height: 16em;">
+          <%= image_tag show_image_item_path(@item), class: ["large-img","noimg"] %>
+        </div>
+        <div class="item" align="center" style="margin-top: 1.2em; width: 21em; height: 16em;">
+          <%= image_tag show_image2_item_path(@item), class: ["large-img","noimg"] %>
+        </div>
+        <div class="item" align="center" style="margin-top: 1.2em; width: 21em; height: 16em;">
+          <%= image_tag show_image3_item_path(@item), class: ["large-img","noimg"] %>
+        </div>
+      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#sampleCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      </a>
+      <a class="right carousel-control" href="#sampleCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+
+  <%# タグ %>
+  <div class ="floatright" style="background: #f5f5f5;">
+    <% @item.tag_list.each do |tag| %>
+       <%= link_to "##{tag}", search_tag_items_path(tag: tag) %>
+    <% end %>
+  </div>
+  <br class="floatclear">
+  <%# 編集と削除 %>
+  <br>
+  <div class="floatleft" align="center" style="width: 20em; height: 13em;">
+    <td><button class="btn" style="width: 5em;"><%= link_to "", edit_item_path ,class:"glyphicon glyphicon-pencil darkgray"  %></button>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><button class="btn" style="width: 5em;"><%= link_to "", @item, method: :delete, data: { confirm: '本当にいいですか?' } ,class:"glyphicon glyphicon-trash darkgray"  %></button></td>
+  </div>
+  <%# 日付とか %>
+  <div class ="floatright" align="center" style="width: 15em; height: 8em;">
+    <% if @item.itemcall == true %>
+      <h2 class ="font">
+       <%= @item.ani %></br>
+       <%= @item.day %>
+      </h2>
+    <% end %>
+  </div>
+  <br class="floatclear">
+</div>
+
+<%# iphone5用 %>
+<div class="visible-xs">
+  <p>
+    <br>
+    <h3 style = display:inline;>▽</h3>
+    <h2 class="font" style = display:inline;><%= @item.itemname %></h2>
+  </p>
+
+  <p>
+    <% if @item.fav == true %>
+      <%= image_tag('fav.png', { :border => '0', :alt => 'お気に入り',:width => '20em'}) %>
+    <% else %>
+      <div style="height: 1.5em"></div>
+    <% end %>
+  </p>
+
+  <div class="floatleft">
+    <br>
+    <div id="sampleCarousel" class="carousel slide" data-ride="carousel" style="width: 12em; height: 10em;">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      </ol>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active" align="center" style="margin-top: 1em; width: 12em; height: 9em;">
+          <%= image_tag show_image_item_path(@item), class: ["large-img","noimg"] %>
+        </div>
+        <div class="item" align="center" style="margin-top: 1em; width: 12em; height: 9em;">
+          <%= image_tag show_image2_item_path(@item), class: ["large-img","noimg"] %>
+        </div>
+        <div class="item" align="center" style="margin-top: 1em; width: 12em; height: 9em;">
+          <%= image_tag show_image3_item_path(@item), class: ["large-img","noimg"] %>
+        </div>
+      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#sampleCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">前へ</span>
+      </a>
+      <a class="right carousel-control" href="#sampleCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">次へ</span>
+      </a>
+    </div>
+  </div>
+
+  <%# タグ %>
+  <div class ="floatright-ph" style="background: #d3d3d3; width: 6em; height: 10.1em; margin-top: 1.4em;">
+    <% @item.tag_list.each do |tag| %>
+       <%= link_to "##{tag}", search_tag_items_path(tag: tag) %>
+    <% end %>
+  </div>
+  <br class="floatclear">
+  <%# 編集と削除 %>
+  <br>
+  <div class="floatleft" align="center" style="width: 20em; height: 4em;">
+    <td><button class="btn" style="width: 5em;"><%= link_to "", edit_item_path ,class:"glyphicon glyphicon-pencil darkgray"  %></button>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><button class="btn" style="width: 5em;"><%= link_to "", @item, method: :delete, data: { confirm: '本当にいいですか?' } ,class:"glyphicon glyphicon-trash darkgray"  %></button></td>
+  </div>
+  <br class="floatclear">
+  <%# 日付とか %>
+  <div align="center" style="width: 20em; height: 5em;">
+    <% if @item.itemcall == true %>
+      <h3 class="font_s">
+       <%= @item.ani %></br>
+       <%= @item.day %>
+      </h3>
+    <% end %>
+  </div>
+</div>
+

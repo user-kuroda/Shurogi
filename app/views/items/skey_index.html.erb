@@ -1,0 +1,131 @@
+<head>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.noimg').error(function() {
+        $(this).attr({
+            src: '/noimg.png'
+        });
+      });
+    });
+  </script> 
+
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta http-equiv="content-style-type" content="text/css">
+   <style type="text/css">
+         *.float{
+            float: left;
+            margin-right: 1em;
+          }
+         *.floatclear{
+            clear: both;
+          }
+          div.fav{
+            position:absolute;
+            top:5%;  
+          }
+          div.image{
+            position:absolute;
+            top:20%; 
+            width:90%; text-align:center;
+          }
+          div.name{
+            position:absolute;
+            bottom:5%; 
+            width:90%; text-align:center;
+          }
+          @font-face{
+            font-family: "amemuchi";
+            src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+          }
+          h1.font{
+            font-family: "amemuchi";
+            font-size: 2em; 
+          }
+          h2.font_s{
+            font-family: "amemuchi";
+            font-size: 1em; 
+          }
+   </style>
+</head>
+
+
+<div align ="center">
+
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+            <td><h1 class="font">▽　<%= link_to category.categoryname, search_category_items_path(category: category) %></h1></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
+
+
+  <div class="row">
+    <% @items.count %>
+    <% if @items.count == 0 %>
+      <div style =" margin-left: 3em; margin-top: 5em;">
+        <font size ="5" color="a9a9a9">
+          
+        </font>
+      </div>
+    <% else %>
+      <% @items.each do |item| %>
+        <%# PC用 %>
+        <div class="visible-lg visible-md visible-sm">
+          <div align="center" class="col-xs-6 col-sm-4" style="height:25em;">   
+            <div class ="fav" style="margin-left: 60%;">
+              <% if item.fav == true %>
+                <%= image_tag('fav.png', { :border => '0', :alt => 'お気に入り', :width => '20em'}) %>
+              <% end %>  
+            </div>
+            <%= link_to item do %>
+              <div class="noimg">
+                <div class="image">
+                  <p style="display:inline;">
+                    <%= image_tag show_image_item_path(item), class: ["large-img","noimg"] %>
+                  </p>
+                </div>
+              </div>
+            <% end %>
+            <br />
+            <div class="name">
+              <h2 class="font_s"><%= item.itemname %></h2>
+            </div>
+          </div>
+        </div>
+        <%# スマホ用 %>
+        <div class="visible-xs">
+          <div align="center" class="col-xs-6 col-sm-4" style="height:10em;">   
+            <div class ="fav" style="margin-left: 60%;">
+              <% if item.fav == true %>
+                <%= image_tag('fav.png', { :border => '0', :alt => 'お気に入り', :width => '15em'}) %>
+              <% end %>  
+            </div>
+            <%= link_to item do %>
+              <div class="noimg">
+                <div class="image">
+                  <p style="display:inline;">
+                    <%= image_tag show_image_item_path(item), class: ["large-img","noimg"] %>
+                  </p>
+                </div>
+              </div>
+            <% end %>
+            <br />
+            <div class="name">
+              <%= item.itemname %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div> <!-- /.row -->

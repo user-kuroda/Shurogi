@@ -1,0 +1,103 @@
+<head>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.noimg').error(function() {
+        $(this).attr({
+            src: '/noimg.png'
+        });
+      });
+    });
+  </script> 
+  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="content-style-type" content="text/css">
+  <style type="text/css">
+    div.fav{
+      position:absolute;
+      top:5%;  
+    }
+    div.image{
+      position:absolute;
+      top:20%; 
+      width:90%; text-align:center;
+    }
+    div.name{
+      position:absolute;
+      bottom:5%; 
+      width:90%; text-align:center;
+    }
+    @font-face{
+      font-family: "amemuchi";
+      src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+    }
+    h1.pagetitle{
+      font-family: "amemuchi";
+      font-size: 3em;
+    }
+    h2.font{
+      font-family: "amemuchi";
+      font-size: 1em; 
+    }
+  </style>
+</head>
+
+
+
+<p id="notice"><%= notice %></p>
+
+<div align ="center">
+  <h1 class="pagetitle">Favorite</h1>
+</div>
+
+<table>
+  <% @items.each do |item| %>
+    <% next if item.fav == false %>
+    <%# PC用 %>
+    <div class="visible-lg visible-md visible-sm">
+      <div align="center" class="col-xs-6 col-sm-4" style="height:25em;"> 
+        <%= link_to item do %>
+          <div class="noimg">
+            <div class="image">
+              <p style="display:inline;">
+                <% if item.image.present? == true %>
+                  <%= image_tag show_image_item_path(item), class: ["large-img"] %>
+                <% elsif item.image2.present? == true %>
+                  <%= image_tag show_image2_item_path(item), class: ["large-img"] %>
+                <% else %>
+                  <%= image_tag show_image3_item_path(item), class: ["large-img","noimg"] %>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+        <br />
+        <div class="name">
+          <h2 class="font"><%= item.itemname %></h2>
+        </div>
+      </div>
+    </div>
+    <%# iphone5用 %>
+    <div class="visible-xs">
+      <div align="center" class="col-xs-6 col-sm-4" style="height:10em;"> 
+        <%= link_to item do %>
+          <div class="noimg">
+            <div class="image">
+              <p style="display:inline;">
+                <% if item.image.present? == true %>
+                  <%= image_tag show_image_item_path(item), class: ["large-img"] %>
+                <% elsif item.image2.present? == true %>
+                  <%= image_tag show_image2_item_path(item), class: ["large-img"] %>
+                <% else %>
+                  <%= image_tag show_image3_item_path(item), class: ["large-img","noimg"] %>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+        <br />
+        <div class="name">
+          <h2 class ="font"><%= item.itemname %></h2>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</table>

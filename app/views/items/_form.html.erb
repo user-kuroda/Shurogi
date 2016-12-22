@@ -1,0 +1,203 @@
+﻿<script type="text/javascript">
+  $(document).ready(function(){
+    $(".hante").hide();
+    if($("#item_fav:checked").val()){
+      $(".sw_hante").attr("src", "<%= asset_path 'fav.png' %>");
+    }else{
+      $(".sw_hante").attr("src", "<%= asset_path 'nofav.png' %>");
+    }
+  });
+  $(function(){
+    $(".sw_hante").click(function(){
+      if($("#item_fav:checked").val()){
+        $("#item_fav").prop("checked", false);
+        $(".sw_hante").attr("src", "<%= asset_path 'nofav.png' %>");
+      }else{
+        $("#item_fav").prop("checked", true);
+        $(".sw_hante").attr("src", "<%= asset_path 'fav.png' %>");
+      }
+    })
+  });
+
+   $(function() {
+         $('.fimg').hide();
+         $('.ftag').hide();
+         $('.fani').hide();
+         $('.fday').hide();
+         $('camera').click(function(){
+           $('.fimg').toggle();
+         });
+         $('itag').click(function(){
+           $('.ftag').toggle();
+         });
+         $('day').click(function(){
+           $('.fani').toggle();
+           $('.fday').toggle();
+         });
+      });
+   
+  $(function(){
+    $('#img1_dammy').click(function(){
+        $('#item_image').click();
+      })
+      $('#img2_dammy').click(function(){
+        $('#item_image2').click();
+      })
+      $('#img3_dammy').click(function(){
+        $('#item_image3').click();
+      })
+
+      /* 画像のダミーフィールドにファイル名を埋め込み */
+      $('#item_image').change(function(){
+        $('#img1_dammy').val($(this).val());
+      })
+      $('#item_image2').change(function(){
+        $('#img2_dammy').val($(this).val());
+      })
+      $('#item_image3').change(function(){
+        $('#img3_dammy').val($(this).val());
+      })
+    });
+
+  $(function () {
+    $('.demo001').pickadate({
+    format: "yyyy-mm-dd",
+    }); 
+  });
+</script>
+
+<style type="text/css">
+  .btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  }
+
+  .btn-circle.btn-lg2 {
+  width: 80px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  }
+
+  .darkgray {
+    color: #808080;
+  }
+  .gray{
+    color: #f2f2f2;
+  }
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  h1.pagetitle{
+    font-family: "amemuchi";
+    font-size: 3em;
+  }
+  h2.font{
+    font-family: "amemuchi";
+    font-size: 1em; 
+  }
+
+</style>
+
+<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><h2 class="font"><%= message %></h2></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<table Align="center"><tbody>
+  <div class="field">
+    <h2 class="font"><%= f.label :Name %></h2>
+  <span class="field">
+    <%= image_tag "nofav.png", class: "sw_hante", :size => "30x30" %>
+    <%= f.check_box :fav, class: "hante" %>
+  </span><br>
+    <%= f.text_field :itemname, style: "ime-mode: active;" %>
+  <span class="field">
+    <%= f.collection_select :category_id,Category.where(user: session[:usr]),:id,:categoryname %>
+  </span></div>
+
+  <br/>
+  <h2 class="font">通知</h2>
+  <div class="field" style="display: inline-block " Align="center" >
+   on　  off<br/>
+    <%= f.radio_button :itemcall, true %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.radio_button :itemcall, false %>
+  </div>&nbsp;&nbsp;&nbsp;&nbsp;|
+
+  <div class="field" style="display: inline-block " Align="center">
+    ほしい　かった<br/>
+    <%= f.radio_button :situ,true %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.radio_button :situ,false %>
+  </div><br/><br/>
+   <table>
+      <tr>
+        <td style="width: 10em" align="center">
+          <camera><button type="button" class="btn btn-gray btn-circle btn-lg darkgray">
+          <span class="glyphicon glyphicon-picture darkgray" aria-hidden="true"></span></button></camera>
+          <span class="glyphicon glyphicon-trash darkgray" aria-hidden="true" style="font-size: 80%"></span>
+        </td>
+        <td style="width: 10em" align="center">
+          <itag><button type="button" class="btn btn-gray btn-circle btn-lg darkgray">
+          <span class="glyphicon glyphicon-tag darkgray" aria-hidden="true"></span></button></itag>
+        </td>
+        <td style="width: 10em" align="center">
+          <day><button type="button" class="btn btn-gray btn-circle btn-lg darkgray">
+          <span class="glyphicon glyphicon-calendar darkgray" aria-hidden="true"></span></button></day>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <span class="fimg">
+            <%= f.file_field :image,accept: "image/jpeg", style: "display: none;" %>
+            <% if @item.image.present? == true %>
+              <%= text_field_tag 'img1_dammy', '画像有', readonly: true, style: 'width: 3.5em' %>
+            <% else %>
+              <%= text_field_tag 'img1_dammy', '画像無', readonly: true, style: 'width: 3.5em' %>
+            <% end %>
+            <%= check_box :delete,:image %>
+            <br /><br />
+            <%= f.file_field :image2, accept: "image/jpeg", style: "display: none;" %>
+            <%= text_field_tag 'img2_dammy', '画像無', readonly: true, style: 'width: 3.5em' %>
+            <%= check_box :delete,:image2 %>
+            <br /><br />
+            <%= f.file_field :image3, accept: "image/jpeg", style: "display: none;" %>
+            <%= text_field_tag 'img3_dammy', '画像無', readonly: true, style: 'width:3.5em' %>
+            <%= check_box :delete,:image3 %>
+          </span>
+        </td>
+        <td align="center">
+          <span class="ftag">
+            <%= text_area_tag 'item[tag_list]', @item.tag_list.join(','), :placeholder => ",でタグの複数設定可", style: 'width: 5em; height: 8em' %>
+          </span>
+        </td>
+        <td align="center">
+          <span class="fani">
+            <%= f.text_field :ani, :placeholder => "賞味期限、記念日etc.", style: 'width: 10em' %><br />
+            <%= f.text_field :day, :class => "demo001",style: 'width: 10em', :placeholder => "日付を選択"%>
+          </span>
+        </td>
+      </tr>
+    </table>
+
+</br>
+  <div class="actions" style = "text-align: right" >
+    <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
+    <span style="text-align: center;">登録</span>
+    <% end %>
+  </div>
+  </tbody></table>
+<% end %>

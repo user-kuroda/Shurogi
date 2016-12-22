@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+	    <title>Shurogi</title>
+	    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	    <%= csrf_meta_tags %>
+	    <meta name="viewport" content="width=device-width">
+        <style type="text/css">
+			@font-face {
+			  font-family: 'Glyphicons Halflings';
+			  src: url('/assets/glyphicons-halflings-regular.eot');
+			  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+			}
+			@font2-face{
+			    font-family: "amemuchi";
+			    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+			}
+			h1.pagetitle{
+			    font-family: "amemuchi";
+			    font-size: 1em;
+			}
+			.gray1 {
+				color: #7f8c8d;
+			}
+			.gray2 {
+				color: #ecf0f1;
+			}
+			.navbar-default .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-red .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-blue .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-yellow .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-green .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-lblue .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-purple .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-black .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-orange .nav > li > a {
+			    color: #ecf0f1;
+			}
+			.navbar-default{
+			    background-color: #95a5a6;
+			}
+
+			.navbar-red{
+			    background-color: #e74c3c;
+			}
+			.navbar-blue{
+				background-color: #2980b9;
+			}
+			.navbar-yellow{
+				background-color: #f1c40f;
+			}
+			.navbar-green{
+				background-color: #2ecc71;
+			}
+			.navbar-orange{
+				background-color: #f39c12;
+			}
+			.navbar-lblue{
+				background-color: #3498db;
+			}
+			.navbar-purple{
+				background-color: #9b59b6;
+			}
+			.navbar-black{
+				background-color: #2c3e50;
+			}
+			
+		</style>
+
+    </head>
+    <body>
+    	<div>
+		    <% if session[:color] == "red" %>
+	          <nav class="navbar navbar-red navbar-fixed-top">
+	        <% elsif session[:color] == "blue" %>
+	          <nav class="navbar navbar-blue navbar-fixed-top">
+	        <% elsif session[:color] == "yellow" %>
+	          <nav class="navbar navbar-yellow navbar-fixed-top">
+	        <% elsif session[:color] == "green" %>
+	          <nav class="navbar navbar-green navbar-fixed-top">
+	        <% elsif session[:color] == "orange" %>
+	          <nav class="navbar navbar-orange navbar-fixed-top">
+	        <% elsif session[:color] == "lblue"  %>
+	          <nav class="navbar navbar-lblue navbar-fixed-top">
+	        <% elsif session[:color] == "purple" %>
+	          <nav class="navbar navbar-purple navbar-fixed-top">
+	        <% elsif session[:color] == "black" %>
+	          <nav class="navbar navbar-black navbar-fixed-top">
+	        <% else %>
+	          <nav class="navbar navbar-default navbar-fixed-top">
+	        <% end %>
+
+		         <% if session[:usr] %>
+				    <div style="font-size: 250%">
+				        <ul class="nav nav-pills" style="text-align: center">
+							<li style="width: 19%">
+				          	  <%= link_to "", sets_path,class:"glyphicon glyphicon-home "  %>
+							</li>
+							<li style="width: 60%; font-size: 36%">
+				              <h1 class="pagetitle"><%= link_to "シュロギ", items_path,:class => "gray2" %></h1>
+							</li>
+							<li style="width: 19%" class="dropdown">
+				          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+				          	    <span class="glyphicon glyphicon-search " aria-hidden="true"></span>
+				          	    <span></span></a>
+				          	    <ul style="right: 0; left: auto;" class="dropdown-menu" role="menu">
+							      <li>
+							        <div style = "text-align: right">
+									    <%= form_tag({:action=>"search_key",:controller=>"items"}, class: "navbar-form pull-right") do %>
+									        <table><tbody>
+										        <tr><td>
+									                <%= text_field_tag "search_key[itemname]" ,@keyword,class: "span", style: "text-align: center; width: 9em; height: 4em" ,placeholder: "検索キーワード" %></td>
+										        <td><%= submit_tag "キーワード" , class: "btn",name: "key" %><br>
+										          <%= submit_tag "タグ", class: "btn2" ,style: "width: 6.4em" %>
+										        </td>
+										        </tr>
+								            </tbody></table>
+							            <% end %>
+							        </div>
+							      </li>
+								</ul>
+							</li>
+				        </ul>
+			        </div>
+			    <% end %>
+			</nav>
+<br/>
+<br/>
+<br/>
+<br/>
+		    <div class="container gray1" style="margin-bottom: 25%">
+		      <%= yield %>
+		    </div>
+            
+
+            <% if session[:color] == "red" %>
+	          <nav class="navbar navbar-red navbar-fixed-bottom">
+	        <% elsif session[:color] == "blue" %>
+	          <nav class="navbar navbar-blue navbar-fixed-bottom">
+	        <% elsif session[:color] == "yellow" %>
+	          <nav class="navbar navbar-yellow navbar-fixed-bottom">
+	        <% elsif session[:color] == "green" %>
+	          <nav class="navbar navbar-green navbar-fixed-bottom">
+	        <% elsif session[:color] == "orange" %>
+	          <nav class="navbar navbar-orange navbar-fixed-bottom">
+	        <% elsif session[:color] == "lblue"  %>
+	          <nav class="navbar navbar-lblue navbar-fixed-bottom">
+	        <% elsif session[:color] == "purple" %>
+	          <nav class="navbar navbar-purple navbar-fixed-bottom">
+	        <% elsif session[:color] == "black" %>
+	          <nav class="navbar navbar-black navbar-fixed-bottom">
+	        <% else %>
+	          <nav class="navbar navbar-default navbar-fixed-bottom">
+	        <% end %>
+		        <% if session[:usr] %>
+				    <div>
+					    <ul class="nav nav-pills" style="text-align: center; font-size: 300%">
+							<li style="width: 19%">
+							  <%= link_to "", favcateg_items_path,class:"glyphicon glyphicon-heart "  %>
+							</li>
+							<li style="width: 19%">
+							  <%= link_to "", categories_path,class:"glyphicon glyphicon-inbox" %>
+							</li>
+							<li style="width: 19%">
+							  <%= link_to "", new_item_path,class:"glyphicon glyphicon-plus " %>
+							</li>
+							<li style="width: 19%">
+							  <%= link_to "", tags_index_path,class:"glyphicon glyphicon-tags " %>
+							</li>
+							<li style="width: 19%">
+							  <%= link_to "", wantcateg_items_path,class:"glyphicon glyphicon-gift " %>
+							</li>
+					    </ul>
+				    </div>
+				<% end %>
+		    </nav>
+		</div>
+     </body>
+</html>
