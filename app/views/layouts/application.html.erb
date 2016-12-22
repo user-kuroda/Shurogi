@@ -12,6 +12,14 @@
 			  src: url('/assets/glyphicons-halflings-regular.eot');
 			  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 			}
+			@font2-face{
+			    font-family: "amemuchi";
+			    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+			}
+			h1.pagetitle{
+			    font-family: "amemuchi";
+			    font-size: 1em;
+			}
 			.darkgray {
 				color: #808080;
 			}
@@ -30,8 +38,8 @@
 							<li style="width: 19%">
 				          	  <%= link_to "", sets_path,class:"glyphicon glyphicon-home darkgray"  %>
 							</li>
-							<li style="width: 60%">
-				              <%= link_to "シュロギ", items_path,class:"darkgray" %>
+							<li style="width: 60%; font-size: 36%">
+				              <h1 class="pagetitle"><%= link_to "シュロギ", items_path,class:"darkgray" %></h1>
 							</li>
 							<li style="width: 19%" class="dropdown">
 				          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
@@ -58,7 +66,6 @@
 			        </div>
 			    <% end %>
 			</nav>
-<br/>
 <br/>
 <br/>
 <br/>

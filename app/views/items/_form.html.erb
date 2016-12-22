@@ -85,6 +85,18 @@
   .gray{
     color: #f2f2f2;
   }
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  h1.pagetitle{
+    font-family: "amemuchi";
+    font-size: 3em;
+  }
+  h2.font{
+    font-family: "amemuchi";
+    font-size: 1em; 
+  }
 
 </style>
 
@@ -93,7 +105,7 @@
     <div id="error_explanation">
       <ul>
       <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li><h2 class="font"><%= message %></h2></li>
       <% end %>
       </ul>
     </div>
@@ -102,7 +114,7 @@
 
 <table Align="center"><tbody>
   <div class="field">
-    <%= f.label :Name %>
+    <h2 class="font"><%= f.label :Name %></h2>
   <span class="field">
     <%= image_tag "nofav.png", class: "sw_hante", :size => "30x30" %>
     <%= f.check_box :fav, class: "hante" %>
@@ -113,7 +125,7 @@
   </span></div>
 
   <br/>
-  通知 :
+  <h2 class="font">通知</h2>
   <div class="field" style="display: inline-block " Align="center" >
    on　  off<br/>
     <%= f.radio_button :itemcall, true %>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -125,7 +137,7 @@
     <%= f.radio_button :situ,true %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= f.radio_button :situ,false %>
   </div><br/><br/>
-  <table>
+   <table>
       <tr>
         <td style="width: 10em" align="center">
           <camera><button type="button" class="btn btn-gray btn-circle btn-lg darkgray">
@@ -145,7 +157,7 @@
         <td align="center">
           <span class="fimg">
             <%= f.file_field :image,accept: "image/jpeg", style: "display: none;" %>
-            <% if :image.present?  %>
+            <% if @item.image.present? == true %>
               <%= text_field_tag 'img1_dammy', '画像有', readonly: true, style: 'width: 3.5em' %>
             <% else %>
               <%= text_field_tag 'img1_dammy', '画像無', readonly: true, style: 'width: 3.5em' %>

@@ -1,4 +1,4 @@
-﻿class ItemsController < ApplicationController
+class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
@@ -112,6 +112,8 @@
 
   def search_category
     @items = Item.where(user: session[:usr]).where(category: params["category"].to_i)
+    @pagetitle = 0
+    @catename = Category.find(params["category"]).categoryname
     render :index
   end
 
@@ -138,7 +140,6 @@
       @categories = Category.where(user: session[:usr]).where("categoryname like '%#{@keyword}'")
       @items = Item.where("itemname like '%#{@keyword}%'")
       render :skey_index
-
     else
       @items = Item.where(user: session[:usr]).tagged_with(@keyword)
       render :index

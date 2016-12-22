@@ -1,51 +1,81 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
+<style type="text/css">
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  h1.font{
+    font-family: "amemuchi";
+    font-size: 0.8em; 
+  }
+  h2.font_s{
+    font-family: "amemuchi";
+    font-size: 0.7em; 
+  }
+</style>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div align="center"> 
+  <div style="width: 30em; height: 55em; background-color: white; margin-top: 2em;" align="left">
+    <%= form_for(@user) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><h2 class="font_s"><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
 
-  <div class="field">
-    <%= f.label :userid %><br>
-    <%= f.text_field :userid %>
+      <div class="field">
+        <h2 class="font_s">
+          <%= f.label :userid %><br>
+          ※半角英数字のみ
+        </h2>
+        <%= f.text_field :userid %>
+      </div>
+
+      <div class="field">
+        <h2 class="font_s">
+          <%= f.label :name %><br>
+          <%= f.text_field :name %>
+        </h2>
+      </div>
+
+      <div class="field">
+        <h2 class="font_s">
+          <%= f.label :mail %><br>
+          <%= f.text_field :mail %>
+          <span class="field">
+            <%= select :user, :mailback, ["@docomo.ne.jp","@softbank.ne.jp","@ezweb.ne.jp"] %>
+          </span>
+        </h2>
+      </div>
+
+      <div class="field">
+        <h2 class="font_s">
+          <%= f.label :pass %><br>
+          ※8字以上、半角英数字のみ<br>
+        </h2>
+        <%= f.password_field :pass %>
+        <%= f.password_field :pass_confirmation %>
+      </div>
+
+      <div class="field"> 
+        <h2 class="font_s">
+          <%= f.label :call %><br> 
+          <%= f.number_field :call, min: 0  %>日前
+        </h2>
+      </div> 
+
+      
+      <div class="actions" align ="center">
+        <%= image_submit_tag('OK.png') %>
+      </div>
+
+      <%= link_to image_tag('back.png', { :border => '0', :alt => 'ログインへ',:size => '100x70'}), controller: :login,action: :index  %>
+
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :mail %><br>
-    <%= f.text_field :mail %>
-  <span class="field">
-    <%= select :user, :mailback, ["@docomo.ne.jp","@softbank.ne.jp","@ezweb.ne.jp"] %>
-  </span>
-  </div>
-
-  <div class="field">
-    <%= f.label :pass %><br>
-    ※8字以上、半角英数字のみ<br>
-    <%= f.password_field :pass %>
-    <%= f.password_field :pass_confirmation %>
-  </div>
-
-  <div class="field"> 
-    <%= f.label :call %><br> 
-    <%= f.number_field :call, min: 0  %>日前
-  </div> 
-
-  
-  <div class="actions" align ="center">
-    <%= image_submit_tag('OK.png') %>
-  </div>
-
-  <%= link_to image_tag('back.png', { :border => '0', :alt => 'ログインへ',:size => '100x70'}), controller: :login,action: :index  %>
-
-  <% end %>
+</div>

@@ -33,6 +33,18 @@
             bottom:5%; 
             width:90%; text-align:center;
           }
+          @font-face{
+            font-family: "amemuchi";
+            src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+          }
+          h1.font{
+            font-family: "amemuchi";
+            font-size: 2em; 
+          }
+          h2.font_s{
+            font-family: "amemuchi";
+            font-size: 1em; 
+          }
    </style>
 </head>
 
@@ -49,7 +61,7 @@
     <tbody>
       <% @categories.each do |category| %>
         <tr>
-            <td>▽　<%= link_to category.categoryname, search_category_items_path(category: category) %></td>
+            <td><h1 class="font">▽　<%= link_to category.categoryname, search_category_items_path(category: category) %></h1></td>
         </tr>
       <% end %>
     </tbody>
@@ -63,9 +75,7 @@
     <% if @items.count == 0 %>
       <div style =" margin-left: 3em; margin-top: 5em;">
         <font size ="5" color="a9a9a9">
-          １,　カテゴリーを登録<br>
-          ２,　アイテムを登録<br>
-          ３,　通知をON
+          
         </font>
       </div>
     <% else %>
@@ -89,7 +99,7 @@
             <% end %>
             <br />
             <div class="name">
-              <%= item.itemname %>
+              <h2 class="font_s"><%= item.itemname %></h2>
             </div>
           </div>
         </div>
