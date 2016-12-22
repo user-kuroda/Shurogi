@@ -5,7 +5,6 @@
   end
 
   def update 
-    session[:color] = @user[:color]
     if params["firstpass"].present?
       if params["firstpass"] == @user[:pass]
         check
@@ -51,6 +50,7 @@
     
     def check
      if @user.update(user_params)
+       session[:color] = @user[:color]
        redirect_to sets_path, notice: '登録情報を変更しました。'
      else
        render :index
