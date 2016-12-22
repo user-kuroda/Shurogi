@@ -1,3 +1,30 @@
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".cb").hide();
+      $(".cb:checked").each(function(i){
+        color = $(this).attr("id").split("_")[2]
+        $("#user_color_" + color).prop("checked", true);
+        $("#img_"+color).attr("src","/images/on" + color + ".png");
+      })
+    });
+    $(function(){
+      $(".sw_hante").click(function(){
+        $(".cb").each(function(i){
+          color = $(this).attr("id").split("_")[2]
+          $("#user_color_" + color).prop("checked", false);
+          $("#img_"+color).attr("src","/images/off" + color + ".png");
+        })
+        color = $(this).attr("id").split("_")[1]
+        if($(".cb_" + color + ":checked").val()){
+          $("#user_color_" + color).prop("checked", false);
+          $("#img_"+color).attr("src","/images/off" + color + ".png");
+        }else{
+          $("#user_color_" + color).prop("checked", true);
+          $("#img_"+color).attr("src","/images/on" + color + ".png");
+        }
+      })
+    });
+  </script>
 <style type="text/css">
   @font-face{
     font-family: "amemuchi";
@@ -35,7 +62,19 @@
   .gray{
     color: #f2f2f2;
   }
-
+  .rsample{
+      position:relative;
+  }
+  .rsample span{
+      position:absolute;
+      bottom:0px;
+      left:-3px;
+      width:100px;
+      text-align:center;
+  }
+  .rsample img{
+      width:50px;
+  }
 </style>
 
 <p id="notice"><%= notice %></p>
@@ -112,9 +151,14 @@
         </div>
 
         <div id="setcolor" class="panel-collapse collapse">
-          <div class="panel-body">
-            <%= select :user, :color, ["RED", "BLUE", "YELLOW", "PINK", "GREEN", "BLACK", "WHITE"] %> 
-          </div>
+          <div class="field" align="center"> <br/>
+            <%= f.collection_radio_buttons(:color,{red: "red",blue:"blue",yellow:"yellow",green:"green",orange:"orange",purple:"purple",lblue:"lblue",black:"black"},:last,:first, checked: "red" ) do |b| %>
+              <span class="rsample">
+              <%= image_tag "off#{b.value}.png", class: ["sw_hante"],id: "img_#{b.value}",:size => "50x50" %>
+              </span>
+              <%= b.radio_button(class: ["cb", "cb_#{b.value}"]) %>
+            <% end %>
+          </div> 
         </div>
 
       </div>
@@ -146,7 +190,7 @@
 
   <br/>
   <span>
-    <div class="actions" align ="center">
+    <div class="actions" style = "margin-left: 87%">
       <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
        <span style="text-align: center;">登録</span>
       <% end %>

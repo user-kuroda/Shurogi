@@ -11,6 +11,7 @@
       session[:usr] = usr.id
       session[:name] = usr.name
       session[:loger] = usr.userid  
+      session[:color] = usr.color
       redirect_to items_path  
 
     else
