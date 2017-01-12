@@ -137,6 +137,7 @@ class ItemsController < ApplicationController
     @keyword = params["search_key"]["itemname"]
 
     if params[:key]
+      
       @categories = Category.where(user: session[:usr]).where("categoryname like '%#{@keyword}%'")
       @items = Item.where(user: session[:usr]).where("itemname like '%#{@keyword}%'")
       render :skey_index

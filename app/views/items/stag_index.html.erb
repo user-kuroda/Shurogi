@@ -33,16 +33,44 @@
             bottom:5%; 
             width:90%; text-align:center;
           }
+          div.name_ph{
+            position:absolute;
+            bottom:0%; 
+            width:90%; text-align:center;
+          }
+          @font-face{
+            font-family: "amemuchi";
+            src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+          }
+          h1.pagetitle{
+            font-family: "amemuchi";
+            font-size: 3em;
+          }
+          h2.font{
+            font-family: "amemuchi";
+            font-size: 1em; 
+          }
    </style>
+
+         
+   
+
 </head>
 
 
-<div align ="left">
+<p id="notice"><%= notice %></p>
 
-@tag
-
+<div align ="center">
+  <% if @pagetitle == 1 %>
+  　　<h1 class="font"><% @keyword %>の検索結果</h1>
+    <h1 class="pagetitle">#<%= params["tag"] %></h1>
+  <% elsif @pagetitle == 0 %>
+　　　　<h1 class="font"><% @keyword %>の検索結果</h1>
+    <h1 class="pagetitle">◇<%= @catename %></h1>
+  <% else %>
+    <h1 class="pagetitle">Item</h1>
+  <% end %>
 </div>
-
 
   <div class="row">
     <% @items.count %>
@@ -57,32 +85,39 @@
     <% else %>
       <% @items.each do |item| %>
         <%# PC用 %>
+        <%# item.image.present? %>
         <div class="visible-lg visible-md visible-sm">
-          <div align="center" class="col-xs-6 col-sm-4" style="height:25em;">   
-            <div class ="fav" style="margin-left: 60%;">
+          <div align="center" class="col-xs-6 col-sm-4" style="height:30em;">   
+            <div class ="fav" style="margin-left: 70%;">
               <% if item.fav == true %>
-                <%= image_tag('fav.png', { :border => '0', :alt => 'お気に入り', :width => '20em'}) %>
+                <%= image_tag('fav.png', { :border => '0', :alt => 'お気に入り', :width => '27em'}) %>
               <% end %>  
             </div>
             <%= link_to item do %>
               <div class="noimg">
                 <div class="image">
                   <p style="display:inline;">
-                    <%= image_tag show_image_item_path(item), class: ["large-img","noimg"] %>
+                    <% if item.image.present? == true %>
+                      <%= image_tag show_image_item_path(item), class: ["large-img"] %>
+                    <% elsif item.image2.present? == true %>
+                      <%= image_tag show_image2_item_path(item), class: ["large-img"] %>
+                    <% else %>
+                      <%= image_tag show_image3_item_path(item), class: ["large-img","noimg"] %>
+                    <% end %>
                   </p>
                 </div>
               </div>
             <% end %>
             <br />
             <div class="name">
-              <%= item.itemname %>
+              <h2 class="font"><%= item.itemname %></h2>
             </div>
           </div>
         </div>
-        <%# スマホ用 %>
+        <%# iphone5用 %>
         <div class="visible-xs">
-          <div align="center" class="col-xs-6 col-sm-4" style="height:10em;">   
-            <div class ="fav" style="margin-left: 60%;">
+          <div align="center" class="col-xs-6 col-sm-4" style="height:14em;">   
+            <div class ="fav" style="margin-left: 65%;">
               <% if item.fav == true %>
                 <%= image_tag('fav.png', { :border => '0', :alt => 'お気に入り', :width => '15em'}) %>
               <% end %>  
@@ -91,17 +126,27 @@
               <div class="noimg">
                 <div class="image">
                   <p style="display:inline;">
-                    <%= image_tag show_image_item_path(item), class: ["large-img","noimg"] %>
+                    <% if item.image.present? == true %>
+                      <%= image_tag show_image_item_path(item), class: ["large-img"] %>
+                    <% elsif item.image2.present? == true %>
+                      <%= image_tag show_image2_item_path(item), class: ["large-img"] %>
+                    <% else %>
+                      <%= image_tag show_image3_item_path(item), class: ["large-img","noimg"] %>
+                    <% end %>
                   </p>
                 </div>
               </div>
             <% end %>
             <br />
-            <div class="name">
-              <%= item.itemname %>
+            <div class="name_ph">
+              <h2 class="font"><%= item.itemname %></h2>
             </div>
           </div>
         </div>
       <% end %>
     <% end %>
   </div> <!-- /.row -->
+
+  
+
+

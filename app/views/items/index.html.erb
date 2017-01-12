@@ -103,7 +103,9 @@
   <% if @pagetitle == 1 %>
     <h1 class="pagetitle">#<%= params["tag"] %></h1>
   <% elsif @pagetitle == 0 %>
-    <h1 class="pagetitle">▽<%= @catename %></h1>
+    <h1 class="pagetitle">◇<%= @catename %></h1>
+  <% elsif @pagetitle == 2 %>
+　　　<h1 class="pagetitle"><%= @keyword %>の検索結果</h1>
   <% else %>
     <h1 class="pagetitle">Item</h1>
   <% end %>
