@@ -1,4 +1,6 @@
 ﻿Rails.application.routes.draw do
+  get 'how_to/index'
+
   get 'set/index'
 
   get 'login/index'
@@ -8,6 +10,8 @@
   get 'top/index'
 
   get 'tags/index'
+
+  get 'how_to/index'
 
  
 

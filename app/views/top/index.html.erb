@@ -22,6 +22,20 @@
       font-size: 7em;
     }
   }
+
+  .btn-circle.btn-lg2 {
+  width: 80px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  }
+
+  .darkgray {
+    color: #808080;
+  }
+  
  </style>
 
 <meta name="viewport" content="width=device-width">
@@ -35,11 +49,12 @@
 
 <%#= image_tag 'top.png', {  :alt => 'top',:size => '600x397'} %>
 <div align="center">
-  <h1 class="font">
     <br>
     <br>
-    <%= link_to "　Sign In　", controller: :login,action: :index %><br><br>
-    <%= link_to "　Sign Up　", new_user_path %>
+  <h1 class="font btn-default">
+    <%= link_to "　ログイン　", controller: :login,action: :index %></h1><br><br>
+  <h1 class="font btn-default">
+    <%= link_to "　新しいアカウント　", new_user_path  %>
   </h1>
   <%#= link_to image_tag('sign in.png', { :border => '0', :alt => 'sign in',:hspace => '110'}), controller: :login,action: :index %>
   <%#= link_to image_tag('sign up.png', { :border => '0', :alt => 'sign out',:hspace => '110'}), new_user_path %>

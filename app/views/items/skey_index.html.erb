@@ -54,6 +54,8 @@
 
 <div align ="center">
 
+<h1 class="font"><%= @keyword %>の検索結果</h1>
+
   <table>
     <thead>
       <tr>
@@ -64,7 +66,7 @@
     <tbody>
       <% @categories.each do |category| %>
         <tr>
-            <td><h1 class="font">▽　<%= link_to category.categoryname, search_category_items_path(category: category) %></h1></td>
+            <td><h1 class="font">◇<%= link_to category.categoryname, search_category_items_path(category: category) %></h1></td>
         </tr>
       <% end %>
     </tbody>
