@@ -1,4 +1,7 @@
 ﻿<style type="text/css">
+  body {
+    background-image: url(<%= asset_path 'back_image.png' %>);
+  }
   @font-face{
     font-family: "amemuchi";
     src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
@@ -29,7 +32,7 @@
     <tbody>
       <% @categories.each do |category| %>
         <tr>
-          <td><h2 class="font">▽　<%= link_to category.categoryname, search_wantcategory_items_path(category: category) %></h2></td>
+          <td><h2 class="font">◇　<%= link_to category.categoryname, search_wantcategory_items_path(category: category) %></h2></td>
         </tr>
       <% end %>
     </tbody>

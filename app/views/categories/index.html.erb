@@ -1,4 +1,8 @@
 ﻿<style type="text/css">
+  body {
+    background-image: url(<%= asset_path 'back_image.png' %>);
+    background-size: cover;
+  }
 　　@font0-face {
         font-family: 'Glyphicons Halflings';
         src: url('/assets/glyphicons-halflings-regular.eot');
@@ -37,7 +41,7 @@
     <tbody>
       <% @categories.each do |category| %>
         <tr>
-          <td><h2 class="font">▽　<%= link_to category.categoryname, search_category_items_path(category: category) %>&nbsp;&nbsp;</h2></td>
+          <td><h2 class="font">◇　<%= link_to category.categoryname, search_category_items_path(category: category) %>&nbsp;&nbsp;</h2></td>
           <td><button class="btn"><%= link_to "", edit_category_path(category) ,class:"glyphicon glyphicon-pencil darkgray"  %></button>&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <td><button class="btn"><%= link_to "", category, method: :delete, data: { confirm: 'マジで?' } ,class:"glyphicon glyphicon-trash darkgray"  %></button></td>
         </tr>

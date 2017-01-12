@@ -1,34 +1,13 @@
-﻿<p id="notice"><%= notice %></p>
+﻿<style type="text/css">
+	body {
+	    background-image: url(<%= asset_path 'newuser_image.jpg' %>);
+	  }
+</style>
 
-<p>
-  <strong>ID:</strong>
-  <%= @user.userid %>
-</p>
+<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>名前:</strong>
-  <%= @user.name %>
-</p>
+<div align="center">
+  <h1><%= @user.name %></h1><br>
+  <Hr Size="3" Color="#696969" Width="55%">
+</div>
 
-<p>
-  <strong>"パスワード":</strong>
-  <%= @user.pass %>
-</p>
-
-<p>
-  <strong>"メール":</strong>
-  <%= @user.mail + @user.mailback %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @user.color %>
-</p>
-
-<p>
-  <strong>Call:</strong>
-  <%= @user.call %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', controller: :top,action: :index%>
