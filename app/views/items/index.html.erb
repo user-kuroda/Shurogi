@@ -12,6 +12,11 @@
    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
    <meta http-equiv="content-style-type" content="text/css">
    <style type="text/css">
+
+          body {
+            /* 画像ファイルの指定 */
+            background-image: url(<%= asset_path 'back_image.png' %>);
+          }
          *.float{
             float: left;
             margin-right: 1em;
@@ -99,6 +104,7 @@
   <% end %>
 <% end %>
 
+
 <div align ="center">
   <% if @pagetitle == 1 %>
     <h1 class="pagetitle">#<%= params["tag"] %></h1>
@@ -126,7 +132,7 @@
         <%# PC用 %>
         <%# item.image.present? %>
         <div class="visible-lg visible-md visible-sm">
-          <div align="center" class="col-xs-6 col-sm-4" style="height:30em;">   
+          <div align="center" class="col-xs-6 col-sm-4" style="height:30em; background-color: white;">   
             <div class ="fav" style="margin-left: 70%;">
               <% if item.fav == true %>
                 <%= image_tag('fav.png', { :border => '0', :alt => 'お気に入り', :width => '27em'}) %>
@@ -155,7 +161,7 @@
         </div>
         <%# iphone5用 %>
         <div class="visible-xs">
-          <div align="center" class="col-xs-6 col-sm-4" style="height:14em;">   
+          <div align="center" class="col-xs-6 col-sm-4" style="height:14em; background-color: white;">   
             <div class ="fav" style="margin-left: 65%;">
               <% if item.fav == true %>
                 <%= image_tag('fav.png', { :border => '0', :alt => 'お気に入り', :width => '15em'}) %>

@@ -1,5 +1,24 @@
-﻿<h1>Category</h1>
+﻿<style type="text/css">
+  body {
+    background-image: url(<%= asset_path 'back_image.png' %>);
+  }
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  h1.pagetitle{
+    font-family: "amemuchi";
+    font-size: 3em;
+  }
+  h2.font{
+    font-family: "amemuchi";
+    font-size: 1em; 
+  }
+</style>
+
+<h1 class="pagetitle" style = "width:98%; text-align: center">Category</h1>
+
 
 <%= render 'form' %>
 
-<%= link_to '戻る', categories_path %>
+<%#= link_to '戻る', categories_path %>
