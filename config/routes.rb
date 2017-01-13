@@ -11,7 +11,6 @@
 
   get 'tags/index'
 
-  get 'how_to/index'
 
  
 

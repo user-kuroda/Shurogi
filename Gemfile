@@ -61,6 +61,8 @@ gem "chartkick"
 gem 'therubyracer',  platforms: :ruby
 
 gem 'rails_12factor', group: :production
+
+gem 'kaminari'
  
  #gem 'fullcalendar-rails'
  
