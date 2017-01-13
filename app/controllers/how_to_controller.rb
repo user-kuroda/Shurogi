@@ -1,5 +1,5 @@
 class HowToController < ApplicationController
   def index
-  	layout: false
+    render :index,  layout: false
   end
 end
