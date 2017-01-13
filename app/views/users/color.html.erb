@@ -80,19 +80,28 @@
   <% end %>
 
 
-    <div class="field" align="center" style="margin-top: 20%"> <br/>
-      <%= f.label "好きな色を選択してください" %><br>
+    <div class="field" align="center" style="margin-top: 1em"> <br/>
+    　　<div align="center" style="width: 20em; height: 3em; background-color: white; margin-top: 20%">
+         <br>
+      　　<%= f.label "好きな色を選択してください" %><br>
+      </div>
+      <br>
       <%= f.collection_radio_buttons(:color,{red: "red",blue:"blue",yellow:"yellow",green:"green",orange:"orange",purple:"purple",lblue:"lblue",black:"black"},:last,:first, checked: "red" ) do |b| %>
-      <span class="rsample">
-        <%= image_tag "off#{b.value}.png", class: ["sw_hante"],id: "img_#{b.value}",:size => "150x150" %>
-      </span>
-      <%= b.radio_button(class: ["cb", "cb_#{b.value}"]) %>
+        <span class="rsample">
+          <%= image_tag "off#{b.value}.png", class: ["sw_hante"],id: "img_#{b.value}",:size => "150x150" %>
+        </span>
+        <%= b.radio_button(class: ["cb", "cb_#{b.value}"]) %>
       <% end %>
     </div> 
-<br/>
+    <br/>
     <div class="actions" align="center"> 
-    <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
-    <span style="text-align: center;">登録
-    <% end %>
+      <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
+        <span style="text-align: center;">登録</span>
+      <% end %>
     </div>
+
+
+
+
+
 <% end %> 
