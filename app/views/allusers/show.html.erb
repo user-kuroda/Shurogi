@@ -2,28 +2,41 @@
   body {
       background-image: url(<%= asset_path 'back_image.png' %>);
     }
+  div.name{
+    position:absolute;
+    bottom:5%; 
+    width:90%; text-align:center;
+  }
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  h1.namefont{
+    font-family: "amemuchi";
+    font-size: 3em;
+  }
+  h2.font{
+    font-family: "amemuchi";
+    font-size: 2em; 
+  }
 </style>
 
 <p id="notice"><%= notice %></p>
 
-
+<div style="font-size: 250%">
+  <%= link_to "", allusers_path, class:"glyphicon glyphicon-user" %>
+</div>
 
 <div align="center">
-  <h1><%= @user_name %></h1><br>
+  <h1 class ="namefont"><%= @user_name %></h1><br>
   <Hr Size="3" Color="#111111" Width="55%">
 </div>
 
 <% @items.each do |item| %>
+
   <%# PC用 %>
-  <%# item.image.present? %>
   <div class="visible-lg visible-md visible-sm">
-    <div align="center" class="col-xs-6 col-sm-4" style="height:30em; background-color: white;">   
-      <div class ="fav" style="margin-left: 70%;">
-        <% if item.fav == true %>
-          <%= image_tag('fav.png', { :border => '0', :alt => 'お気に入り', :width => '27em'}) %>
-        <% end %>  
-      </div>
-      <%= link_to item do %>
+    <div align="center" class="col-xs-6 col-sm-4" style="height:25em; background-color: white;">
         <div class="noimg">
           <div class="image">
             <p style="display:inline;">
@@ -37,7 +50,6 @@
             </p>
           </div>
         </div>
-      <% end %>
       <br />
       <div class="name">
         <h2 class="font"><%= item.itemname %></h2>
@@ -46,13 +58,7 @@
   </div>
   <%# iphone5用 %>
   <div class="visible-xs">
-    <div align="center" class="col-xs-6 col-sm-4" style="height:14em; background-color: white;">   
-      <div class ="fav" style="margin-left: 65%;">
-        <% if item.fav == true %>
-          <%= image_tag('fav.png', { :border => '0', :alt => 'お気に入り', :width => '15em'}) %>
-        <% end %>  
-      </div>
-      <%= link_to item do %>
+    <div align="center" class="col-xs-6 col-sm-4" style="height:11em; background-color: white;">   
         <div class="noimg">
           <div class="image">
             <p style="display:inline;">
@@ -66,11 +72,11 @@
             </p>
           </div>
         </div>
-      <% end %>
       <br />
       <div class="name_ph">
         <h2 class="font"><%= item.itemname %></h2>
       </div>
     </div>
   </div>
+
 <% end %>
