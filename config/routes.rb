@@ -1,4 +1,5 @@
 ﻿Rails.application.routes.draw do
+  resources :how_tos
   get 'how_to/index'
 
   get 'set/index'
@@ -32,9 +33,18 @@
     post 'search_key', on: :collection
     post 'alert', on: :collection
   end
+
   resources :users do
    get 'color', on: :member
    
+  end
+
+  resources :how_tos do
+    get 'show_image', on: :member
+    get 'show_image2', on: :member
+    get 'show_image3', on: :member
+    post 'upcount', on: :collection
+
   end
 
   resources :sets do

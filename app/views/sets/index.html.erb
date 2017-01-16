@@ -78,6 +78,9 @@
   .rsample img{
       width:50px;
   }
+  .white{
+    font-size: 9.3em; 
+  }
 </style>
 
 <p id="notice"><%= notice %></p>
@@ -95,8 +98,11 @@
     </div>
   <% end %>
 
-  <h1 class="pagetitle" style = "margin-left: 8%; text-align: left">Set</h1>
-
+  <h1 class="pagetitle" style = "margin-left: 8%; text-align: left; display: inline;">Set</h1>
+  <p class="white" style="display: inline;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</p>
+  <h2 class="font" style="text-align: right; display: inline;"><%= link_to '使い方', how_tos_path,class:"btn btn-default" %></h2>
+<br/>
+<br/>
   <div style = "width:90%;margin-left: 5%">
 
 
@@ -194,7 +200,7 @@
   <br/>
   <span>
     <div class="actions" align="center">
-      <%=  button_tag :type =>"submit", :class =>"btn btn-gray btn-circle btn-lg2 darkgray" do %>
+      <%=  button_tag :type =>"submit", :class =>"btn btn-default btn-circle btn-lg2 darkgray" do %>
        <span style="text-align: center;">保存</span>
       <% end %>
     </div>

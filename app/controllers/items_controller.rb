@@ -4,7 +4,14 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.where(user: session[:usr]) 
+    @user = session[:usr]
+    logger.debug "aaaaaaaaaaa"
+    logger.debug User.find(session[:usr]).count
+    if User.find(session[:usr]).count == 0
+      redirect_to how_tos_path
+    else
+    end
+    @items = Item.where(user: session[:usr])
     @call = []
   end
 
