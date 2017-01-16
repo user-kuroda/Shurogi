@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017023429) do
+ActiveRecord::Schema.define(version: 20170113002654) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "categoryname"
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "how_tos", force: :cascade do |t|
+    t.binary   "htimg1"
+    t.binary   "htimg2"
+    t.binary   "htimg3"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -32,6 +40,7 @@ ActiveRecord::Schema.define(version: 20161017023429) do
     t.integer  "category_id"
     t.boolean  "fav"
     t.integer  "user_id"
+    t.boolean  "shere"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -64,8 +73,9 @@ ActiveRecord::Schema.define(version: 20161017023429) do
     t.string   "mailback"
     t.string   "color"
     t.integer  "call"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "count",      default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end

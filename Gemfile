@@ -56,13 +56,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'acts-as-taggable-on','~> 3.4'
 
+gem 'kaminari'
+
 gem "chartkick"
  
 gem 'therubyracer',  platforms: :ruby
 
 gem 'rails_12factor', group: :production
 
-gem 'kaminari'
  
  #gem 'fullcalendar-rails'
  

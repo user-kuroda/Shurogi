@@ -12,6 +12,7 @@
       t.integer :category_id
       t.boolean :fav
       t.integer :user_id
+      t.boolean :shere
 
       t.timestamps null: false
     end

@@ -1,0 +1,68 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".how2").hide();
+    $(".how3").hide();
+  });
+
+  $(function(){
+    $(".next1").click(function(){
+      $(".how1").hide();
+      $(".how2").show();
+      $(".how3").hide();
+    })
+  });
+
+  $(function(){
+    $(".next2").click(function(){
+      $(".how1").hide();
+      $(".how2").hide();
+      $(".how3").show();
+    })
+  });
+
+  $(function(){
+    $(".prev1").click(function(){
+      $(".how1").show();
+      $(".how2").hide();
+      $(".how3").hide();
+    })
+  });
+
+  $(function(){
+    $(".prev2").click(function(){
+      $(".how1").hide();
+      $(".how2").show();
+      $(".how3").hide();
+    })
+  });
+
+  </script>
+
+
+<p id="notice"><%= notice %></p>
+
+<table>
+
+  <tbody>
+    <div class="how1" align="center">
+      <%= image_tag("how_to1.png") %><br/><br/>
+      <button class="next1 btn btn-default">Next</button>
+    </div>
+
+    <div class="how2" align="center">
+      <%= image_tag("how_to2.png") %><br/><br/>
+      <button class="prev1 btn btn-default">Prev</button>
+      <button class="next2 btn btn-default">Next</button>
+    </div>
+
+    <div class="how3" align="center">
+      <%= image_tag("how_to3.png") %><br/><br/>
+      <button class="prev2 btn btn-default">Prev</button>
+      <button class="end btn btn-default2"><%= link_to "End" ,upcount_how_tos_path, :method => :post %></button>
+    </div>
+  </tbody>
+</table>
+
+<br>
+
+
