@@ -1,0 +1,11 @@
+<style type="text/css">
+  body {
+      background-image: url(<%= asset_path 'back_image.png' %>);
+    }
+</style>
+
+<% @users.each do |user| %>
+  <span style ="font-size: 7em">
+  <%= link_to "@#{user.userid}　", alluser_path(user) %>
+  </span>
+<% end %>

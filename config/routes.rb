@@ -13,7 +13,7 @@
   get 'tags/index'
 
 
- 
+ resources :allusers
 
   resources :categories 
   resources :items do
