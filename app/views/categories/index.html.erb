@@ -1,4 +1,18 @@
-﻿<style type="text/css">
+﻿
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".check").hide();
+  });
+
+  $(function(){
+    $(".trash").click(function(){
+      $(".check").toggle();
+    })
+  });
+
+  </script>
+
+  <style type="text/css">
   body {
     background-image: url(<%= asset_path 'back_image.png' %>);
     background-size: cover;
@@ -25,10 +39,14 @@
 <p id="notice"><%= notice %></p>
 
 <div align ="center">
-  <h1 class="pagetitle">Category</h1>
+  <h1 class="pagetitle" style="display: inline-block;">Category</h1>&nbsp;&nbsp;
+    <div style="display: inline-block">
+      <button class="btn btn-default glyphicon glyphicon-trash darkgray trash"></button>
+　　　  <button class="check btn btn-default font"><%= link_to "削除", Category, method: :delete, data: { confirm: 'マジで?' }  %></button>
+    </div>
   <%#= link_to image_tag('plus.png', { :border => '0',:size => '40x40'}), new_category_path %>
-  <div style="font-size: 250%">
-    <%= link_to "", new_category_path, class:"glyphicon glyphicon-plus darkgray" %>
+  <div style="font-size: 250%; ">
+    <%= link_to "", new_category_path, class:"glyphicon glyphicon-plus darkgray font" %>
   </div>
 
   <table>
@@ -42,8 +60,8 @@
       <% @categories.each do |category| %>
         <tr>
           <td><h2 class="font">◇　<%= link_to category.categoryname, search_category_items_path(category: category) %>&nbsp;&nbsp;</h2></td>
-          <td><button class="btn"><%= link_to "", edit_category_path(category) ,class:"glyphicon glyphicon-pencil darkgray"  %></button>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td><button class="btn"><%= link_to "", category, method: :delete, data: { confirm: 'マジで?' } ,class:"glyphicon glyphicon-trash darkgray"  %></button></td>
+          <td><button class="btn btn-default" style="display: inline-block;"><%= link_to "", edit_category_path(category) ,class:"glyphicon glyphicon-pencil darkgray"  %></button>&nbsp;&nbsp;&nbsp;&nbsp;
+          <div style="display: inline-block;" class="check"><%= check_box_tag 'category','dcheck' %></div></td>
         </tr>
       <% end %>
     </tbody>

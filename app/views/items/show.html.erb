@@ -115,8 +115,8 @@
   <%# 編集と削除 %>
   <br>
   <div class="floatleft" align="center" style="width: 20em; height: 13em;">
-    <td><button class="btn" style="width: 5em;"><%= link_to "", edit_item_path ,class:"glyphicon glyphicon-pencil darkgray"  %></button>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><button class="btn" style="width: 5em;"><%= link_to "", @item, method: :delete, data: { confirm: '本当にいいですか?' } ,class:"glyphicon glyphicon-trash darkgray"  %></button></td>
+    <td><button class="btn btn-default" style="width: 5em;"><%= link_to "", edit_item_path ,class:"glyphicon glyphicon-pencil darkgray"  %></button>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><button class="btn btn-default" style="width: 5em;"><%= link_to "", @item, method: :delete, data: { confirm: '本当にいいですか?' } ,class:"glyphicon glyphicon-trash darkgray"  %></button></td>
   </div>
   <%# 日付とか %>
   <div class ="floatright" align="center" style="width: 15em; height: 8em;">

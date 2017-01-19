@@ -41,6 +41,9 @@
 
 <p id="notice"><%= notice %></p>
 
+<%# PC用 %>
+<div class="visible-lg visible-md visible-sm">
+
 <table>
 
   <tbody>
@@ -65,4 +68,32 @@
 
 <br>
 
+</div>
 
+<%# iphone5用 %>
+<div class="visible-xs">
+<table>
+
+  <tbody>
+    <div class="how1" align="center">
+      <%= image_tag("how_toA.png") %><br/><br/>
+      <button class="next1 btn btn-default">Next</button>
+    </div>
+
+    <div class="how2" align="center">
+      <%= image_tag("how_toB.png") %><br/><br/>
+      <button class="prev1 btn btn-default">Prev</button>
+      <button class="next2 btn btn-default">Next</button>
+    </div>
+
+    <div class="how3" align="center">
+      <%= image_tag("how_toC.png") %><br/><br/>
+      <button class="prev2 btn btn-default">Prev</button>
+      <button class="end btn btn-default2"><%= link_to "End" ,upcount_how_tos_path, :method => :post %></button>
+    </div>
+  </tbody>
+</table>
+
+<br>
+
+</div>

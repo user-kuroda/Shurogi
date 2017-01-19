@@ -64,7 +64,7 @@ class HowTosController < ApplicationController
 
   def upcount
     User.find(session[:usr]).update(count: 1)
-    redirect_to sets_path
+    redirect_to users_path
   end
 
 

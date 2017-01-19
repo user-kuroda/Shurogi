@@ -2,6 +2,12 @@
   body {
       background-image: url(<%= asset_path 'back_image.png' %>);
     }
+
+  h2.font{
+    font-family: "amemuchi";
+    font-size: 1em; 
+  }
+
 </style>
 
 <p id="notice"><%= notice %></p>
@@ -9,6 +15,8 @@
 <div style="font-size: 250%">
   <%= link_to "", sets_path,class:"glyphicon glyphicon-cog "  %>
   <%= link_to "", allusers_path, class:"glyphicon glyphicon-user" %>
+  <p class="white" style="display: inline;margin-left: 85%"></p>
+  <h2 class="font" style="text-align: right; display: inline;"><%= link_to '使い方', how_tos_path,class:"btn btn-default" %></h2>
 </div>
 
 <div align="center">

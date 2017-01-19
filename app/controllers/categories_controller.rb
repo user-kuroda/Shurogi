@@ -54,7 +54,9 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
-    @category.destroy
+    logger.debug "dekinaiyooooooooo"
+    logger.debug params[:dcheck]
+    Category.destroy_all("params[:dcheck] == true")
     respond_to do |format|
       format.html { redirect_to categories_url }
       format.json { head :no_content }
@@ -69,6 +71,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:categoryname, :user_id)
+      params.require(:category).permit(:categoryname, :user_id,:dcheck)
     end
 end
