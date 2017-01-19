@@ -13,9 +13,12 @@
   get 'tags/index'
 
 
- resources :allusers
+  resources :allusers do
+    post 'search_user', on: :collection
+  end
 
   resources :categories 
+
   resources :items do
     get 'show_image', on: :member
     get 'show_image2', on: :member

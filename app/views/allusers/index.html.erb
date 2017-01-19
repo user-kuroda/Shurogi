@@ -2,10 +2,54 @@
   body {
       background-image: url(<%= asset_path 'back_image.png' %>);
     }
+  div.name{
+    position:absolute;
+    bottom:5%; 
+    width:90%; text-align:center;
+  }
+  @font-face{
+    font-family: "amemuchi";
+    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
+  }
+  h1.namefont{
+    font-family: "amemuchi";
+    font-size: 4em;
+  }
+  h1.namefont2{
+    font-family: "amemuchi";
+    font-size: 3em;
+  }
+  h1.pagetitle{
+  	font-family: "amemuchi";
+    font-size: 3em;
+  }
 </style>
 
+<h1 class="pagetitle">他のユーザー</h1>
+
+<%#= text_field_tag "search_user[userid]" ,@s_user,class: "span", style: "text-align: center; width: 9em; height: 4.4em" ,placeholder: "ユーザー検索" %>
+<%#= submit_tag "検索" , class: "btn" %>
+
+<%= form_tag(:action=>"search_user") do %>
+  <%= text_field_tag "search_user[userid]", @search_user, style: "text-align: center; width: 12em; height: 2.5em" ,placeholder: "ユーザー検索" %>
+  <%= submit_tag "検索",class: "btn btn-default" %><br>
+<% end %>
+
 <% @users.each do |user| %>
-  <span style ="font-size: 7em">
-  <%= link_to "@#{user.userid}　", alluser_path(user) %>
-  </span>
+    <div align="center">
+	    <span>
+	        <%# PC用 %>
+            <div class="visible-lg visible-md visible-sm">
+	            <h1 class="namefont">
+	                <%= link_to "@#{user.userid}", alluser_path(user) %>
+	            </h1>
+	        </div>
+	        <%# iphone5用 %>
+            <div class="visible-xs">
+                <h1 class="namefont2">
+	                <%= link_to "@#{user.userid}", alluser_path(user) %>
+	            </h1>
+            </div>
+	    </span>
+    </div>
 <% end %>

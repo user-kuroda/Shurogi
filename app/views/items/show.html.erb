@@ -126,6 +126,11 @@
        <%= @item.day %>
       </h2>
     <% end %>
+    <% if @item.shere == true %>
+      <h3 class ="font_s">
+        全ユーザーに公開中！
+      </h3>
+    <% end %>
   </div>
   <br class="floatclear">
 </div>
@@ -199,6 +204,11 @@
       <h3 class="font_s">
        <%= @item.ani %></br>
        <%= @item.day %>
+      </h3>
+    <% end %>
+    <% if @item.shere == true %>
+      <h3 class ="font_s">
+        全ユーザーに公開中！
       </h3>
     <% end %>
   </div>
