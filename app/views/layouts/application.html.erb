@@ -30,15 +30,15 @@
 			    font-family: "amemuchi";
 			    src: url("<%= asset_path 'amemuchigothic-b.ttf' %>");
 			}
-			h1.pagetitle{
+			h1.s_title{
 			    font-family: "amemuchi";
-			    font-size: 1em;
+			    font-size: 2.5em;
 			}
 			.gray1 {
 				color: #7f8c8d;
 			}
 			.gray2 {
-				color: #ecf0f1;
+				color: #f0f8ff;
 			}
 			.navbar-default .nav > li > a {
 			    color: #ecf0f1;
@@ -102,57 +102,55 @@
     <body>
     	<div>
 		    <% if session[:color] == "red" %>
-	          <nav class="navbar navbar-red navbar-fixed-top">
+	          <nav class="navbar navbar-red navbar-fixed-top" style ="height: 5em">
 	        <% elsif session[:color] == "blue" %>
-	          <nav class="navbar navbar-blue navbar-fixed-top">
+	          <nav class="navbar navbar-blue navbar-fixed-top" style ="height: 5em">
 	        <% elsif session[:color] == "yellow" %>
-	          <nav class="navbar navbar-yellow navbar-fixed-top">
+	          <nav class="navbar navbar-yellow navbar-fixed-top" style ="height: 5em">
 	        <% elsif session[:color] == "green" %>
-	          <nav class="navbar navbar-green navbar-fixed-top">
+	          <nav class="navbar navbar-green navbar-fixed-top" style ="height: 5em">
 	        <% elsif session[:color] == "orange" %>
-	          <nav class="navbar navbar-orange navbar-fixed-top">
+	          <nav class="navbar navbar-orange navbar-fixed-top" style ="height: 5em">
 	        <% elsif session[:color] == "lblue"  %>
-	          <nav class="navbar navbar-lblue navbar-fixed-top">
+	          <nav class="navbar navbar-lblue navbar-fixed-top" style ="height: 5em">
 	        <% elsif session[:color] == "purple" %>
-	          <nav class="navbar navbar-purple navbar-fixed-top">
+	          <nav class="navbar navbar-purple navbar-fixed-top" style ="height: 5em">
 	        <% elsif session[:color] == "black" %>
-	          <nav class="navbar navbar-black navbar-fixed-top">
+	          <nav class="navbar navbar-black navbar-fixed-top" style ="height: 5em">
 	        <% else %>
-	          <nav class="navbar navbar-default navbar-fixed-top">
+	          <nav class="navbar navbar-default navbar-fixed-top" style ="height: 5em">
 	        <% end %>
 
 		         <% if session[:usr] %>
-				    <div style="font-size: 250%">
-				        <ul class="nav nav-pills" style="text-align: center">
-							<li style="width: 19%">
-				          	  <%= link_to "", users_path,class:"glyphicon glyphicon-home "  %>
-							</li>
-							<li style="width: 60%; font-size: 36%">
-				              <h1 class="pagetitle"><%= link_to "シュロギ", items_path,:class => "gray2" %></h1>
-							</li>
-							<li style="width: 19%" class="dropdown">
-				          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-				          	    <span class="glyphicon glyphicon-search " aria-hidden="true"></span>
-				          	    <span></span></a>
-				          	    <ul style="right: 0; left: auto;" class="dropdown-menu" role="menu">
-							      <li>
-							        <div style = "text-align: right">
-									    <%= form_tag({:action=>"search_key",:controller=>"items"}, class: "navbar-form pull-right") do %>
-									        <table><tbody>
-										        <tr><td>
-									                <%= text_field_tag "search_key[itemname]" ,@keyword,class: "span", style: "text-align: center; width: 9em; height: 5em; ime-mode: active;" ,placeholder: "検索キーワード" %></td>
-										        <td><%= submit_tag "キーワード" , class: "btn btn-info",name: "key" %><br>
-										          <%= submit_tag "タグ", class: "btn2 btn btn-primary" ,style: "width: 6.3em" %>
-										        </td>
-										        </tr>
-								            </tbody></table>
-							            <% end %>
-							        </div>
-							      </li>
-								</ul>
-							</li>
-				        </ul>
-			        </div>
+			        <ul class="nav nav-pills" style="text-align: center">
+						<li style="width: 19%; font-size: 3em">
+			          	  <%= link_to "", users_path,class:"glyphicon glyphicon-home "  %>
+						</li>
+						<li style="width: 60%" >
+			              <h1 class="s_title"><%= link_to "シュロギ", items_path %></h1>
+						</li>
+						<li style="width: 19%; font-size: 3em" class="dropdown">
+			          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+			          	    <span class="glyphicon glyphicon-search " aria-hidden="true"></span>
+			          	    <span></span></a>
+			          	    <ul style="right: 0; left: auto;" class="dropdown-menu" role="menu">
+						      <li>
+						        <div style = "text-align: right">
+								    <%= form_tag({:action=>"search_key",:controller=>"items"}, class: "navbar-form pull-right") do %>
+								        <table><tbody>
+									        <tr><td>
+								                <%= text_field_tag "search_key[itemname]" ,@keyword,class: "span", style: "text-align: center; width: 9em; height: 5em; ime-mode: active;" ,placeholder: "検索キーワード" %></td>
+									        <td><%= submit_tag "キーワード" , class: "btn btn-info",name: "key" %><br>
+									          <%= submit_tag "タグ", class: "btn2 btn btn-primary" ,style: "width: 6.3em" %>
+									        </td>
+									        </tr>
+							            </tbody></table>
+						            <% end %>
+						        </div>
+						      </li>
+							</ul>
+						</li>
+			        </ul>  
 			    <% end %>
 			</nav>
 <br/>
@@ -165,23 +163,23 @@
             
 
             <% if session[:color] == "red" %>
-	          <nav class="navbar navbar-red navbar-fixed-bottom">
+	          <nav class="navbar navbar-red navbar-fixed-bottom" style ="height: 5em">
 	        <% elsif session[:color] == "blue" %>
-	          <nav class="navbar navbar-blue navbar-fixed-bottom">
+	          <nav class="navbar navbar-blue navbar-fixed-bottom" style ="height: 5em">
 	        <% elsif session[:color] == "yellow" %>
-	          <nav class="navbar navbar-yellow navbar-fixed-bottom">
+	          <nav class="navbar navbar-yellow navbar-fixed-bottom" style ="height: 5em">
 	        <% elsif session[:color] == "green" %>
-	          <nav class="navbar navbar-green navbar-fixed-bottom">
+	          <nav class="navbar navbar-green navbar-fixed-bottom" style ="height: 5em">
 	        <% elsif session[:color] == "orange" %>
-	          <nav class="navbar navbar-orange navbar-fixed-bottom">
+	          <nav class="navbar navbar-orange navbar-fixed-bottom" style ="height: 5em">
 	        <% elsif session[:color] == "lblue"  %>
-	          <nav class="navbar navbar-lblue navbar-fixed-bottom">
+	          <nav class="navbar navbar-lblue navbar-fixed-bottom" style ="height: 5em">
 	        <% elsif session[:color] == "purple" %>
-	          <nav class="navbar navbar-purple navbar-fixed-bottom">
+	          <nav class="navbar navbar-purple navbar-fixed-bottom" style ="height: 5em">
 	        <% elsif session[:color] == "black" %>
-	          <nav class="navbar navbar-black navbar-fixed-bottom">
+	          <nav class="navbar navbar-black navbar-fixed-bottom" style ="height: 5em">
 	        <% else %>
-	          <nav class="navbar navbar-default navbar-fixed-bottom">
+	          <nav class="navbar navbar-default navbar-fixed-bottom" style ="height: 5em">
 	        <% end %>
 		        <% if session[:usr] %>
 				    <div>
