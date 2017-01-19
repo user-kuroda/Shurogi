@@ -27,6 +27,14 @@
 
 <h1 class="pagetitle">他のユーザー</h1>
 
+<%#= text_field_tag "search_user[userid]" ,@s_user,class: "span", style: "text-align: center; width: 9em; height: 4.4em" ,placeholder: "ユーザー検索" %>
+<%#= submit_tag "検索" , class: "btn" %>
+
+<%= form_tag(:action=>"search_user") do %>
+  <%= text_field_tag "search_user[userid]", @search_user, style: "text-align: center; width: 12em; height: 2.5em" ,placeholder: "ユーザー検索" %>
+  <%= submit_tag "検索",class: "btn btn-default" %><br>
+<% end %>
+
 <% @users.each do |user| %>
     <div align="center">
 	    <span>

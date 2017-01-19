@@ -5,8 +5,6 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @user = session[:usr]
-    logger.debug "aaaaaaaaaaa"
-    logger.debug User.find(session[:usr]).count
     if User.find(session[:usr]).count == 0
       redirect_to how_tos_path
     else
@@ -177,7 +175,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      return_params = params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category_id, :fav, :user_id,:tag_list,:image,:image2,:image3)
+      return_params = params.require(:item).permit(:itemname, :itemcall, :situ, :ani, :day, :category_id, :fav, :user_id,:tag_list,:image,:image2,:image3,:shere)
       return_params[:image] = return_params[:image].read if return_params[:image] != nil
       return_params[:image2] = return_params[:image2].read  if return_params[:image2] != nil
       return_params[:image3] = return_params[:image3].read  if return_params[:image3] != nil

@@ -127,7 +127,15 @@
   <span class="field">
     <%= image_tag "nofav.png", class: "sw_hante", :size => "30x30" %>
     <%= f.check_box :fav, class: "hante" %>
-  </span><br>
+  </span>&nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="field" style="display: inline-block " Align="center">
+    公開　非公開<br/>
+    <%= f.radio_button :shere,true %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.radio_button :shere,false %>
+  </div>
+
+  <br>
+
     <%= f.text_field :itemname, style: "ime-mode: active;" %>
   <span class="field">
     <%= f.collection_select :category_id,Category.where(user: session[:usr]),:id,:categoryname %>
@@ -145,7 +153,10 @@
     ほしい　かった<br/>
     <%= f.radio_button :situ,true %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= f.radio_button :situ,false %>
-  </div><br/><br/>
+  </div>
+
+  <br/><br/>
+
    <table>
       <tr>
         <td style="width: 10em" align="center">
