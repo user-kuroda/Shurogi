@@ -123,7 +123,7 @@
 
 <table Align="center"><tbody>
   <div class="field">
-    <h2 class="font"><%= f.label :Name %></h2>
+    <%= f.label :Name %>
   <span class="field">
     <%= image_tag "nofav.png", class: "sw_hante", :size => "30x30" %>
     <%= f.check_box :fav, class: "hante" %>
@@ -142,7 +142,7 @@
   </span></div>
 
   <br/>
-  <h2 class="font">通知</h2>
+  通知<br>
   <div class="field" style="display: inline-block " Align="center" >
    on　  off<br/>
     <%= f.radio_button :itemcall, true %>&nbsp;&nbsp;&nbsp;&nbsp;

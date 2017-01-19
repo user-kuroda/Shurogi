@@ -1,4 +1,14 @@
-﻿<style type="text/css">
+﻿<script type="text/javascript">
+    $(document).ready(function() {
+      $('.noimg').error(function() {
+        $(this).attr({
+            src: '/noimg.png'
+        });
+      });
+    });
+  </script> 
+
+<style type="text/css">
   body {
       background-image: url(<%= asset_path 'back_image.png' %>);
     }
