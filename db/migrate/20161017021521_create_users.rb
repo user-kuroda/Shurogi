@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :mailback
       t.string :color
       t.integer :call
-      t.integer :count, :default => 0
+      t.integer :cnt, :default => 0
 
       t.timestamps null: false
     end

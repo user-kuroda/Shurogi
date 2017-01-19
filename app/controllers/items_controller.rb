@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @user = session[:usr]
-    if User.find(session[:usr]).count == 0
+    if User.find(session[:usr]).cnt == 0
       redirect_to how_tos_path
     else
     end

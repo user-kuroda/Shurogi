@@ -54,9 +54,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
-    logger.debug "dekinaiyooooooooo"
-    logger.debug params[:dcheck]
-    Category.destroy_all("params[:dcheck] == true")
+    @category.destroy
     respond_to do |format|
       format.html { redirect_to categories_url }
       format.json { head :no_content }
