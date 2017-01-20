@@ -2,19 +2,19 @@
   $(document).ready(function(){
     $(".hante").hide();
     if($("#item_fav:checked").val()){
-      $(".sw_hante").attr("src", "<%= asset_path 'fav.png' %>");
+      $(".sw_hante").attr("src", "<%= asset_path 'fav2.png' %>");
     }else{
-      $(".sw_hante").attr("src", "<%= asset_path 'nofav.png' %>");
+      $(".sw_hante").attr("src", "<%= asset_path 'nofav2.png' %>");
     }
   });
   $(function(){
     $(".sw_hante").click(function(){
       if($("#item_fav:checked").val()){
         $("#item_fav").prop("checked", false);
-        $(".sw_hante").attr("src", "<%= asset_path 'nofav.png' %>");
+        $(".sw_hante").attr("src", "<%= asset_path 'nofav2.png' %>");
       }else{
         $("#item_fav").prop("checked", true);
-        $(".sw_hante").attr("src", "<%= asset_path 'fav.png' %>");
+        $(".sw_hante").attr("src", "<%= asset_path 'fav2.png' %>");
       }
     })
   });
@@ -125,7 +125,7 @@
   <div class="field">
     <%= f.label :Name %>
   <span class="field">
-    <%= image_tag "nofav.png", class: "sw_hante", :size => "30x30" %>
+    <%= image_tag "nofav2.png", class: "sw_hante", :size => "30x30" %>
     <%= f.check_box :fav, class: "hante" %>
   </span>&nbsp;&nbsp;&nbsp;&nbsp;
   <div class="field" style="display: inline-block " Align="center">
