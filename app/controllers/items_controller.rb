@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
-    @item = Item.new(itemcall:false)
+    @item = Item.new(itemcall:false,shere:false)
   end
 
   # GET /items/1/edit

@@ -5,6 +5,7 @@
 
   validates :itemname,presence: true
   validates :situ,inclusion:{in: [true, false]}
+  validates :day,presence: true
   validates :ani, presence: true, if: :itemcall_on?
 
   def itemcall_on?

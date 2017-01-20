@@ -216,6 +216,7 @@ ja:
         itemname: アイテムの名前
         situ: 購入の有無
         ani: 何の日か
+        day: 日付
 
       category:
         categoryname: そのカテゴリー
